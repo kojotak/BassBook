@@ -7,6 +7,7 @@ public enum Channel {
     COVERSOLUTIONS("CoverSolutions","CoverSolutions"),
     GEORDIE_BASSIST("The Geordie Bassist", "TheGeordieBassist"),
     LEO("LeoBassCovers", "LeoBassCovers2"),
+    NATE_NAVARRO("Nate Navarro", "NateNavarro"),
     NOCCO_CAT("nocco cat", "noccobass"),
     TOM_BORNEMANN("Tom Bornemann", "basscination"),
     ROBERTO_YANGUS("Roberto Yanguas", "robertoyanguas8990")

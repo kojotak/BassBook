@@ -12,27 +12,31 @@ public record Song(
 
 ) {
 
-    public Song(String name, Youtube play){
-        this(name, DEFAULT_METER, DEFAULT_FEEL, List.of(play));
+    public Song(String name, Meter meter, Feel feel, Youtube... plays) {
+        this(name, meter, feel, List.of(plays));
     }
 
-    public Song(String name, Collection<Youtube> plays){
+    public Song(String name, Youtube play) {
+        this(name, DEFAULT_METER, DEFAULT_FEEL, play);
+    }
+
+    public Song(String name, Youtube... plays) {
         this(name, DEFAULT_METER, DEFAULT_FEEL, plays);
     }
 
-    public Song(String name, Meter meter, Youtube play){
-        this(name, meter, DEFAULT_FEEL, List.of(play));
+    public Song(String name, Meter meter, Youtube play) {
+        this(name, meter, DEFAULT_FEEL, play);
     }
 
-    public Song(String name, Meter meter, Collection<Youtube> plays){
+    public Song(String name, Meter meter, Youtube... plays) {
         this(name, meter, DEFAULT_FEEL, plays);
     }
 
-    public Song(String name, Feel feel, Youtube play){
-        this(name, DEFAULT_METER, feel, List.of(play));
+    public Song(String name, Feel feel, Youtube play) {
+        this(name, DEFAULT_METER, feel, play);
     }
 
-    public Song(String name, Feel feel, Collection<Youtube> plays){
+    public Song(String name, Feel feel, Youtube... plays) {
         this(name, DEFAULT_METER, feel, plays);
     }
 
