@@ -2,7 +2,6 @@ package com.github.kojotak.bassbook;
 
 import com.github.kojotak.bassbook.data.Author;
 import com.github.kojotak.bassbook.data.Song;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +14,11 @@ import java.util.Optional;
 @Controller
 public class BassbookController {
 
-    @Autowired
-    private BassbookDatabase database;
+    private final BassbookDatabase database;
+
+    public BassbookController(BassbookDatabase database) {
+        this.database = database;
+    }
 
     @GetMapping("/")
     public ModelAndView home() {

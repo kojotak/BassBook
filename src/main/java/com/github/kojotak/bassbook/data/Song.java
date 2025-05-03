@@ -2,7 +2,6 @@ package com.github.kojotak.bassbook.data;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Stream;
 
 public record Song(
