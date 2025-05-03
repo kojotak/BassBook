@@ -4,9 +4,11 @@
     <title>Kojotak Bass Guitar Song Book</title>
 </head>
 <body>
-    <h1 th:text="${applicationName}"></h1>
+    <h1>Kojotak bass guitar song book</h1>
 
-    <table border="1">
+    <a th:text="home" th:href="@{/}" th:if="${authors == null}"></a>
+
+    <table border="1" th:if="${authors != null}">
         <thead>
         <tr>
             <th>Author</th>
@@ -18,12 +20,50 @@
                  th:with="songCount=${author.songs.size()}">
                 <tr>
                     <td th:text="${author.name}" th:rowspan="${songCount}"></td>
-                    <td th:text="${songCount>0}?${author.songs[0].name}:''"></td>
+                    <td><a
+                            th:text="${songCount>0}?${author.songs[0].name}:''"
+                            th:href="@{/author/{authorName}/song/{songName}(authorName=${author.name}, songName=${author.songs[0].name})}"></a></td>
                 </tr>
                 <tr th:each="song,stats:${author.songs}" th:if="${!stats.first}">
-                    <td th:text="${song.name}"></td>
+                    <td><a th:text="${song.name}"
+                           th:href="@{/author/{authorName}/song/{songName}(authorName=${author.name}, songName=${song.name})}"></a>
+                    </td>
                 </tr>
             </div>
+        </tbody>
+    </table>
+
+    <table border="1" th:if="${selectedAuthor != null}">
+        <tbody>
+            <tr>
+                <td>Author</td>
+                <td th:text="${selectedAuthor.name}" colspan="3"></td>
+            </tr>
+            <tr th:if="${selectedSong != null}">
+                <td>Song</td>
+                <td th:text="${selectedSong.name}" colspan="3"></td>
+            </tr>
+            <tr th:each="play,stats:${selectedSong.plays}" th:if="${selectedSong.plays != null}">
+                <td th:if="${stats.first}">YouTube</td>
+                <td th:if="${!stats.first}"></td>
+                <td><a th:text="${play.channel}"
+                       th:href="@{/author/{authorName}/song/{songName}/play/{channelId}(authorName=${selectedAuthor.name}, songName=${selectedSong.name}, channelId=${play.channel.id})}"></a>
+                <td th:text="${play.tuning.name}" ></td>
+                <td th:text="${play.technique}" ></td>
+            </tr>
+            <tr th:if="${selectedPlay != null}">
+                <td></td>
+                <td colspan="3">
+                    <iframe
+                            th:src="@{'https://www.youtube.com/embed/' + ${selectedPlay.id}}"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+
+                </td>
+            </tr>
         </tbody>
     </table>
 
