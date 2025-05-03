@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection  ;
+import java.util.Comparator;
 
 import static com.github.kojotak.bassbook.data.Channel.*;
 import static com.github.kojotak.bassbook.data.Feel.SWING;
@@ -22,9 +23,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        authors.addAll(event.getApplicationContext().getBeansOfType(Author.class).values());
+        authors.addAll(event.getApplicationContext()
+                .getBeansOfType(Author.class)
+                .values().stream()
+                .sorted(Comparator.comparing(Author::name))
+                .toList());
     }
-
 
     public Collection<Author> getAuthors() {
         return authors;

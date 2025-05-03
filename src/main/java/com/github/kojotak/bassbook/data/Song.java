@@ -1,7 +1,9 @@
 package com.github.kojotak.bassbook.data;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public record Song(
 
@@ -13,7 +15,7 @@ public record Song(
 ) {
 
     public Song(String name, Meter meter, Feel feel, Youtube... plays) {
-        this(name, meter, feel, List.of(plays));
+        this(name, meter, feel, Stream.of(plays).sorted(Comparator.comparing( p -> p.channel().label)).toList());
     }
 
     public Song(String name, Youtube play) {

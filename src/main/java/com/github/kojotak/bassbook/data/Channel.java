@@ -13,7 +13,7 @@ public enum Channel {
     ROBERTO_YANGUS("Roberto Yanguas", "robertoyanguas8990")
     ;
 
-    public final String name;
+    public final String label;
 
     /**
      * Channel id
@@ -21,7 +21,7 @@ public enum Channel {
     public final String id;
 
     Channel(String name, String id) {
-        this.name = name;
+        this.label = name;
         this.id = id;
     }
 }

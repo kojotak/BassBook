@@ -46,7 +46,7 @@
             <tr th:each="play,stats:${selectedSong.plays}" th:if="${selectedSong.plays != null}">
                 <td th:if="${stats.first}">YouTube</td>
                 <td th:if="${!stats.first}"></td>
-                <td><a th:text="${play.channel}"
+                <td><a th:text="${play.channel.label}"
                        th:href="@{/author/{authorName}/song/{songName}/play/{channelId}(authorName=${selectedAuthor.name}, songName=${selectedSong.name}, channelId=${play.channel.id})}"></a>
                 <td th:text="${play.tuning.name}" ></td>
                 <td th:text="${play.technique}" ></td>

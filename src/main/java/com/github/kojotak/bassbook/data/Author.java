@@ -1,7 +1,8 @@
 package com.github.kojotak.bassbook.data;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 public record Author (
 
@@ -11,6 +12,6 @@ public record Author (
 ) {
 
     public Author(String name, Song ... songs){
-        this(name, List.of(songs));
+        this(name, Stream.of(songs).sorted(Comparator.comparing(Song::name)).toList());
     }
 }
