@@ -6,12 +6,12 @@ public enum Channel {
     CARLOS_CARLESI("Carlos Carlesi", "carlucho1012"),
     COVERSOLUTIONS("CoverSolutions","CoverSolutions"),
     GEORDIE_BASSIST("The Geordie Bassist", "TheGeordieBassist"),
+    HARRY("Harry - Music & Stuff", "HarryMusicStuff"),
     LEO("LeoBassCovers", "LeoBassCovers2"),
     NATE_NAVARRO("Nate Navarro", "NateNavarro"),
     NOCCO_CAT("nocco cat", "noccobass"),
     TOM_BORNEMANN("Tom Bornemann", "basscination"),
-    ROBERTO_YANGUS("Roberto Yanguas", "robertoyanguas8990")
-    ;
+    ROBERTO_YANGUS("Roberto Yanguas", "robertoyanguas8990");
 
     public final String label;
 

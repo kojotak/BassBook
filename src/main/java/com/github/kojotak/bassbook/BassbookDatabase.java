@@ -83,10 +83,39 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Author philCollins(){
-        return new Author("Phil Collins",
-                new Song("Another day in paradise",
+        return new Author("Phil Collins", new Song("Another day in paradise",
                         new Youtube(NOCCO_CAT, "bZ3CSRQ6e4U", of(SLIDE)),
                         new Youtube(TOM_BORNEMANN, "BdpPpmMnjAo", of(SLIDE))
                 ));
+    }
+
+    @Bean
+    private Author ninaSimone() {
+        return new Author("Nina Simone", new Song("Feeling good", new Youtube(HARRY, "qs9KVyJnKIU")));
+    }
+
+    @Bean
+    private Author rayCharles() {
+        return new Author("Ray Charles", new Song("Hit the road, Jack", new Youtube(HARRY, "M9NNOtMgAhk")));
+    }
+
+    @Bean
+    private Author billyIdol() {
+        return new Author("Billy Idol", new Song("White wedding", new Youtube(HARRY, "TqA_IWPuGcU")));
+    }
+
+    @Bean
+    private Author talkingHeads() {
+        return new Author("Talking heads", new Song("Psycho killer", new Youtube(HARRY, "SNZHCz4rzKA")));
+    }
+
+    @Bean
+    private Author whiteStripes() {
+        return new Author("The White stripes", new Song("Seven nation army", new Youtube(HARRY, "6_7VrkrUuKc")));
+    }
+
+    @Bean
+    private Author blackEyedPeas() {
+        return new Author("The Black eyed peas", new Song("Let's get it started", new Youtube(HARRY, "iz89AiRQhE0")));
     }
 }
