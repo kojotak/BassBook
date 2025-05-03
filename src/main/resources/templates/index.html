@@ -5,6 +5,27 @@
 </head>
 <body>
     <h1 th:text="${applicationName}"></h1>
-    <p>Here you can explore a variety of bass guitar songs!</p>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Author</th>
+            <th>Song Title</th>
+        </tr>
+        </thead>
+        <tbody>
+            <div th:remove="tag" th:each="author:${authors}"
+                 th:with="songCount=${author.songs.size()}">
+                <tr>
+                    <td th:text="${author.name}" th:rowspan="${songCount}"></td>
+                    <td th:text="${songCount>0}?${author.songs[0].name}:''"></td>
+                </tr>
+                <tr th:each="song,stats:${author.songs}" th:if="${!stats.first}">
+                    <td th:text="${song.name}"></td>
+                </tr>
+            </div>
+        </tbody>
+    </table>
+
 </body>
 </html>
