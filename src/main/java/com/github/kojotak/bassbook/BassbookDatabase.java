@@ -82,6 +82,15 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
+    private Author u2(){
+        return new Author("U2",
+                new Song("Vertigo", new Youtube(BRAND73, "OULMZ3DC1WU")),
+                new Song("Sweetest thing", new Youtube(BRAND73, "fvUBvZRh7LM")),
+                new Song("In God's country", new Youtube(BRAND73, "ExFYtgshjUc"))
+        );
+    }
+
+    @Bean
     private Author philCollins(){
         return new Author("Phil Collins", new Song("Another day in paradise",
                         new Youtube(NOCCO_CAT, "bZ3CSRQ6e4U", of(SLIDE)),
@@ -117,5 +126,20 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private Author blackEyedPeas() {
         return new Author("The Black eyed peas", new Song("Let's get it started", new Youtube(HARRY, "iz89AiRQhE0")));
+    }
+
+    @Bean
+    private Author sia() {
+        return new Author("Sia", new Song("Snowman", new Meter(6,8), new Youtube(NOCCO_CAT, "KSye_cosGI4")));
+    }
+
+    @Bean
+    private Author beatles(){
+        return new Author("The Beatles", new Song("Lady Madonna", new Youtube(BRAND73, "YxVCt81YNOE")));
+    }
+
+    @Bean
+    private Author prodiogy(){
+        return new Author("The Prodiogy", new Song("Climbatize", new Youtube(CARLOS_CARLESI, "dqR-t46ZtdA")));
     }
 }
