@@ -92,10 +92,15 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Author philCollins(){
-        return new Author("Phil Collins", new Song("Another day in paradise",
+        return new Author("Phil Collins",
+                new Song("Another day in paradise",
                         new Youtube(NOCCO_CAT, "bZ3CSRQ6e4U", of(SLIDE)),
                         new Youtube(TOM_BORNEMANN, "BdpPpmMnjAo", of(SLIDE))
-                ));
+                ),
+                new Song("Easy lover", new Youtube(FLORIAN_BASSO, "bqtjyr1Khsc")),
+                new Song("Don't Lose My Number", new Youtube(NOCCO_CAT, "FTQFPF2TbXc")),
+                new Song("In the air tonight", new Youtube(NICKZ911, "PZfLhQM_KIY"))
+        );
     }
 
     @Bean
