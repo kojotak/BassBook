@@ -2,6 +2,8 @@ package com.github.kojotak.bassbook.data;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.EnumSet;
+import java.util.List;
 import java.util.stream.Stream;
 
 public record Song(
@@ -39,6 +41,14 @@ public record Song(
 
     public Song(String name, Feel feel, Youtube... plays) {
         this(name, DEFAULT_METER, feel, plays);
+    }
+
+    public List<Tuning> getAllTunings(){
+        return plays.stream().map(Youtube::tuning).distinct().sorted().toList();
+    }
+
+    public List<Technique> getAllTechnique(){
+        return plays.stream().map(Youtube::technique).flatMap(EnumSet::stream).distinct().sorted().toList();
     }
 
     private static final Meter DEFAULT_METER = Meter.COMMON;
