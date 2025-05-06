@@ -13,21 +13,19 @@
         <tr>
             <th>Author</th>
             <th>Song Title</th>
+            <th>Meter</th>
+            <th>Plays</th>
         </tr>
         </thead>
         <tbody>
-            <div th:remove="tag" th:each="author:${authors}"
-                 th:with="songCount=${author.songs.size()}">
-                <tr>
-                    <td th:text="${author.name}" th:rowspan="${songCount}"></td>
-                    <td><a
-                            th:text="${songCount>0}?${author.songs[0].name}:''"
-                            th:href="@{/author/{authorName}/song/{songName}(authorName=${author.name}, songName=${author.songs[0].name})}"></a></td>
-                </tr>
-                <tr th:each="song,stats:${author.songs}" th:if="${!stats.first}">
+            <div th:remove="tag" th:each="author:${authors}">
+                <tr th:each="song,stats:${author.songs}">
+                    <td th:text="${author.name}"></td>
                     <td><a th:text="${song.name}"
                            th:href="@{/author/{authorName}/song/{songName}(authorName=${author.name}, songName=${song.name})}"></a>
                     </td>
+                    <td><sup th:text="${song.meter.count}"></sup>&frasl;<sub th:text="${song.meter.perBeat}"></sub></td>
+                    <td th:text="${song.plays.size()}"></td>
                 </tr>
             </div>
         </tbody>
