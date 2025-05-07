@@ -4,9 +4,7 @@
     <title>Kojotak Bass Guitar Song Book</title>
 </head>
 <body>
-    <h1>Kojotak bass guitar song book</h1>
-
-    <a th:text="home" th:href="@{/}" th:if="${songs == null}"></a>
+    <h1><a th:href="@{/}">Kojotak bass guitar song book</a></h1>
 
     <table border="1" th:if="${songs != null}">
         <thead>
