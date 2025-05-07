@@ -6,13 +6,13 @@
 <body>
     <h1>Kojotak bass guitar song book</h1>
 
-    <a th:text="home" th:href="@{/}" th:if="${authors == null}"></a>
+    <a th:text="home" th:href="@{/}" th:if="${songs == null}"></a>
 
-    <table border="1" th:if="${authors != null}">
+    <table border="1" th:if="${songs != null}">
         <thead>
         <tr>
-            <th>Author</th>
             <th>Song Title</th>
+            <th>Author</th>
             <th>Meter</th>
             <th>Plays</th>
             <th>Tuning</th>
@@ -20,18 +20,16 @@
         </tr>
         </thead>
         <tbody>
-            <div th:remove="tag" th:each="author:${authors}">
-                <tr th:each="song,stats:${author.songs}">
-                    <td th:text="${author.name}"></td>
-                    <td><a th:text="${song.name}"
-                           th:href="@{/author/{authorName}/song/{songName}(authorName=${author.name}, songName=${song.name})}"></a>
-                    </td>
-                    <td><sup th:text="${song.meter.count}"></sup>&frasl;<sub th:text="${song.meter.perBeat}"></sub></td>
-                    <td th:text="${song.plays.size()}"></td>
-                    <td th:text="${song.getAllTunings()}"></td>
-                    <td th:text="${song.getAllTechnique()}"></td>
-                </tr>
-            </div>
+            <tr th:each="song:${songs}">
+                <td><a th:text="${song.name}"
+                       th:href="@{/author/{authorName}/song/{songName}(authorName=${song.author.name}, songName=${song.name})}"></a>
+                </td>
+                <td th:text="${song.author.name}"></td>
+                <td><sup th:text="${song.meter.count}"></sup>&frasl;<sub th:text="${song.meter.perBeat}"></sub></td>
+                <td th:text="${song.plays.size()}"></td>
+                <td th:text="${song.getAllTunings()}"></td>
+                <td th:text="${song.getAllTechnique()}"></td>
+            </tr>
         </tbody>
     </table>
 

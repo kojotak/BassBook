@@ -1,17 +1,31 @@
 package com.github.kojotak.bassbook.data;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.stream.Stream;
+public enum Author implements Named  {
 
-public record Author (
+    BILLY_IDOL("Billy Idol"),
+    MUSE("Muse"),
+    NINA_SIMONE("Nina Simone"),
+    PHIL_COLLINS("Phil Collins"),
+    RAY_CHARLES("Ray Charles"),
+    REM("R.E.M"),
+    RHCP("Red hot chilli peppers"),
+    SIA("Sia"),
+    TALKING_HEADS("Talking heads"),
+    THE_BEATLES("The Beatles"),
+    THE_BLACK_EYED_PEAS("The Black eyed peas"),
+    THE_CRANBERRIES("The Cranberries"),
+    THE_PRODIGY("The Prodigy"),
+    THE_WHITE_STRIPES("The White stripes"),
+    U2("U2")
+    ;
 
-        String name,
-        Collection<Song> songs
+    Author(String name){
+        this.name = name;
+    }
+    private final String name;
 
-) {
-
-    public Author(String name, Song ... songs){
-        this(name, Stream.of(songs).sorted(Comparator.comparing(Song::name)).toList());
+    @Override
+    public String getName() {
+        return name;
     }
 }
