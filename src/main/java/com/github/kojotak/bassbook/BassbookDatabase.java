@@ -72,6 +72,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Dani California").youtube(COVERSOLUTIONS, "0HuEUVNU-Co").next().
                 name("Can't stop").youtube(COVERSOLUTIONS, "nNszif3eDTs", of(SLAP)).next().
                 name("Dark necessities").youtube(COVERSOLUTIONS, "FHohYlcdQkc", of(SLAP)).
+                name("Universally speaking").youtube(ANDREA_BERTIX, "aSHyHY4QmlM").
                 buildAll();
     }
 

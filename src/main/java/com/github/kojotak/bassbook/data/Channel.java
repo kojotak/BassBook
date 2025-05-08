@@ -2,6 +2,7 @@ package com.github.kojotak.bassbook.data;
 
 public enum Channel {
 
+    ANDREA_BERTIX("Andrea Bertix", "AndreaBertix"),
     BRAND73("Brand73","Brand73"),
     CARLOS_CARLESI("Carlos Carlesi", "carlucho1012"),
     COVERSOLUTIONS("CoverSolutions","CoverSolutions"),
