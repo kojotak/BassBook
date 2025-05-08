@@ -12,8 +12,8 @@
             <th>Song Title</th>
             <th>Author</th>
             <th>Meter</th>
-            <th>Plays</th>
             <th>Tuning</th>
+            <th>Youtube channel</th>
             <th>Technique</th>
         </tr>
         </thead>
@@ -24,8 +24,8 @@
                 </td>
                 <td th:text="${song.author.name}"></td>
                 <td><sup th:text="${song.meter.count}"></sup>&frasl;<sub th:text="${song.meter.perBeat}"></sub></td>
-                <td th:text="${song.plays.size()}"></td>
                 <td th:text="${song.getAllTunings()}"></td>
+                <td th:text="${song.getAllChannels()}"></td>
                 <td th:text="${song.getAllTechnique()}"></td>
             </tr>
         </tbody>

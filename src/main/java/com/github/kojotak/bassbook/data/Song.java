@@ -28,6 +28,10 @@ public record Song (
         return plays.stream().map(Youtube::technique).flatMap(EnumSet::stream).distinct().sorted().toList();
     }
 
+    public List<Channel> getAllChannels(){
+        return plays.stream().map(Youtube::channel).distinct().sorted().toList();
+    }
+
     public static SongBuilder from(Author author){
         var builder = new SongBuilder();
         builder.author = author;
