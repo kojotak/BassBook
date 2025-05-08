@@ -5,5 +5,6 @@ public enum Technique {
     HAMMER_ON,
     PULL_OFF,
     SLIDE,
-    BEND
+    BEND,
+    DOUBLE_STOP
 }

@@ -7,6 +7,7 @@ public enum Author implements Named  {
     NINA_SIMONE("Nina Simone"),
     PHIL_COLLINS("Phil Collins"),
     RAY_CHARLES("Ray Charles"),
+    RAMMSTEIN("Rammstein"),
     REM("R.E.M"),
     RHCP("Red hot chilli peppers"),
     SIA("Sia"),

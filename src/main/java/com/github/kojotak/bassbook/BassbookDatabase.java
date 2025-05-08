@@ -29,7 +29,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         songs.addAll(context.getBeansOfType(Song.class).values());
 
         for(var list : context.getBeansOfType(List.class).values()){
-            songs.addAll(list);
+            var filtered = list.stream().filter(Song.class::isInstance).toList();
+            songs.addAll(filtered);
         }
 
         songs.sort(Comparator.comparing(Song::name));
@@ -65,7 +66,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.RHCP).
                 name("Californication").youtube(COVERSOLUTIONS, "vVSn1xindPM", of(HAMMER_ON, PULL_OFF)).next().
                 name("By the way").youtube(COVERSOLUTIONS, "vVSn1xindPM", DADG, of(HAMMER_ON, PULL_OFF)).next().
-                name("Under the bridge").youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE)).next().
+                name("Under the bridge").youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP)).next().
                 name("Venice queen").youtube(LEO, "nOoaEqwQ6_8").next().
                 name("Otherside").youtube(COVERSOLUTIONS, "XUTCU3v22GI").next().
                 name("Dani California").youtube(COVERSOLUTIONS, "0HuEUVNU-Co").next().
@@ -150,6 +151,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private Song prodigy(){
         return Song.from(Author.THE_PRODIGY).name("Climbatize").youtube(CARLOS_CARLESI, "dqR-t46ZtdA").build();
+    }
+
+    @Bean
+    private Song rammstein(){
+        return Song.from(Author.RAMMSTEIN).name("Du hast").youtube(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE)).build();
     }
 
 }
