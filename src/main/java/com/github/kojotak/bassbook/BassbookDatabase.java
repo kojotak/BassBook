@@ -54,7 +54,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.REM).
                 name("Man on the Moon").youtube(BRAND73, "yJSJjzp8y7g").next().
                 name("What's the frequency, Kenneth?").youtube(BRAND73, "rHRnfD6nhw0").next().
-                name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg").next().
+                name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg", of(DOUBLE_STOP)).next().
                 name("The sidewinder sleeps tonite").youtube(GEORDIE_BASSIST, "i-9aMVXPNvc").next().
                 name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc").
                 buildAll();
