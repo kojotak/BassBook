@@ -4,6 +4,7 @@ public enum Author implements Named  {
 
     ADELE("Adele"),
     BILLY_IDOL("Billy Idol"),
+    COLDPLAY("Coldplay"),
     MUSE("Muse"),
     NINA_SIMONE("Nina Simone"),
     PHIL_COLLINS("Phil Collins"),

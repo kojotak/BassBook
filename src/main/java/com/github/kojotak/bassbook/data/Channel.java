@@ -6,6 +6,7 @@ public enum Channel {
     BRAND73("Brand73","Brand73"),
     CARLOS_CARLESI("Carlos Carlesi", "carlucho1012"),
     COVERSOLUTIONS("CoverSolutions","CoverSolutions"),
+    EUBASS("EuBasss", "eubasss"),
     FLORIAN_BASSO("Florian Basso", "florianbasso"),
     GEORDIE_BASSIST("The Geordie Bassist", "TheGeordieBassist"),
     HARRY("Harry - Music & Stuff", "HarryMusicStuff"),

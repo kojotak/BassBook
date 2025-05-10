@@ -58,6 +58,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("The sidewinder sleeps tonite").youtube(GEORDIE_BASSIST, "i-9aMVXPNvc").next().
                 name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc").next().
                 name("Daysleeper").meter(6,8).youtube(BRAND73, "PGZwLdEj5fg", of(SLIDE)).
+                name("Loosing my religion").youtube(EUBASS, "E9oj-pLkmtk").
                 buildAll();
     }
 
@@ -173,6 +174,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private Song adele(){
         return Song.from(Author.ADELE).name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg").build();
+    }
+
+    @Bean
+    private Song coldplay(){
+        return Song.from(Author.COLDPLAY).name("Yellow").youtube(EUBASS, "hTnGMOT76lk", of(SLIDE)).build();
     }
 
 }
