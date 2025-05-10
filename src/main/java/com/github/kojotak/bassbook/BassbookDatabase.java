@@ -57,7 +57,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg", of(DOUBLE_STOP)).next().
                 name("The sidewinder sleeps tonite").youtube(GEORDIE_BASSIST, "i-9aMVXPNvc").next().
                 name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc").next().
-                name("Daysleeper").youtube(BRAND73, "PGZwLdEj5fg", of(SLIDE)).
+                name("Daysleeper").meter(6,8).youtube(BRAND73, "PGZwLdEj5fg", of(SLIDE)).
                 buildAll();
     }
 
