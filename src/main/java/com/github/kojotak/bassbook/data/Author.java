@@ -14,6 +14,7 @@ public enum Author implements Named  {
     REM("R.E.M"),
     RHCP("Red hot chilli peppers"),
     SIA("Sia"),
+    SOAD("System of a Down"),
     TALKING_HEADS("Talking heads"),
     THE_BEATLES("The Beatles"),
     THE_BLACK_EYED_PEAS("The Black eyed peas"),

@@ -14,6 +14,7 @@ import java.util.List;
 import static com.github.kojotak.bassbook.data.Channel.*;
 import static com.github.kojotak.bassbook.data.Feel.SWING;
 import static com.github.kojotak.bassbook.data.Technique.*;
+import static com.github.kojotak.bassbook.data.Tuning.CGCF;
 import static com.github.kojotak.bassbook.data.Tuning.DADG;
 import static java.util.EnumSet.of;
 
@@ -179,6 +180,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private Song coldplay(){
         return Song.from(Author.COLDPLAY).name("Yellow").youtube(EUBASS, "hTnGMOT76lk", of(SLIDE)).build();
+    }
+
+    @Bean
+    private Song systemOfADown(){
+        return Song.from(Author.SOAD).name("Toxicity").meter(6, 8)
+                .youtube(EUBASS, "fORp9OK7wys", CGCF)
+                .youtube(COVERSOLUTIONS, "G_3Aze81cf0", CGCF)
+                .build();
     }
 
 }

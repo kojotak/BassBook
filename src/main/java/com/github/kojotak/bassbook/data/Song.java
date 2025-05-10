@@ -84,6 +84,11 @@ public record Song (
             return this;
         }
 
+        public SongBuilder youtube(Channel channel, String id, Tuning tuning){
+            playList.get(index).add(new Youtube(channel, id, tuning, EnumSet.noneOf(Technique.class)));
+            return this;
+        }
+
         public SongBuilder youtube(Channel channel, String id, Tuning tuning, EnumSet<Technique> technique){
             playList.get(index).add(new Youtube(channel, id, tuning, technique));
             return this;

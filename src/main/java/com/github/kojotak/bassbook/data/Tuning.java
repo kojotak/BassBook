@@ -12,6 +12,8 @@ public enum Tuning {
      */
     DADG,
 
+    CGCF,
+
     /**
      * Standard tuning for 5 string
      */
