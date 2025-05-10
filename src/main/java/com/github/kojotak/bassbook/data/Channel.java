@@ -11,6 +11,7 @@ public enum Channel {
     HARRY("Harry - Music & Stuff", "HarryMusicStuff"),
     LEO("LeoBassCovers", "LeoBassCovers2"),
     NATE_NAVARRO("Nate Navarro", "NateNavarro"),
+    PIANOPRINTER("PianoPrinter","pianoprinterstudio"),
     NICKZ911("NickZ911", "NickZ911"),
     NOCCO_CAT("nocco cat", "noccobass"),
     TOM_BORNEMANN("Tom Bornemann", "basscination"),

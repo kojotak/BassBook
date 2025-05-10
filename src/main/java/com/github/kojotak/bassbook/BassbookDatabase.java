@@ -56,7 +56,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("What's the frequency, Kenneth?").youtube(BRAND73, "rHRnfD6nhw0").next().
                 name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg", of(DOUBLE_STOP)).next().
                 name("The sidewinder sleeps tonite").youtube(GEORDIE_BASSIST, "i-9aMVXPNvc").next().
-                name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc").
+                name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc").next().
+                name("Daysleeper").youtube(BRAND73, "PGZwLdEj5fg", of(SLIDE)).
                 buildAll();
     }
 
@@ -110,6 +111,15 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
+    private List<Song> queen() {
+        return Song.from(Author.QUEEN).
+                name("Under pressure").youtube(COVERSOLUTIONS, "GdleLmsfFVg").next().
+                name("Bohemian rhapsody").youtube(COVERSOLUTIONS, "qJVyHsJ2uEs").next().
+                name("The show must go on").youtube(PIANOPRINTER, "Pv_GFppKkbs").
+                buildAll();
+    }
+
+    @Bean
     private Song ninaSimone() {
         return Song.from(Author.NINA_SIMONE).name("Feeling good").youtube(HARRY, "qs9KVyJnKIU").build();
     }
@@ -157,6 +167,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private Song rammstein(){
         return Song.from(Author.RAMMSTEIN).name("Du hast").youtube(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE)).build();
+    }
+
+    @Bean
+    private Song adele(){
+        return Song.from(Author.ADELE).name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg").build();
     }
 
 }
