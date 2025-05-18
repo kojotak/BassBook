@@ -14,8 +14,7 @@ import java.util.List;
 import static com.github.kojotak.bassbook.data.Channel.*;
 import static com.github.kojotak.bassbook.data.Feel.SWING;
 import static com.github.kojotak.bassbook.data.Technique.*;
-import static com.github.kojotak.bassbook.data.Tuning.CGCF;
-import static com.github.kojotak.bassbook.data.Tuning.DADG;
+import static com.github.kojotak.bassbook.data.Tuning.*;
 import static java.util.EnumSet.of;
 
 @Service
@@ -63,11 +62,13 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 buildAll();
     }
 
-
     @Bean
     private List<Song> rhcp() {
         return Song.from(Author.RHCP).
-                name("Californication").youtube(COVERSOLUTIONS, "vVSn1xindPM", of(HAMMER_ON, PULL_OFF)).next().
+                name("Californication")
+                    .youtube(COVERSOLUTIONS, "vVSn1xindPM", of(HAMMER_ON, PULL_OFF))
+                    .youtube(NOCCO_CAT, "r_tKXpqi7UU", of(HAMMER_ON, PULL_OFF))
+                    .next().
                 name("By the way").youtube(COVERSOLUTIONS, "vVSn1xindPM", DADG, of(HAMMER_ON, PULL_OFF)).next().
                 name("Under the bridge").youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP)).next().
                 name("Venice queen").youtube(LEO, "nOoaEqwQ6_8").next().
@@ -77,6 +78,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Dark necessities").youtube(COVERSOLUTIONS, "FHohYlcdQkc", of(SLAP)).
                 name("Universally speaking").youtube(ANDREA_BERTIX, "aSHyHY4QmlM").
                 name("Dosed").youtube(ANDREA_BERTIX, "RgFgw6kUJpk").
+                name("Black summer").
+                    youtube(NOCCO_CAT, "w0PqTcMCATo").
+                    youtube(HARRY, "BgCIimrL3Go").
                 buildAll();
     }
 
@@ -139,7 +143,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Song talkingHeads() {
-        return Song.from(Author.TALKING_HEADS).name("Psycho killer").youtube(HARRY, "SNZHCz4rzKA").build();
+        return Song.from(Author.TALKING_HEADS).name("Psycho killer")
+                .youtube(HARRY, "SNZHCz4rzKA")
+                .youtube(NOCCO_CAT, "m32-etMoOMY")
+                .youtube(COVERSOLUTIONS, "6NpufkkmNmo")
+                .build();
     }
 
     @Bean
@@ -174,7 +182,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Song adele(){
-        return Song.from(Author.ADELE).name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg").build();
+        return Song.from(Author.ADELE)
+                .name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg")
+                .name("Set fire to the rain").youtube(NOCCO_CAT, "_V5kJGfsTvg")
+                .build();
     }
 
     @Bean
@@ -188,6 +199,21 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .youtube(EUBASS, "fORp9OK7wys", CGCF)
                 .youtube(COVERSOLUTIONS, "G_3Aze81cf0", CGCF)
                 .build();
+    }
+
+    @Bean
+    private Song gorillaz(){
+        return Song.from(Author.GORILLAZ).name("Feel Good Inc.").youtube(NOCCO_CAT, "g4pCrlkUUn4", EbAbDbGb).build();
+    }
+
+    @Bean
+    private Song lennyKravitz(){
+        return Song.from(Author.LENNY_KRAVITZ).name("Honey").youtube(NOCCO_CAT, "P-aXqEShNwA").build();
+    }
+
+    @Bean
+    private Song alGreen(){
+        return Song.from(Author.AL_GREEN).name("Let's Stay Together").youtube(NOCCO_CAT, "75Me-AY6Ia8").build();
     }
 
 }

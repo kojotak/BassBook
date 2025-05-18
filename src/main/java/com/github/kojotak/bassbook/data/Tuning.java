@@ -8,6 +8,11 @@ public enum Tuning {
     EADG,
 
     /**
+     * Half step down tuning for 4 string
+     */
+    EbAbDbGb,
+
+    /**
      * Drop D for 4 string
      */
     DADG,

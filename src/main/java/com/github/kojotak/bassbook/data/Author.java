@@ -3,8 +3,11 @@ package com.github.kojotak.bassbook.data;
 public enum Author implements Named  {
 
     ADELE("Adele"),
+    AL_GREEN("Al Green"),
     BILLY_IDOL("Billy Idol"),
     COLDPLAY("Coldplay"),
+    GORILLAZ("Gorillaz"),
+    LENNY_KRAVITZ("Lenny Kravitz"),
     MUSE("Muse"),
     NINA_SIMONE("Nina Simone"),
     PHIL_COLLINS("Phil Collins"),
