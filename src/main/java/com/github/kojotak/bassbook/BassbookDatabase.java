@@ -216,4 +216,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.AL_GREEN).name("Let's Stay Together").youtube(NOCCO_CAT, "75Me-AY6Ia8").build();
     }
 
+    @Bean
+    private Song sherylCrow(){
+        return Song.from(Author.SHERYL_CROW).name("Tomorrow never dies").meter(12, 8)
+                .youtube(NOCCO_CAT, "ffECgN2Mtjk").build();
+    }
+
 }
