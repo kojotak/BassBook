@@ -222,4 +222,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .youtube(NOCCO_CAT, "ffECgN2Mtjk").build();
     }
 
+    @Bean
+    private Song pinkFloyd(){
+        return Song.from(Author.PINK_FLOYD).name("Money").meter(7, 4)
+                .youtube(BRAND73, "L8xus4cWjyw")
+                .youtube(NATE_NAVARRO, "19FgY3o09Ng")
+                .build();
+    }
+
 }

@@ -18,6 +18,33 @@
         </tr>
         </thead>
         <tbody>
+            <tr>
+                <form th:action="@{/filter}" method="post" th:object="${filter}">
+                <td><input type="text" th:field="*{songName}" /></td>
+                <td>
+                    <select onchange='this.form.submit()' th:field="*{author}">
+                        <option th:value="${null}" th:text="all"></option>
+                        <option th:each="a : ${authors}" th:value="${a}" th:text="${a.name}"></option>
+                    </select>
+                </td>
+                <td><select onchange='this.form.submit()' th:field="*{meter}">
+                    <option th:value="${null}" th:text="all"></option>
+                    <option th:each="m : ${meters}" th:value="${@meterToStringConverter.convert(m)}"><sup th:text="${m.count}"></sup>&frasl;<sub th:text="${m.perBeat}"></sub></option>
+                </select></td>
+                <td><select onchange='this.form.submit()' th:field="*{tuning}">
+                    <option th:value="${null}" th:text="all"></option>
+                    <option th:each="t : ${tunings}" th:value="${t}" th:text="${t.name}"></option>
+                </select></td>
+                <td><select onchange='this.form.submit()' th:field="*{channel}">
+                    <option th:value="${null}" th:text="all"></option>
+                    <option th:each="ch : ${channels}" th:value="${ch}" th:text="${ch.label}"></option>
+                </select></td>
+                <td><select onchange='this.form.submit()' th:field="*{technique}">
+                    <option th:value="${null}" th:text="all"></option>
+                    <option th:each="t : ${technique}" th:value="${t}" th:text="${t.name}"></option>
+                </select></td>
+                </form>
+            </tr>
             <tr th:each="song:${songs}">
                 <td><a th:text="${song.name}"
                        th:href="@{/author/{authorName}/song/{songName}(authorName=${song.author.name}, songName=${song.name})}"></a>

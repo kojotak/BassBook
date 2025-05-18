@@ -1,16 +1,23 @@
 package com.github.kojotak.bassbook;
 
-import com.github.kojotak.bassbook.data.Author;
-import com.github.kojotak.bassbook.data.Song;
+import com.github.kojotak.bassbook.data.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 @Controller
 public class BassbookController {
 
+    private final Logger logger = LoggerFactory.getLogger(BassbookController.class);
     private final BassbookDatabase database;
 
     public BassbookController(BassbookDatabase database) {
@@ -19,9 +26,16 @@ public class BassbookController {
 
     @GetMapping("/")
     public ModelAndView home() {
-        var model = new ModelAndView("index");
-        model.addObject("songs", database.getSongs());
-        return model;
+        var songs = database.getSongs();
+        return createModelFromSongs("index", new BassbookFilter(), songs);
+    }
+
+    @PostMapping("/filter")
+    public ModelAndView filter(BassbookFilter filter) {
+        var allSongs = database.getSongs();
+        var filtered = allSongs.stream().filter(filter::test).toList();
+        logger.info("filtered {} from {} songs using {}", filtered.size(), allSongs.size(), filter);
+        return createModelFromSongs("index", filter, filtered);
     }
 
     @GetMapping("/author/{authorName}/song/{songName}")
@@ -67,6 +81,24 @@ public class BassbookController {
         model.addObject("selectedSong", selectedSong);
         model.addObject("selectedAuthor", optionalSong.map(Song::author).orElse(null));
         return selectedSong;
+    }
+
+    private ModelAndView createModelFromSongs(String viewName, BassbookFilter filter, Collection<Song> songs){
+        var model = new ModelAndView(viewName);
+        model.addObject("filter", filter);
+        model.addObject("songs", songs);
+        model.addObject("authors", Stream.of(Author.values()).sorted(Named.BY_NAME).toList());
+        model.addObject("meters", songs.stream().map(Song::meter).distinct().sorted().toList() );
+        model.addObject("tunings", Stream.of(Tuning.values()).sorted(
+                Comparator.comparing(Tuning::name)
+        ).toList() );
+        model.addObject("channels", Stream.of(Channel.values()).sorted(
+                Comparator.comparing(ch -> ch.label.toLowerCase())
+        ).toList() );
+        model.addObject("technique", Stream.of(Technique.values()).sorted(
+                Comparator.comparing(Technique::name)
+        ).toList() );
+        return model;
     }
 
 }

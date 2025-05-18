@@ -11,6 +11,7 @@ public enum Author implements Named  {
     MUSE("Muse"),
     NINA_SIMONE("Nina Simone"),
     PHIL_COLLINS("Phil Collins"),
+    PINK_FLOYD("Pink Floyd"),
     QUEEN("Queen"),
     RAY_CHARLES("Ray Charles"),
     RAMMSTEIN("Rammstein"),
