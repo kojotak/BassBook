@@ -16,8 +16,4 @@ public record Meter (
         var compareCount = Integer.compare(this.count, other.count);
         return compareBeats == 0 ? compareCount : compareBeats;
     }
-
-    public String toLabel(){
-        return count + "_" + perBeat;
-    }
 }
