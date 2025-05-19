@@ -89,18 +89,7 @@ public record Song (
         }
 
         public Song build(){
-            Assert.notEmpty(plays, "plays can not be empty");
-            Objects.requireNonNull(name, "name is required");
-            Objects.requireNonNull(author, "author is required");
-            Objects.requireNonNull(feel, "feel can not be null");
-            Objects.requireNonNull(meter, "meter can not be null");
-            return new Song(
-                    name,
-                    author,
-                    meter,
-                    feel,
-                    sorted(plays)
-            );
+            return buildValid(name, author, meter, feel, plays);
         }
 
         public SongsBuilder next(){
@@ -173,14 +162,14 @@ public record Song (
             return this;
         }
 
-        public List<Song> buildAll(){
-            return IntStream.range(0, index+1).mapToObj(
-                    i -> new Song(
+        public List<Song> buildAll() {
+            return IntStream.range(0, index + 1).mapToObj(
+                    i -> buildValid(
                             names.get(i),
                             author,
                             meters.get(i),
                             feels.get(i),
-                            sorted(playList.get(i))
+                            playList.get(i)
                     )
             ).toList();
         }
@@ -196,8 +185,16 @@ public record Song (
         }
     }
 
-    private static List<Youtube> sorted(List<Youtube> plays){
-        return plays.stream().sorted(Comparator.comparing(p -> p.channel().label)).toList();
+    private static Song buildValid(String name, Author author, Meter meter, Feel feel, Collection<Youtube> plays) {
+        Assert.notEmpty(plays, "plays can not be empty");
+        Objects.requireNonNull(name, "name is required");
+        Objects.requireNonNull(author, "author is required");
+        Objects.requireNonNull(feel, "feel can not be null");
+        Objects.requireNonNull(meter, "meter can not be null");
+        var sortedPlays = plays.stream()
+                .sorted(Comparator.comparing(p -> p.channel().label))
+                .toList();
+        return new Song(name, author, meter, feel, sortedPlays);
     }
 
 }
