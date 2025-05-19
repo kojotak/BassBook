@@ -224,14 +224,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song pinkFloyd(){
+    private List<Song> pinkFloyd(){
         return Song.from(Author.PINK_FLOYD)
                 .name("Money").meter(7, 4)
                     .youtube(BRAND73, "L8xus4cWjyw")
                     .youtube(NATE_NAVARRO, "19FgY3o09Ng")
                 .next()
                 .name("Another Brick in the Wall").youtube(YELLOW_TABS, "Rm6Qm45Q-OI")
-                .build();
+                .buildAll();
     }
 
     @Bean
@@ -253,14 +253,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song fooFighers(){
+    private List<Song> fooFighers(){
         return Song.from(Author.FOO_FIGHTERS)
                 .name("Learn To Fly")
                     .youtube(BRAND73, "ZUXH7cA-dLc")
                     .youtube(COVERSOLUTIONS, "L8HDRJzA0fo")
                 .next()
                 .name("Everlong").youtube(COVERSOLUTIONS, "IB8ZOQZK3dA", DADG)
-                .build();
+                .buildAll();
     }
 
     @Bean
