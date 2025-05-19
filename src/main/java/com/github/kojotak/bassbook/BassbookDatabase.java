@@ -89,7 +89,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private List<Song> muse(){
         return Song.from(Author.MUSE).
                 name("Psycho").youtube(COVERSOLUTIONS, "4CEzv6vZSiw", DADG, of(BEND)).next().
-                name("Uprising").feel(SWING).youtube(TOM_BORNEMANN, "SRK76vhoIAA", of(BEND)).next().
+                name("Uprising").feel(SWING).youtube(TOM_BORNEMANN, "SRK76vhoIAA", of(OCTAVES)).next().
                 name("Reapers").youtube(TOM_BORNEMANN, "CGnx6vnGA8o", DADG, of(HAMMER_ON)).next().
                 name("Time is running out").youtube(TOM_BORNEMANN, "BGji9IygCCw", of(SLIDE)).next().
                 name("Hysteria").youtube(NATE_NAVARRO, "2-BidwjmCgc").youtube(COVERSOLUTIONS, "QW0qlOSdkrM")

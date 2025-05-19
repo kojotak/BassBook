@@ -7,5 +7,6 @@ public enum Technique {
     SLIDE,
     BEND,
     DOUBLE_STOP,
-    STACCATO
+    STACCATO,
+    OCTAVES
 }
