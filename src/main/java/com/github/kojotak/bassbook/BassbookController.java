@@ -57,16 +57,6 @@ public class BassbookController {
     }
 
     @Nullable
-    private Author selectAuthor(String authorName, ModelAndView model) {
-        var selectedAuthor = database.getSongs().stream()
-                .map(Song::author)
-                .filter(author -> author.getName().equals(authorName))
-                .findFirst().orElse(null);
-        model.addObject("selectedAuthor", selectedAuthor);
-        return selectedAuthor;
-    }
-
-    @Nullable
     private Song selectSong(@Nullable String authorName, String songName, ModelAndView model) {
         var optionalSong = database.getSongs().stream()
                 .filter(s -> s.author().getName().equals(authorName))
