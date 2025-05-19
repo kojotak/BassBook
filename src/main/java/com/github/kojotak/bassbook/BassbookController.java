@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
@@ -26,16 +25,12 @@ public class BassbookController {
 
     @GetMapping("/")
     public ModelAndView home() {
-        var songs = database.getSongs();
-        return createModelFromSongs("index", new BassbookFilter(), songs);
+        return createModelFromFilter(new BassbookFilter());
     }
 
-    @PostMapping("/filter")
+    @PostMapping("/")
     public ModelAndView filter(BassbookFilter filter) {
-        var allSongs = database.getSongs();
-        var filtered = allSongs.stream().filter(filter::test).toList();
-        logger.info("filtered {} from {} songs using {}", filtered.size(), allSongs.size(), filter);
-        return createModelFromSongs("index", filter, filtered);
+        return createModelFromFilter(filter);
     }
 
     @GetMapping("/author/{authorName}/song/{songName}")
@@ -64,8 +59,8 @@ public class BassbookController {
     @Nullable
     private Author selectAuthor(String authorName, ModelAndView model) {
         var selectedAuthor = database.getSongs().stream()
-                .filter(s -> s.author().getName().equals(authorName))
                 .map(Song::author)
+                .filter(author -> author.getName().equals(authorName))
                 .findFirst().orElse(null);
         model.addObject("selectedAuthor", selectedAuthor);
         return selectedAuthor;
@@ -83,12 +78,15 @@ public class BassbookController {
         return selectedSong;
     }
 
-    private ModelAndView createModelFromSongs(String viewName, BassbookFilter filter, Collection<Song> songs){
-        var model = new ModelAndView(viewName);
+    private ModelAndView createModelFromFilter(BassbookFilter filter){
+        var all = database.getSongs();
+        var songs = all.stream().filter(filter).toList();
+        logger.info("filtered {} from {} songs using {}", songs.size(), all.size(), filter);
+        var model = new ModelAndView("index");
         model.addObject("filter", filter);
         model.addObject("songs", songs);
         model.addObject("authors", Stream.of(Author.values()).sorted(Named.BY_NAME).toList());
-        model.addObject("meters", songs.stream().map(Song::meter).distinct().sorted().toList() );
+        model.addObject("meters", all.stream().map(Song::meter).distinct().sorted().toList() );
         model.addObject("tunings", Stream.of(Tuning.values()).sorted(
                 Comparator.comparing(Tuning::name)
         ).toList() );

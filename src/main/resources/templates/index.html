@@ -19,7 +19,7 @@
         </thead>
         <tbody>
             <tr>
-                <form th:action="@{/filter}" method="post" th:object="${filter}">
+                <form th:action="@{/}" method="post" th:object="${filter}">
                 <td><input type="text" th:field="*{songName}" /></td>
                 <td>
                     <select onchange='this.form.submit()' th:field="*{author}">
