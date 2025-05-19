@@ -56,7 +56,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("What's the frequency, Kenneth?").youtube(BRAND73, "rHRnfD6nhw0").next().
                 name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg", of(DOUBLE_STOP)).next().
                 name("The sidewinder sleeps tonite").youtube(GEORDIE_BASSIST, "i-9aMVXPNvc").next().
-                name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc").next().
+                name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc", of(SLIDE, HAMMER_ON)).next().
                 name("Daysleeper").meter(6,8).youtube(BRAND73, "PGZwLdEj5fg", of(SLIDE)).
                 name("Loosing my religion").youtube(EUBASS, "E9oj-pLkmtk").
                 buildAll();
@@ -146,7 +146,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private Song talkingHeads() {
         return Song.from(Author.TALKING_HEADS).name("Psycho killer")
                 .youtube(HARRY, "SNZHCz4rzKA")
-                .youtube(NOCCO_CAT, "m32-etMoOMY")
+                .youtube(NOCCO_CAT, "m32-etMoOMY", of(STACCATO))
                 .youtube(COVERSOLUTIONS, "6NpufkkmNmo")
                 .build();
     }
