@@ -91,6 +91,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Psycho").youtube(COVERSOLUTIONS, "4CEzv6vZSiw", DADG, of(BEND)).next().
                 name("Uprising").feel(SWING).youtube(TOM_BORNEMANN, "SRK76vhoIAA", of(BEND)).next().
                 name("Reapers").youtube(TOM_BORNEMANN, "CGnx6vnGA8o", DADG, of(HAMMER_ON)).next().
+                name("Time is running out").youtube(TOM_BORNEMANN, "BGji9IygCCw", of(SLIDE)).next().
                 name("Hysteria").youtube(NATE_NAVARRO, "2-BidwjmCgc").youtube(COVERSOLUTIONS, "QW0qlOSdkrM")
                 .buildAll();
     }
@@ -224,9 +225,65 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Song pinkFloyd(){
-        return Song.from(Author.PINK_FLOYD).name("Money").meter(7, 4)
-                .youtube(BRAND73, "L8xus4cWjyw")
-                .youtube(NATE_NAVARRO, "19FgY3o09Ng")
+        return Song.from(Author.PINK_FLOYD)
+                .name("Money").meter(7, 4)
+                    .youtube(BRAND73, "L8xus4cWjyw")
+                    .youtube(NATE_NAVARRO, "19FgY3o09Ng")
+                .next()
+                .name("Another Brick in the Wall").youtube(YELLOW_TABS, "Rm6Qm45Q-OI")
+                .build();
+    }
+
+    @Bean
+    private Song toto(){
+        return Song.from(Author.TOTO).name("Africa").feel(Feel.SWING)
+                .youtube(COVERSOLUTIONS, "G_gSS7QTCM8", of(STACCATO)).build();
+    }
+
+    @Bean
+    private Song earthWindFire(){
+        return Song.from(Author.EARTH_WIND_FIRE).name("Let's Groove")
+                .youtube(COVERSOLUTIONS, "qs1j9Uhm2JI", of(STACCATO)).build();
+    }
+
+    @Bean
+    private Song doors(){
+        return Song.from(Author.DOORS).name("Riders on the Storm")
+                .youtube(HARRY, "KFgfApQwF5Y").build();
+    }
+
+    @Bean
+    private Song fooFighers(){
+        return Song.from(Author.FOO_FIGHTERS)
+                .name("Learn To Fly")
+                    .youtube(BRAND73, "ZUXH7cA-dLc")
+                    .youtube(COVERSOLUTIONS, "L8HDRJzA0fo")
+                .next()
+                .name("Everlong").youtube(COVERSOLUTIONS, "IB8ZOQZK3dA", DADG)
+                .build();
+    }
+
+    @Bean
+    private Song linkinPark(){
+        return Song.from(Author.LINKIN_PARK).name("Heavy Is The Crown").youtube(COVERSOLUTIONS, "IhIiZl7ZOk4").build();
+    }
+
+    @Bean
+    private Song acdc(){
+        return Song.from(Author.ACDC).name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68").build();
+    }
+
+    @Bean
+    private Song oneRepublic(){
+        return Song.from(Author.ONE_REPUBLIC).name("Counting Stars").youtube(BRAND73, "kHbfIXcO9Bs").build();
+    }
+
+    @Bean
+    private Song fleetwoodMac() {
+        return Song.from(Author.FLEETWOOD_MAC).name("The Chain")
+                .youtube(HARRY, "B_MjFaEpzPU")
+                .youtube(NOCCO_CAT, "u3G3LJZAI30")
+                .youtube(TOM_BORNEMANN, "GTj3taqE1VU")
                 .build();
     }
 

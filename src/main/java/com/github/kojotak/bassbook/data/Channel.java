@@ -16,7 +16,8 @@ public enum Channel {
     NICKZ911("NickZ911", "NickZ911"),
     NOCCO_CAT("nocco cat", "noccobass"),
     TOM_BORNEMANN("Tom Bornemann", "basscination"),
-    ROBERTO_YANGUS("Roberto Yanguas", "robertoyanguas8990");
+    ROBERTO_YANGUS("Roberto Yanguas", "robertoyanguas8990"),
+    YELLOW_TABS("Yellow Tabs", "YellowTabs");
 
     public final String label;
 

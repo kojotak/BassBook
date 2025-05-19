@@ -6,5 +6,6 @@ public enum Technique {
     PULL_OFF,
     SLIDE,
     BEND,
-    DOUBLE_STOP
+    DOUBLE_STOP,
+    STACCATO
 }
