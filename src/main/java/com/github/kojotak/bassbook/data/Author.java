@@ -12,6 +12,7 @@ public enum Author implements Named  {
     FLEETWOOD_MAC("Fleetwood Mac"),
     FOO_FIGHTERS("Foo Fighters"),
     GORILLAZ("Gorillaz"),
+    JEFFERSON_AIRPLANE("Jefferson Airplane"),
     LENNY_KRAVITZ("Lenny Kravitz"),
     LINKIN_PARK("Linkin Park"),
     MUSE("Muse"),

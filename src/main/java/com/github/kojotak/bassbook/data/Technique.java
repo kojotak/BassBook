@@ -8,5 +8,6 @@ public enum Technique {
     BEND,
     DOUBLE_STOP,
     STACCATO,
-    OCTAVES
+    OCTAVES,
+    TRIPLET
 }

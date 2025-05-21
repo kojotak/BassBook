@@ -287,4 +287,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song jeffersonAirplane(){
+        return Song.from(Author.JEFFERSON_AIRPLANE).name("White rabbit")
+                .youtube(COVERSOLUTIONS, "2m2hOkD7t8g", of(TRIPLET, SLIDE, DOUBLE_STOP))
+                .build();
+    }
+
 }
