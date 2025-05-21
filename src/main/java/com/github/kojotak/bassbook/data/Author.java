@@ -15,7 +15,7 @@ public enum Author implements Named  {
     JEFFERSON_AIRPLANE("Jefferson Airplane"),
     LENNY_KRAVITZ("Lenny Kravitz"),
     LINKIN_PARK("Linkin Park"),
-    MICHAEL_JACKSON("Michale Jackson"),
+    MICHAEL_JACKSON("Michael Jackson"),
     MUSE("Muse"),
     NINA_SIMONE("Nina Simone"),
     ONE_REPUBLIC("One Republic"),
