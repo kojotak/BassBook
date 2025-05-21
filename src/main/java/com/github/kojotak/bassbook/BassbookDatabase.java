@@ -70,7 +70,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(NOCCO_CAT, "r_tKXpqi7UU", of(HAMMER_ON, PULL_OFF))
                     .next().
                 name("By the way").youtube(COVERSOLUTIONS, "vVSn1xindPM", DADG, of(HAMMER_ON, PULL_OFF)).next().
-                name("Under the bridge").youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP)).next().
+                name("Under the bridge").youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP, GHOST_NOTE)).next().
                 name("Venice queen").youtube(LEO, "nOoaEqwQ6_8").next().
                 name("Otherside").youtube(COVERSOLUTIONS, "XUTCU3v22GI").next().
                 name("Dani California").youtube(COVERSOLUTIONS, "0HuEUVNU-Co").next().
@@ -292,6 +292,18 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.JEFFERSON_AIRPLANE).name("White rabbit")
                 .youtube(COVERSOLUTIONS, "2m2hOkD7t8g", of(TRIPLET, SLIDE, DOUBLE_STOP))
                 .build();
+    }
+
+    @Bean
+    private List<Song> michaelJackson(){
+        return Song.from(Author.MICHAEL_JACKSON)
+                .name("Billy Jean")
+                    .youtube(HARRY, "aeFT46ahI_o")
+                .next().name("Beat it")
+                    .youtube(HARRY, "o5GkMoetGnw", DADG, of(HAMMER_ON))
+                .next().name("Bad")
+                    .youtube(YELLOW_TABS, "Y65oltkZ5NA", of(SLIDE))
+                .buildAll();
     }
 
 }

@@ -9,5 +9,6 @@ public enum Technique {
     DOUBLE_STOP,
     STACCATO,
     OCTAVES,
-    TRIPLET
+    TRIPLET,
+    GHOST_NOTE
 }
