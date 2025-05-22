@@ -306,4 +306,13 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .buildAll();
     }
 
+    @Bean
+    private Song ratm(){
+        return Song.from(Author.RATM)
+                .name("Killing in the name")
+                .youtube(TOM_BORNEMANN, "vZVDrlZbtO0", DADG, of(HAMMER_ON))
+                .youtube(COVERSOLUTIONS, "oFicPQh0NtQ", DADG, of(HAMMER_ON))
+                .build();
+    }
+
 }

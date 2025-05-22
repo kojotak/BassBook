@@ -24,6 +24,7 @@ public enum Author implements Named  {
     QUEEN("Queen"),
     RAY_CHARLES("Ray Charles"),
     RAMMSTEIN("Rammstein"),
+    RATM("Rage against the machine"),
     REM("R.E.M"),
     RHCP("Red hot chilli peppers"),
     SIA("Sia"),
