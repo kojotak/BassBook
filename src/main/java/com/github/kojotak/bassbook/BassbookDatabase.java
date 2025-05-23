@@ -178,7 +178,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Song rammstein(){
-        return Song.from(Author.RAMMSTEIN).name("Du hast").youtube(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE)).build();
+        return Song.from(Author.RAMMSTEIN)
+                .name("Du hast")
+                    .youtube(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE))
+                    .youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE))
+                .build();
     }
 
     @Bean
