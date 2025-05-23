@@ -69,7 +69,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(COVERSOLUTIONS, "vVSn1xindPM", of(HAMMER_ON, PULL_OFF))
                     .youtube(NOCCO_CAT, "r_tKXpqi7UU", of(HAMMER_ON, PULL_OFF))
                     .next().
-                name("By the way").youtube(COVERSOLUTIONS, "vVSn1xindPM", DADG, of(HAMMER_ON, PULL_OFF)).next().
+                name("By the way")
+                    .youtube(COVERSOLUTIONS, "vVSn1xindPM", DADG, of(HAMMER_ON, PULL_OFF))
+                    .youtube(YELLOW_TABS, "U0w51dkGZlY", DADG, of(HAMMER_ON, PULL_OFF))
+                .next().
                 name("Under the bridge").youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP, GHOST_NOTE)).next().
                 name("Venice queen").youtube(LEO, "nOoaEqwQ6_8").next().
                 name("Otherside").youtube(COVERSOLUTIONS, "XUTCU3v22GI").next().
@@ -208,7 +211,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Song gorillaz(){
-        return Song.from(Author.GORILLAZ).name("Feel Good Inc.").youtube(NOCCO_CAT, "g4pCrlkUUn4", EbAbDbGb).build();
+        return Song.from(Author.GORILLAZ)
+                .name("Feel Good Inc.").youtube(NOCCO_CAT, "g4pCrlkUUn4", EbAbDbGb)
+                .build();
     }
 
     @Bean
@@ -316,6 +321,23 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .name("Killing in the name")
                 .youtube(TOM_BORNEMANN, "vZVDrlZbtO0", DADG, of(HAMMER_ON))
                 .youtube(COVERSOLUTIONS, "oFicPQh0NtQ", DADG, of(HAMMER_ON))
+                .build();
+    }
+
+    @Bean
+    private Song duaLipa(){
+        return Song.from(Author.DUA_LIPA)
+                .name("Bream my heart")
+                    .youtube(YELLOW_TABS, "6s5vAsHiZdo", of(SLIDE, OCTAVES))
+                .build();
+    }
+
+    @Bean
+    private Song bonJovi() {
+        return Song.from(Author.BON_JOVI)
+                .name("It's my life")
+                .youtube(YELLOW_TABS, "pRtzYkTQEMI", EADG)
+                .youtube(YELLOW_TABS, "JxoynLubXzM", HEADG)
                 .build();
     }
 
