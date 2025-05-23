@@ -327,7 +327,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private Song duaLipa(){
         return Song.from(Author.DUA_LIPA)
-                .name("Bream my heart")
+                .name("Break my heart")
                     .youtube(YELLOW_TABS, "6s5vAsHiZdo", of(SLIDE, OCTAVES))
                 .build();
     }
