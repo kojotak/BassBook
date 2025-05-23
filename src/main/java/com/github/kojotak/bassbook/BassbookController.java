@@ -43,13 +43,15 @@ public class BassbookController {
         return model;
     }
 
-    @GetMapping("/author/{authorName}/song/{songName}/play/{channelId}")
-    public ModelAndView playDetail(@PathVariable String authorName, @PathVariable String songName, @PathVariable String channelId) {
+    @GetMapping("/author/{authorName}/song/{songName}/play/{channelId}/id/{youtubeId}")
+    public ModelAndView playDetail(@PathVariable String authorName, @PathVariable String songName,
+                                   @PathVariable String channelId, @PathVariable String youtubeId) {
         var model = new ModelAndView("index");
         var selectedSong = selectSong(authorName, songName, model);
         if (selectedSong != null) {
             var selectedPlay = selectedSong.plays().stream()
                     .filter(p -> p.channel().id.equals(channelId))
+                    .filter( p ->p.id().equals(youtubeId) )
                     .findFirst().orElse(null);
             model.addObject("selectedPlay", selectedPlay);
         }

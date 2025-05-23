@@ -72,7 +72,7 @@
                 <td th:if="${stats.first}">YouTube</td>
                 <td th:if="${!stats.first}"></td>
                 <td><a th:text="${play.channel.label}"
-                       th:href="@{/author/{authorName}/song/{songName}/play/{channelId}(authorName=${selectedAuthor.name}, songName=${selectedSong.name}, channelId=${play.channel.id})}"></a>
+                       th:href="@{/author/{authorName}/song/{songName}/play/{channelId}/id/{youtubeId}(authorName=${selectedAuthor.name}, songName=${selectedSong.name}, channelId=${play.channel.id}, youtubeId=${play.id})}"></a>
                 <td th:text="${play.tuning.name}" ></td>
                 <td th:text="${play.technique}" ></td>
             </tr>
