@@ -61,7 +61,7 @@ class BassbookControllerTest {
 
         when(database.getSongs()).thenReturn(List.of(song));
 
-        var mv = controller.playDetail(author.getName(), "song", play.channel().id);
+        var mv = controller.playDetail(author.getName(), "song", play.channel().id, play.id());
         assertModelAttributeValue(mv, "selectedAuthor", author);
         assertModelAttributeValue(mv, "selectedPlay", play);
     }
