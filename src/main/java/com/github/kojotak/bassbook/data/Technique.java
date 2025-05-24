@@ -1,14 +1,15 @@
 package com.github.kojotak.bassbook.data;
 
 public enum Technique {
-    SLAP,
-    HAMMER_ON,
-    PULL_OFF,
-    SLIDE,
     BEND,
     DOUBLE_STOP,
-    STACCATO,
+    GHOST_NOTE,
+    HAMMER_ON,
     OCTAVES,
+    PULL_OFF,
+    SLAP,
+    SLIDE,
+    STACCATO,
     TRIPLET,
-    GHOST_NOTE
+    ;
 }
