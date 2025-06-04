@@ -341,4 +341,20 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song guanoApes(){
+        return Song.from(Author.GUANO_APES)
+                .name("Open your eyes")
+                .youtube(VX_MATTHEW, "Oimv05FB87c", of(SLAP, HAMMER_ON, GHOST_NOTE))
+                .build();
+    }
+
+    @Bean
+    private Song greenDay(){
+        return Song.from(Author.GREEN_DAY)
+                .name("Troubled times")
+                .youtube(TOM_BORNEMANN, "1UA9jy8RnSY")
+                .build();
+    }
+
 }
