@@ -365,10 +365,19 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
     private Song pharellWilliams(){
         return Song.from(Author.PHARELL_WILLIAMS)
                 .name("Happy")
                 .youtube(NOCCO_CAT, "swunHs4Ys5s")
+                .build();
+    }
+
+    @Bean
+    private Song pearlJam(){
+        return Song.from(Author.PEARL_JAM)
+                .name("Do the evolution")
+                .youtube(BRAND73, "lnEY7hHDzfQ")
                 .build();
     }
 
