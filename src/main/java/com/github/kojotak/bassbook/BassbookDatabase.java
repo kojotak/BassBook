@@ -357,6 +357,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .next()
                     .name("Warning")
                     .youtube(BRAND73, "1zPXl-GSKu0")
+                .next()
+                    .name("Boulevard of broken dreams")
+                    .youtube(BRAND73, "JKMrv55Lqw0")
                 .buildAll();
     }
 
