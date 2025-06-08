@@ -350,11 +350,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song greenDay(){
+    private List<Song> greenDay(){
         return Song.from(Author.GREEN_DAY)
-                .name("Troubled times")
-                .youtube(TOM_BORNEMANN, "1UA9jy8RnSY")
-                .build();
+                    .name("Troubled times")
+                    .youtube(TOM_BORNEMANN, "1UA9jy8RnSY")
+                .next()
+                    .name("Warning")
+                    .youtube(BRAND73, "1zPXl-GSKu0")
+                .buildAll();
     }
 
     @Bean
