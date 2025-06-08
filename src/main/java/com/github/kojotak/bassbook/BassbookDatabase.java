@@ -357,4 +357,19 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song laBelle(){
+        return Song.from(Author.LABELLE)
+                .name("Lady Marmellade")
+                .youtube(NOCCO_CAT, "0yRf2JGSvFM")
+                .build();
+    }
+
+    private Song pharellWilliams(){
+        return Song.from(Author.PHARELL_WILLIAMS)
+                .name("Happy")
+                .youtube(NOCCO_CAT, "swunHs4Ys5s")
+                .build();
+    }
+
 }
