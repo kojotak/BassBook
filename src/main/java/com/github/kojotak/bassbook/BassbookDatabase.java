@@ -106,8 +106,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Vertigo").youtube(BRAND73, "OULMZ3DC1WU").next().
                 name("Sweetest thing").youtube(BRAND73, "fvUBvZRh7LM").next().
                 name("In God's country").youtube(BRAND73, "ExFYtgshjUc").next().
-                name("I will follow").youtube(BRAND73, "Ko-O_rLgIVo", EbAbDbGb).
-                name("New Year's day").youtube(BRAND73, "lWV_wZK6_T8", EbAbDbGb).
+                name("I will follow").youtube(BRAND73, "Ko-O_rLgIVo", EbAbDbGb).next().
+                name("New Year's day").youtube(BRAND73, "lWV_wZK6_T8", EbAbDbGb).next().
+                name("Desire").youtube(BRAND73, "SrF5Sxrsamw", EbAbDbGb).next().
+                name("I still havn't found what I'm looking for").youtube(BRAND73, "5mwVzBe5G68", EbAbDbGb).
                 buildAll();
     }
 
