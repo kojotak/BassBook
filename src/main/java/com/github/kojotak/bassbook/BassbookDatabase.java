@@ -43,7 +43,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private List<Song> cranberries() {
         return Song.from(Author.THE_CRANBERRIES).
-                name("Zombie").youtube(COVERSOLUTIONS, "u9Zuoepny2Y").next().
+                name("Zombie")
+                    .youtube(COVERSOLUTIONS, "u9Zuoepny2Y")
+                    .youtube(BRAND73, "oqe6rWKOvXk")
+                .next().
                 name("Promises").youtube(ROBERTO_YANGUS, "a0VlH1DhdIY").next().
                 name("Linger").youtube(COVERSOLUTIONS, "T1JCwqngEl0").
                 buildAll();
