@@ -107,12 +107,18 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private List<Song> u2() {
         return Song.from(Author.U2).
                 name("Vertigo").youtube(BRAND73, "OULMZ3DC1WU").next().
-                name("Sweetest thing").youtube(BRAND73, "fvUBvZRh7LM").next().
+                name("Sweetest thing")
+                    .youtube(BRAND73, "fvUBvZRh7LM")
+                    .youtube(COVERSOLUTIONS, "6jP9me9oHzY")
+                .next().
                 name("In God's country").youtube(BRAND73, "ExFYtgshjUc").next().
                 name("I will follow").youtube(BRAND73, "Ko-O_rLgIVo", EbAbDbGb).next().
                 name("New Year's day").youtube(BRAND73, "lWV_wZK6_T8", EbAbDbGb).next().
                 name("Desire").youtube(BRAND73, "SrF5Sxrsamw", EbAbDbGb).next().
-                name("I still havn't found what I'm looking for").youtube(BRAND73, "5mwVzBe5G68", EbAbDbGb).
+                name("I still haven't found what I'm looking for").youtube(BRAND73, "5mwVzBe5G68", EbAbDbGb).next().
+                name("Sunday Bloody Sunday").youtube(COVERSOLUTIONS, "QDka2OB06LE", EbAbDbGb).next().
+                name("Beautiful Day").youtube(TOM_BORNEMANN, "XIjW_Gh0WiE").next().
+                name("Bullet the blue sky").youtube(BRAND73, "1a8Un-qeLKQ", EbAbDbGb).
                 buildAll();
     }
 
