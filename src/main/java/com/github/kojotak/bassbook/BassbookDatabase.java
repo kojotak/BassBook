@@ -105,7 +105,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.U2).
                 name("Vertigo").youtube(BRAND73, "OULMZ3DC1WU").next().
                 name("Sweetest thing").youtube(BRAND73, "fvUBvZRh7LM").next().
-                name("In God's country").youtube(BRAND73, "ExFYtgshjUc").
+                name("In God's country").youtube(BRAND73, "ExFYtgshjUc").next().
+                name("I will follow").youtube(BRAND73, "Ko-O_rLgIVo", EbAbDbGb).
                 buildAll();
     }
 
