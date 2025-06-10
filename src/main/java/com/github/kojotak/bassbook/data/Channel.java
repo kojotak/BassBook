@@ -11,6 +11,7 @@ public enum Channel {
     GEORDIE_BASSIST("The Geordie Bassist", "TheGeordieBassist"),
     HARRY("Harry - Music & Stuff", "HarryMusicStuff"),
     LEO("LeoBassCovers", "LeoBassCovers2"),
+    LOVE_PEACE_BASS("Love, Peace, Bass", "LovePeaceBass"),
     NATE_NAVARRO("Nate Navarro", "NateNavarro"),
     PIANOPRINTER("PianoPrinter","pianoprinterstudio"),
     NICKZ911("NickZ911", "NickZ911"),

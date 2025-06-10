@@ -55,7 +55,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private List<Song> rem() {
         return Song.from(Author.REM).
-                name("Man on the Moon").youtube(BRAND73, "yJSJjzp8y7g").next().
+                name("Man on the Moon")
+                    .youtube(BRAND73, "yJSJjzp8y7g")
+                    .youtube(LOVE_PEACE_BASS, "Ib1gKQi7riw")
+                .next().
                 name("What's the frequency, Kenneth?").youtube(BRAND73, "rHRnfD6nhw0").next().
                 name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg", of(DOUBLE_STOP)).next().
                 name("The sidewinder sleeps tonite").youtube(GEORDIE_BASSIST, "i-9aMVXPNvc").next().
@@ -111,14 +114,31 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(BRAND73, "fvUBvZRh7LM")
                     .youtube(COVERSOLUTIONS, "6jP9me9oHzY")
                 .next().
-                name("In God's country").youtube(BRAND73, "ExFYtgshjUc").next().
-                name("I will follow").youtube(BRAND73, "Ko-O_rLgIVo", EbAbDbGb).next().
-                name("New Year's day").youtube(BRAND73, "lWV_wZK6_T8", EbAbDbGb).next().
+                name("In God's country")
+                    .youtube(BRAND73, "ExFYtgshjUc")
+                    .youtube(LOVE_PEACE_BASS, "WmsJXmzRH90")
+                .next().
+                name("I will follow")
+                    .youtube(BRAND73, "Ko-O_rLgIVo", EbAbDbGb)
+                    .youtube(LOVE_PEACE_BASS, "VuS_tDq98Uc", EbAbDbGb)
+                .next().
+                name("New Year's day")
+                    .youtube(BRAND73, "lWV_wZK6_T8", EbAbDbGb)
+                    .youtube(LOVE_PEACE_BASS, "l68dHHtB_a4", EADG)
+                .next().
                 name("Desire").youtube(BRAND73, "SrF5Sxrsamw", EbAbDbGb).next().
                 name("I still haven't found what I'm looking for").youtube(BRAND73, "5mwVzBe5G68", EbAbDbGb).next().
                 name("Sunday Bloody Sunday").youtube(COVERSOLUTIONS, "QDka2OB06LE", EbAbDbGb).next().
                 name("Beautiful Day").youtube(TOM_BORNEMANN, "XIjW_Gh0WiE").next().
-                name("Bullet the blue sky").youtube(BRAND73, "1a8Un-qeLKQ", EbAbDbGb).
+                name("Bullet the blue sky").youtube(BRAND73, "1a8Un-qeLKQ", EbAbDbGb).next().
+                name("Zoo station").youtube(BRAND73, "X9F9MjY4Q5E").next().
+                name("Even better than the real thing").youtube(BRAND73, "7U9SUlAl2Cw").next().
+                name("City of blinding lights").youtube(EUBASS, "5LnvjrXIZq4").next().
+                name("One tree hill").youtube(LOVE_PEACE_BASS, "w2EBY3ic7Ro").next().
+                name("Red Hill mining town").youtube(LOVE_PEACE_BASS, "SS6075vGYjU").next().
+                name("I threw a brick through a window").youtube(LOVE_PEACE_BASS, "fcLQceOpjWw").next().
+                name("Heartland").youtube(LOVE_PEACE_BASS, "SKCfKedrMcI").next().
+                name("Wire").youtube(LEO, "Csr5dtiSbeo", of(SLAP)).
                 buildAll();
     }
 
@@ -398,6 +418,22 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.PEARL_JAM)
                 .name("Do the evolution")
                 .youtube(BRAND73, "lnEY7hHDzfQ")
+                .build();
+    }
+
+    @Bean
+    private Song ledZeppelin(){
+        return Song.from(Author.LED_ZEPPELIN)
+                .name("Kashmir")
+                .youtube(LOVE_PEACE_BASS, "oxNfFgtvoao")
+                .build();
+    }
+
+    @Bean
+    private Song metallica(){
+        return Song.from(Author.METALLICA)
+                .name("For whom the bell tolls")
+                .youtube(LOVE_PEACE_BASS, "SlG55fpmEck")
                 .build();
     }
 
