@@ -437,4 +437,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song journey(){
+        return Song.from(Author.JOURNEY)
+                .name("Separate Ways (Worlds Apart)")
+                .youtube(NOCCO_CAT, "Yo6ZR77sJbs")
+                .build();
+    }
+
 }

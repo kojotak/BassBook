@@ -17,6 +17,7 @@ public enum Author implements Named  {
     GREEN_DAY("Green Day"),
     GUANO_APES("Guano Apes"),
     JEFFERSON_AIRPLANE("Jefferson Airplane"),
+    JOURNEY("Journey"),
     LABELLE("LaBelle"),
     LED_ZEPPELIN("Led Zeppelin"),
     LENNY_KRAVITZ("Lenny Kravitz"),
