@@ -129,7 +129,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Desire").youtube(BRAND73, "SrF5Sxrsamw", EbAbDbGb).next().
                 name("I still haven't found what I'm looking for").youtube(BRAND73, "5mwVzBe5G68", EbAbDbGb).next().
                 name("Sunday Bloody Sunday").youtube(COVERSOLUTIONS, "QDka2OB06LE", EbAbDbGb).next().
-                name("Beautiful Day").youtube(TOM_BORNEMANN, "XIjW_Gh0WiE").next().
+                name("Beautiful Day")
+                    .youtube(TOM_BORNEMANN, "XIjW_Gh0WiE")
+                    .youtube(EUBASS, "O7GY3mchjtM")
+                .next().
                 name("Bullet the blue sky").youtube(BRAND73, "1a8Un-qeLKQ", EbAbDbGb).next().
                 name("Zoo station").youtube(BRAND73, "X9F9MjY4Q5E").next().
                 name("Even better than the real thing").youtube(BRAND73, "7U9SUlAl2Cw").next().
