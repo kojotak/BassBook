@@ -136,7 +136,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Bullet the blue sky").youtube(BRAND73, "1a8Un-qeLKQ", EbAbDbGb).next().
                 name("Zoo station").youtube(BRAND73, "X9F9MjY4Q5E").next().
                 name("Even better than the real thing").youtube(BRAND73, "7U9SUlAl2Cw").next().
-                name("City of blinding lights").youtube(EUBASS, "5LnvjrXIZq4").next().
+                name("City of blinding lights").youtube(EUBASS, "5LnvjrXIZq4", EbAbDbGb).next().
                 name("One tree hill").youtube(LOVE_PEACE_BASS, "w2EBY3ic7Ro").next().
                 name("Red Hill mining town").youtube(LOVE_PEACE_BASS, "SS6075vGYjU").next().
                 name("I threw a brick through a window").youtube(LOVE_PEACE_BASS, "fcLQceOpjWw").next().
