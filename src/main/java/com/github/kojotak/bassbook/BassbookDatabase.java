@@ -48,7 +48,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(BRAND73, "oqe6rWKOvXk")
                 .next().
                 name("Promises").youtube(ROBERTO_YANGUS, "a0VlH1DhdIY").next().
-                name("Linger").youtube(COVERSOLUTIONS, "T1JCwqngEl0").
+                name("Linger").youtube(COVERSOLUTIONS, "T1JCwqngEl0").next().
+                name("Animal instinct").youtube(BASSCOVERS88, "x1Ifi28ac4E").next().
+                name("Just my imagination").youtube(BASSCOVERS88, "ZQRerIJ6Jkw").
                 buildAll();
     }
 
