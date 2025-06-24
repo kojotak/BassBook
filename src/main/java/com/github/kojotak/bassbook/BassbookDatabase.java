@@ -144,7 +144,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Red Hill mining town").youtube(LOVE_PEACE_BASS, "SS6075vGYjU").next().
                 name("I threw a brick through a window").youtube(LOVE_PEACE_BASS, "fcLQceOpjWw").next().
                 name("Heartland").youtube(LOVE_PEACE_BASS, "SKCfKedrMcI").next().
-                name("Wire").youtube(LEO, "Csr5dtiSbeo", of(SLAP)).
+                name("Wire").youtube(LEO, "Csr5dtiSbeo", of(SLAP)).next().
+                name("Until the end of the the world").youtube(BASSCOVERS88, "basscovers88").
                 buildAll();
     }
 
