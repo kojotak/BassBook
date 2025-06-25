@@ -107,7 +107,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Uprising").feel(SWING).youtube(TOM_BORNEMANN, "SRK76vhoIAA", of(OCTAVES)).next().
                 name("Reapers").youtube(TOM_BORNEMANN, "CGnx6vnGA8o", DADG, of(HAMMER_ON)).next().
                 name("Time is running out").youtube(TOM_BORNEMANN, "BGji9IygCCw", of(SLIDE)).next().
-                name("Hysteria").youtube(NATE_NAVARRO, "2-BidwjmCgc").youtube(COVERSOLUTIONS, "QW0qlOSdkrM")
+                name("Hysteria")
+                    .youtube(NATE_NAVARRO, "2-BidwjmCgc")
+                    .youtube(COVERSOLUTIONS, "QW0qlOSdkrM")
                 .buildAll();
     }
 
@@ -136,7 +138,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Sunday Bloody Sunday").youtube(COVERSOLUTIONS, "QDka2OB06LE", EbAbDbGb).next().
                 name("Beautiful Day")
                     .youtube(TOM_BORNEMANN, "XIjW_Gh0WiE")
-                    .youtube(EUBASS, "O7GY3mchjtM")
+                    .youtube(EUBASS, "O7GY3mchjtM", of(SLIDE))
                 .next().
                 name("Bullet the blue sky").youtube(BRAND73, "1a8Un-qeLKQ", EbAbDbGb).next().
                 name("Zoo station").youtube(BRAND73, "X9F9MjY4Q5E").next().
