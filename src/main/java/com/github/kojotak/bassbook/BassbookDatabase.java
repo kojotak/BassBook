@@ -232,6 +232,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE)).next()
                 .name("Sonne")
                     .youtube(BASSCOVERS88, "ARJRPZfKTvM", DADG)
+                .name("Deutschland")
+                    .youtube(ROBERTO_YANGUS, "skjjiZZyQVg", CGCF)
                 .buildAll();
     }
 
