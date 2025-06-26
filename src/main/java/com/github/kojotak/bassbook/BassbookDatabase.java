@@ -230,10 +230,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .name("Du hast")
                     .youtube(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE))
                     .youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE)).next()
-                .name("Sonne")
-                    .youtube(BASSCOVERS88, "ARJRPZfKTvM", DADG)
-                .name("Deutschland")
-                    .youtube(ROBERTO_YANGUS, "skjjiZZyQVg", CGCF)
+                .name("Sonne").youtube(BASSCOVERS88, "ARJRPZfKTvM", DADG).next()
+                .name("Deutschland").youtube(ROBERTO_YANGUS, "skjjiZZyQVg", CGCF).next()
+                .name("Radio").youtube(ROBERTO_YANGUS, "EERNqdacpQo", CGCF).next()
                 .buildAll();
     }
 
@@ -457,6 +456,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.JOURNEY)
                 .name("Separate Ways (Worlds Apart)")
                 .youtube(NOCCO_CAT, "Yo6ZR77sJbs")
+                .build();
+    }
+
+    @Bean
+    private Song nightwish(){
+        return Song.from(Author.NIGHTWISH)
+                .name("Nemo")
+                .youtube(BASSCOVERS88, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
                 .build();
     }
 

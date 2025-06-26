@@ -25,6 +25,7 @@ public enum Author implements Named  {
     METALLICA("Metallica"),
     MICHAEL_JACKSON("Michael Jackson"),
     MUSE("Muse"),
+    NIGHTWISH("Nightwish"),
     NINA_SIMONE("Nina Simone"),
     ONE_REPUBLIC("One Republic"),
     PEARL_JAM("Pearl Jam"),
