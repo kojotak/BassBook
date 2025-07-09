@@ -232,7 +232,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE)).next()
                 .name("Sonne").youtube(BASSCOVERS88, "ARJRPZfKTvM", DADG).next()
                 .name("Deutschland").youtube(ROBERTO_YANGUS, "skjjiZZyQVg", CGCF).next()
-                .name("Radio").youtube(ROBERTO_YANGUS, "EERNqdacpQo", CGCF).next()
+                .name("Radio").youtube(ROBERTO_YANGUS, "EERNqdacpQo", CGCF)
                 .buildAll();
     }
 
@@ -464,6 +464,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.NIGHTWISH)
                 .name("Nemo")
                 .youtube(BASSCOVERS88, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
+                .build();
+    }
+
+    @Bean
+    private Song aerosmith(){
+        return Song.from(Author.AEROSMITH)
+                .name("Livin' on the edge")
+                .youtube(BRAND73, "0535hOPcFGE", DADG, of(SLIDE))
                 .build();
     }
 

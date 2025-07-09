@@ -3,6 +3,7 @@ package com.github.kojotak.bassbook.data;
 public enum Author implements Named  {
 
     ACDC("AC/DC"),
+    AEROSMITH("Aerosmith"),
     ADELE("Adele"),
     AL_GREEN("Al Green"),
     BILLY_IDOL("Billy Idol"),
