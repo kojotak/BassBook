@@ -286,6 +286,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .name("Money").meter(7, 4)
                     .youtube(BRAND73, "L8xus4cWjyw")
                     .youtube(NATE_NAVARRO, "19FgY3o09Ng")
+                    .youtube(FOTIS_TOUMANIDES, "TbVpme7Z0qA")
                 .next()
                 .name("Another Brick in the Wall").youtube(YELLOW_TABS, "Rm6Qm45Q-OI")
                 .buildAll();
@@ -464,6 +465,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.NIGHTWISH)
                 .name("Nemo")
                 .youtube(BASSCOVERS88, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
+                .youtube(FOTIS_TOUMANIDES, "VKttyeO2FvE", DGCF)
                 .build();
     }
 
@@ -476,11 +478,13 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song deepPurple(){
+    private List<Song> deepPurple(){
         return Song.from(Author.DEEP_PURPLE)
                 .name("Perfect strangers")
-                .youtube(TOM_BORNEMANN, "cKm9082w0Cc")
-                .youtube(FOTIS_TOUMANIDES, "n4-oUp6wNb0")
-                .build();
+                    .youtube(TOM_BORNEMANN, "cKm9082w0Cc")
+                    .youtube(FOTIS_TOUMANIDES, "n4-oUp6wNb0")
+                .next().name("Black night")
+                    .youtube(FOTIS_TOUMANIDES, "FStaDA88VYg")
+                .buildAll();
     }
 }
