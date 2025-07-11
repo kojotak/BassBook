@@ -475,4 +475,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song deepPurple(){
+        return Song.from(Author.DEEP_PURPLE)
+                .name("Perfect strangers")
+                .youtube(TOM_BORNEMANN, "cKm9082w0Cc")
+                .youtube(FOTIS_TOUMANIDES, "n4-oUp6wNb0")
+                .build();
+    }
 }

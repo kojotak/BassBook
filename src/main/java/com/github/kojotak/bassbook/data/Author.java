@@ -9,6 +9,7 @@ public enum Author implements Named  {
     BILLY_IDOL("Billy Idol"),
     BON_JOVI("Bon Jovi"),
     COLDPLAY("Coldplay"),
+    DEEP_PURPLE("Deep Purple"),
     DOORS("Doors"),
     DUA_LIPA("Dua Lipa"),
     EARTH_WIND_FIRE("Earth, Wind & Fire"),
