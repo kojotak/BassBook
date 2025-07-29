@@ -190,7 +190,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Song billyIdol() {
-        return Song.from(Author.BILLY_IDOL).name("White wedding").youtube(HARRY, "TqA_IWPuGcU").build();
+        return Song.from(Author.BILLY_IDOL).name("White wedding")
+                .youtube(HARRY, "TqA_IWPuGcU")
+                .youtube(BRAND73, "wMPEaVGX_7w")
+                .build();
     }
 
     @Bean
