@@ -1,6 +1,6 @@
 package com.github.kojotak.bassbook.data;
 
-public enum Tuning {
+public enum Tuning implements Named {
 
     /**
      * Standard tuning for 4 string
@@ -8,7 +8,7 @@ public enum Tuning {
     EADG,
 
     /**
-     * Half step down tuning for 4 string
+     * Half step down tuning for 4 string ♭
      */
     EbAbDbGb,
 
@@ -20,7 +20,7 @@ public enum Tuning {
     CGCF,
 
     /**
-     * Drop C# for $ string, that is C#G#C#F#
+     * Drop C#
      */
     CsGsCsFs,
 
@@ -29,5 +29,12 @@ public enum Tuning {
     /**
      * Standard tuning for 5 string
      */
-    HEADG
+    HEADG;
+
+    @Override
+    public String getName() {
+        return this.name()
+                .replaceAll("b","♭")
+                .replaceAll("s", "♯");
+    }
 }

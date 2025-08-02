@@ -33,7 +33,7 @@
                 </select></td>
                 <td><select onchange='this.form.submit()' th:field="*{tuning}">
                     <option th:value="${null}" th:text="all"></option>
-                    <option th:each="t : ${tunings}" th:value="${t}" th:text="${t.name}"></option>
+                    <option th:each="t : ${tunings}" th:value="${t}" th:text="${t.getName()}"></option>
                 </select></td>
                 <td><select onchange='this.form.submit()' th:field="*{channel}">
                     <option th:value="${null}" th:text="all"></option>
@@ -51,7 +51,7 @@
                 </td>
                 <td th:text="${song.author.name}"></td>
                 <td><sup th:text="${song.meter.count}"></sup>&frasl;<sub th:text="${song.meter.perBeat}"></sub></td>
-                <td th:text="${song.getAllTunings()}"></td>
+                <td th:text="${song.getAllTuningNames()}"></td>
                 <td th:text="${song.getAllChannels()}"></td>
                 <td th:text="${song.getAllTechnique()}"></td>
             </tr>
@@ -73,7 +73,7 @@
                 <td th:if="${!stats.first}"></td>
                 <td><a th:text="${play.channel.label}"
                        th:href="@{/author/{authorName}/song/{songName}/play/{channelId}/id/{youtubeId}(authorName=${selectedAuthor.name}, songName=${selectedSong.name}, channelId=${play.channel.id}, youtubeId=${play.id})}"></a>
-                <td th:text="${play.tuning.name}" ></td>
+                <td th:text="${play.tuning.getName()}" ></td>
                 <td th:text="${play.technique}" ></td>
             </tr>
             <tr th:if="${selectedPlay != null}">

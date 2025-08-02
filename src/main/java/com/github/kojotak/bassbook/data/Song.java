@@ -24,6 +24,10 @@ public record Song (
         return plays.stream().map(Youtube::tuning).distinct().sorted().toList();
     }
 
+    public List<String> getAllTuningNames(){
+        return getAllTunings().stream().map(Tuning::getName).toList();
+    }
+
     public List<Technique> getAllTechnique(){
         return plays.stream().map(Youtube::technique).flatMap(EnumSet::stream).distinct().sorted().toList();
     }
