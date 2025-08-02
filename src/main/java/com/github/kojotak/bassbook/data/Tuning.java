@@ -19,6 +19,11 @@ public enum Tuning {
 
     CGCF,
 
+    /**
+     * Drop C# for $ string, that is C#G#C#F#
+     */
+    CsGsCsFs,
+
     DGCF,
 
     /**

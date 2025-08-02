@@ -497,4 +497,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(FOTIS_TOUMANIDES, "FStaDA88VYg")
                 .buildAll();
     }
+
+    @Bean
+    private List<Song> deftones(){
+        return Song.from(Author.DEFTONES)
+                .name("Be quiet and drive")
+                    .youtube(SIMON_SKIPPER, "onntnYKCufw", CsGsCsFs)
+                .next().name("My Own Summer")
+                    .youtube(BASS_GUITAR_IQ, "4e88DLfAtvA", CsGsCsFs)
+                .buildAll();
+    }
 }
