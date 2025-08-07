@@ -96,6 +96,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Black summer").
                     youtube(NOCCO_CAT, "w0PqTcMCATo").
                     youtube(HARRY, "BgCIimrL3Go").
+                name("Not the one").
+                    youtube(NOCCO_CAT, "bXey_3plyNA").
                 buildAll();
     }
 
@@ -119,7 +121,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     @Bean
     private List<Song> u2() {
         return Song.from(Author.U2).
-                name("Vertigo").youtube(BRAND73, "OULMZ3DC1WU").next().
+                name("Vertigo")
+                    .youtube(BRAND73, "OULMZ3DC1WU")
+                    .youtube(NOCCO_CAT, "F_evK5Ymt-c").next().
                 name("Sweetest thing")
                     .youtube(BRAND73, "fvUBvZRh7LM")
                     .youtube(COVERSOLUTIONS, "6jP9me9oHzY")
@@ -163,7 +167,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                         youtube(NOCCO_CAT, "bZ3CSRQ6e4U", of(SLIDE)).
                         youtube(TOM_BORNEMANN, "BdpPpmMnjAo", of(SLIDE)).
                 next().
-                name("Easy lover").youtube(FLORIAN_BASSO, "bqtjyr1Khsc").next().
+                name("Easy lover")
+                    .youtube(FLORIAN_BASSO, "bqtjyr1Khsc")
+                    .youtube(NOCCO_CAT, "r1z9_Pnorr4")
+                    .next().
                 name("Don't Lose My Number").youtube(NOCCO_CAT, "FTQFPF2TbXc").next().
                 name("In the air tonight").youtube(NICKZ911, "PZfLhQM_KIY").
                 buildAll();
@@ -225,8 +232,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song beatles(){
-        return Song.from(Author.THE_BEATLES).name("Lady Madonna").youtube(BRAND73, "YxVCt81YNOE").build();
+    private List<Song> beatles(){
+        return Song.from(Author.THE_BEATLES)
+                    .name("Lady Madonna").youtube(BRAND73, "YxVCt81YNOE").next()
+                    .name("Something").youtube(NOCCO_CAT, "8YniwKLqZEc")
+                .buildAll();
     }
 
     @Bean
@@ -251,6 +261,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.ADELE)
                 .name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg")
                 .name("Set fire to the rain").youtube(NOCCO_CAT, "_V5kJGfsTvg")
+                .name("Skyfall").youtube(NOCCO_CAT, "7JMdaKXArxY")
                 .build();
     }
 
@@ -303,9 +314,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song toto(){
-        return Song.from(Author.TOTO).name("Africa").feel(Feel.SWING)
-                .youtube(COVERSOLUTIONS, "G_gSS7QTCM8", of(STACCATO)).build();
+    private List<Song> toto(){
+        return Song.from(Author.TOTO)
+                .name("Africa").feel(Feel.SWING).youtube(COVERSOLUTIONS, "G_gSS7QTCM8", of(STACCATO)).next()
+                .name("Rosanna").feel(SWING).youtube(NOCCO_CAT, "5FNmHvtiFVU")
+                .buildAll();
     }
 
     @Bean
@@ -375,12 +388,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song ratm(){
+    private List<Song> ratm(){
         return Song.from(Author.RATM)
                 .name("Killing in the name")
-                .youtube(TOM_BORNEMANN, "vZVDrlZbtO0", DADG, of(HAMMER_ON))
-                .youtube(COVERSOLUTIONS, "oFicPQh0NtQ", DADG, of(HAMMER_ON))
-                .build();
+                    .youtube(TOM_BORNEMANN, "vZVDrlZbtO0", DADG, of(HAMMER_ON))
+                    .youtube(COVERSOLUTIONS, "oFicPQh0NtQ", DADG, of(HAMMER_ON))
+                .next().name("Guerrilla Radio")
+                    .youtube(NOCCO_CAT, "ZfMS_gF1_HM")
+                .buildAll();
     }
 
     @Bean
@@ -499,6 +514,18 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
+    private List<Song> sting(){
+        return Song.from(Author.STING)
+                .name("Message in a bottle")
+                .youtube(NOCCO_CAT, "WsQaRMrbwQM")
+                .next().name("Fields of gold")
+                .youtube(NOCCO_CAT, "gFe0hriVZNs")
+                .next().name("Seven days")
+                .youtube(NOCCO_CAT, "Ut-48LPSblE")
+                .buildAll();
+    }
+
+    @Bean
     private List<Song> deftones(){
         return Song.from(Author.DEFTONES)
                 .name("Be quiet and drive")
@@ -507,4 +534,53 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(BASS_GUITAR_IQ, "4e88DLfAtvA", CsGsCsFs)
                 .buildAll();
     }
+
+    @Bean
+    private Song arcticMonkeys(){
+        return Song.from(Author.ARCTIC_MONKEYS)
+                .name("Do I Wanna Know")
+                .youtube(NOCCO_CAT, "Y9_sItWDKIM")
+                .build();
+    }
+
+    @Bean
+    private Song arethaFranklin(){
+        return Song.from(Author.ARETHA_FRANKLIN)
+                .name("I Say A Little Prayer")
+                .youtube(NOCCO_CAT, "woJUs2Wcths")
+                .build();
+    }
+
+    @Bean
+    private Song britneySpears(){
+        return Song.from(Author.BRITNEY_SPEARS)
+                .name("Toxic")
+                .youtube(NOCCO_CAT, "-ZpfCtsNY6g")
+                .build();
+    }
+
+    @Bean
+    private Song brunoMars(){
+        return Song.from(Author.BRUNO_MARS)
+                .name("Treasure")
+                .youtube(NOCCO_CAT, "WFuQaAZh-xo", of(SLAP, HAMMER_ON))
+                .build();
+    }
+
+    @Bean
+    private Song jamiroquai(){
+        return Song.from(Author.JAMIROQUAI)
+                .name("Time Won't Wait")
+                .youtube(NOCCO_CAT, "5XXuPHD17kM")
+                .build();
+    }
+
+    @Bean
+    private Song survivor(){
+        return Song.from(Author.SURVIVOR)
+                .name("Eye of the tiger")
+                .youtube(NOCCO_CAT, "ZOr9oMqKn7c")
+                .build();
+    }
+
 }
