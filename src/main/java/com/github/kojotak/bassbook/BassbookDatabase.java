@@ -539,7 +539,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private Song arcticMonkeys(){
         return Song.from(Author.ARCTIC_MONKEYS)
                 .name("Do I Wanna Know")
-                .youtube(NOCCO_CAT, "Y9_sItWDKIM")
+                .youtube(NOCCO_CAT, "Y9_sItWDKIM", of(SLIDE))
                 .build();
     }
 
