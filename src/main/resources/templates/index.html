@@ -79,9 +79,10 @@
 
             <span>Page size:</span>
             <select th:field="*{pageSize}" onchange="this.form.pageNumber.value=0; this.form.submit()">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
+                <option th:each="ps : ${pageSizes}"
+                        th:value="${ps.size}"
+                        th:text="${ps.size}">
+                </option>
             </select>
         </form>
     </div>

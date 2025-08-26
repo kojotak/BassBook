@@ -1,28 +1,28 @@
 package com.github.kojotak.bassbook;
 
-public class Paginator {
+public class BassbookPaginator {
 
     // Incoming/request-bound fields
-    private Integer pageNumber;
-    private Integer pageSize;
+    private int pageNumber;
+    private PageSize pageSize = PageSize.TWENTY;
 
     // Computed fields
     private int currentPage;
     private int totalPages;
 
-    public Integer getPageNumber() {
+    public int getPageNumber() {
         return pageNumber;
     }
 
-    public void setPageNumber(Integer pageNumber) {
+    public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
     }
 
-    public Integer getPageSize() {
+    public PageSize getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(Integer pageSize) {
+    public void setPageSize(PageSize pageSize) {
         this.pageSize = pageSize;
     }
 

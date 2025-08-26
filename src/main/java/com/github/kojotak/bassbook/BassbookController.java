@@ -25,11 +25,11 @@ public class BassbookController {
 
     @GetMapping("/")
     public ModelAndView home() {
-        return createModelFromFilter(new BassbookFilter(), new Paginator());
+        return createModelFromFilter(new BassbookFilter(), new BassbookPaginator());
     }
 
     @PostMapping("/")
-    public ModelAndView filter(BassbookFilter filter, Paginator paginator) {
+    public ModelAndView filter(BassbookFilter filter, BassbookPaginator paginator) {
         return createModelFromFilter(filter, paginator);
     }
 
@@ -70,7 +70,7 @@ public class BassbookController {
         return selectedSong;
     }
 
-    private ModelAndView createModelFromFilter(BassbookFilter filter, Paginator paginator){
+    private ModelAndView createModelFromFilter(BassbookFilter filter, BassbookPaginator paginator){
         var all = database.getSongs();
         var filtered = all.stream().filter(filter).toList();
         logger.info("filtered {} from {} songs using {}", filtered.size(), all.size(), filter);
@@ -95,10 +95,10 @@ public class BassbookController {
         return model;
     }
 
-    private java.util.List<Song> paginate(java.util.List<Song> filtered, Paginator paginator) {
-        var allowedSizes = java.util.Set.of(10, 20, 50);
-        Integer requestedSize = paginator.getPageSize();
-        int pageSize = (requestedSize == null || !allowedSizes.contains(requestedSize)) ? 10 : requestedSize;
+    private java.util.List<Song> paginate(java.util.List<Song> filtered, BassbookPaginator paginator) {
+        var allowedSizes = java.util.Arrays.stream(PageSize.values()).map(PageSize::getSize).collect(java.util.stream.Collectors.toSet());
+        int requestedSize = paginator.getPageSize();
+        int pageSize = allowedSizes.contains(requestedSize) ? requestedSize : PageSize.TEN.getSize();
 
         int totalPages = Math.max(1, (int) Math.ceil((double) filtered.size() / pageSize));
 
