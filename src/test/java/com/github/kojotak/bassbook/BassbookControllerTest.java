@@ -77,7 +77,7 @@ class BassbookControllerTest {
         filter.setAuthor(author);
         filter.setChannel(Channel.COVERSOLUTIONS);
 
-        var mv = controller.filter(filter);
+        var mv = controller.filter(filter, new Paginator());
 
         assertModelAttributeValue(mv, "songs", List.of(firstSong));
         assertModelAttributeAvailable(mv, "filter");
