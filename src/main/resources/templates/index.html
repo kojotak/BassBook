@@ -22,27 +22,29 @@
                 <form th:action="@{/}" method="post" th:object="${filter}">
                 <td><input type="text" th:field="*{songName}" /></td>
                 <td>
-                    <select onchange='this.form.submit()' th:field="*{author}">
+                    <select onchange='this.form.pageNumber.value=0; this.form.submit()' th:field="*{author}">
                         <option th:value="${null}" th:text="all"></option>
                         <option th:each="a : ${authors}" th:value="${a}" th:text="${a.name}"></option>
                     </select>
                 </td>
-                <td><select onchange='this.form.submit()' th:field="*{meter}">
+                <td><select onchange='this.form.pageNumber.value=0; this.form.submit()' th:field="*{meter}">
                     <option th:value="${null}" th:text="all"></option>
                     <option th:each="m : ${meters}" th:value="${@meterToStringConverter.convert(m)}"><sup th:text="${m.count}"></sup>&frasl;<sub th:text="${m.perBeat}"></sub></option>
                 </select></td>
-                <td><select onchange='this.form.submit()' th:field="*{tuning}">
+                <td><select onchange='this.form.pageNumber.value=0; this.form.submit()' th:field="*{tuning}">
                     <option th:value="${null}" th:text="all"></option>
                     <option th:each="t : ${tunings}" th:value="${t}" th:text="${t.getName()}"></option>
                 </select></td>
-                <td><select onchange='this.form.submit()' th:field="*{channel}">
+                <td><select onchange='this.form.pageNumber.value=0; this.form.submit()' th:field="*{channel}">
                     <option th:value="${null}" th:text="all"></option>
                     <option th:each="ch : ${channels}" th:value="${ch}" th:text="${ch.label}"></option>
                 </select></td>
-                <td><select onchange='this.form.submit()' th:field="*{technique}">
+                <td><select onchange='this.form.pageNumber.value=0; this.form.submit()' th:field="*{technique}">
                     <option th:value="${null}" th:text="all"></option>
                     <option th:each="t : ${technique}" th:value="${t}" th:text="${t.name}"></option>
                 </select></td>
+                <input type="hidden" th:field="*{pageNumber}" />
+                <input type="hidden" th:field="*{pageSize}" />
                 </form>
             </tr>
             <tr th:each="song:${songs}">
@@ -57,6 +59,31 @@
             </tr>
         </tbody>
     </table>
+
+    <div th:if="${songs != null}">
+        <form th:action="@{/}" method="post" th:object="${filter}">
+            <input type="hidden" th:field="*{songName}" />
+            <input type="hidden" th:field="*{author}" />
+            <input type="hidden" th:field="*{meter}" />
+            <input type="hidden" th:field="*{tuning}" />
+            <input type="hidden" th:field="*{channel}" />
+            <input type="hidden" th:field="*{technique}" />
+            <input type="hidden" th:field="*{pageNumber}" />
+
+            <span th:text="|Page ${currentPage + 1} of ${totalPages}|"></span>
+            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=0|" th:disabled="${currentPage == 0}">First</button>
+            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${currentPage - 1}|" th:disabled="${currentPage == 0}">Previous</button>
+            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${currentPage + 1}|" th:disabled="${currentPage + 1 >= totalPages}">Next</button>
+            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${totalPages - 1}|" th:disabled="${currentPage + 1 >= totalPages}">Last</button>
+
+            <span>Page size:</span>
+            <select th:field="*{pageSize}" onchange="this.form.pageNumber.value=0; this.form.submit()">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+        </form>
+    </div>
 
     <table border="1" th:if="${selectedAuthor != null}">
         <tbody>

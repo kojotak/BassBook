@@ -72,11 +72,34 @@ public class BassbookController {
 
     private ModelAndView createModelFromFilter(BassbookFilter filter){
         var all = database.getSongs();
-        var songs = all.stream().filter(filter).toList();
-        logger.info("filtered {} from {} songs using {}", songs.size(), all.size(), filter);
+        var filtered = all.stream().filter(filter).toList();
+        logger.info("filtered {} from {} songs using {}", filtered.size(), all.size(), filter);
+
+        // Sanitize and apply pagination
+        var allowedSizes = java.util.Set.of(10, 20, 50);
+        Integer requestedSize = filter.getPageSize();
+        int pageSize = (requestedSize == null || !allowedSizes.contains(requestedSize)) ? 10 : requestedSize;
+
+        int totalPages = Math.max(1, (int) Math.ceil((double) filtered.size() / pageSize));
+
+        Integer requestedPage = filter.getPageNumber();
+        int page = (requestedPage == null) ? 0 : requestedPage;
+        if (page < 0) page = 0;
+        if (page >= totalPages) page = totalPages - 1;
+
+        int fromIndex = Math.min(page * pageSize, filtered.size());
+        int toIndex = Math.min(fromIndex + pageSize, filtered.size());
+        var pageItems = filtered.subList(fromIndex, toIndex);
+
+        // Update filter so UI reflects effective values
+        filter.setPageSize(pageSize);
+        filter.setPageNumber(page);
+
         var model = new ModelAndView("index");
         model.addObject("filter", filter);
-        model.addObject("songs", songs);
+        model.addObject("songs", pageItems);
+        model.addObject("currentPage", page);
+        model.addObject("totalPages", totalPages);
         model.addObject("authors", Stream.of(Author.values()).sorted(Named.BY_NAME).toList());
         model.addObject("meters", all.stream().map(Song::meter).distinct().sorted().toList() );
         model.addObject("tunings", Stream.of(Tuning.values()).sorted(
