@@ -43,8 +43,8 @@
                     <option th:value="${null}" th:text="all"></option>
                     <option th:each="t : ${technique}" th:value="${t}" th:text="${t.name}"></option>
                 </select></td>
-                <input type="hidden" th:field="*{pageNumber}" />
-                <input type="hidden" th:field="*{pageSize}" />
+                <input type="hidden" name="pageNumber" th:value="${paginator.pageNumber}" />
+                <input type="hidden" name="pageSize" th:value="${paginator.pageSize}" />
                 </form>
             </tr>
             <tr th:each="song:${songs}">
@@ -61,20 +61,21 @@
     </table>
 
     <div th:if="${songs != null}">
-        <form th:action="@{/}" method="post" th:object="${filter}">
-            <input type="hidden" th:field="*{songName}" />
-            <input type="hidden" th:field="*{author}" />
-            <input type="hidden" th:field="*{meter}" />
-            <input type="hidden" th:field="*{tuning}" />
-            <input type="hidden" th:field="*{channel}" />
-            <input type="hidden" th:field="*{technique}" />
+        <form th:action="@{/}" method="post" th:object="${paginator}">
+            <!-- Persist current filters -->
+            <input type="hidden" name="songName" th:value="${filter.songName}" />
+            <input type="hidden" name="author" th:value="${filter.author}" />
+            <input type="hidden" name="meter" th:value="${@meterToStringConverter.convert(filter.meter)}" />
+            <input type="hidden" name="tuning" th:value="${filter.tuning}" />
+            <input type="hidden" name="channel" th:value="${filter.channel}" />
+            <input type="hidden" name="technique" th:value="${filter.technique}" />
             <input type="hidden" th:field="*{pageNumber}" />
 
-            <span th:text="|Page ${currentPage + 1} of ${totalPages}|"></span>
-            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=0|" th:disabled="${currentPage == 0}">First</button>
-            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${currentPage - 1}|" th:disabled="${currentPage == 0}">Previous</button>
-            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${currentPage + 1}|" th:disabled="${currentPage + 1 >= totalPages}">Next</button>
-            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${totalPages - 1}|" th:disabled="${currentPage + 1 >= totalPages}">Last</button>
+            <span th:text="|Page ${paginator.currentPage + 1} of ${paginator.totalPages}|"></span>
+            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=0|" th:disabled="${paginator.currentPage == 0}">First</button>
+            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${paginator.currentPage - 1}|" th:disabled="${paginator.currentPage == 0}">Previous</button>
+            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${paginator.currentPage + 1}|" th:disabled="${paginator.currentPage + 1 >= paginator.totalPages}">Next</button>
+            <button type="submit" th:attr="onclick=|this.form.pageNumber.value=${paginator.totalPages - 1}|" th:disabled="${paginator.currentPage + 1 >= paginator.totalPages}">Last</button>
 
             <span>Page size:</span>
             <select th:field="*{pageSize}" onchange="this.form.pageNumber.value=0; this.form.submit()">

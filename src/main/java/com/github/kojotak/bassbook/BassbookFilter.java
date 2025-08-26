@@ -25,13 +25,6 @@ public class BassbookFilter implements Predicate<Song> {
     @Nullable
     Meter meter;
 
-    // Pagination
-    @Nullable
-    Integer pageNumber;
-
-    @Nullable
-    Integer pageSize;
-
     @Nullable
     public Meter getMeter() {
         return meter;
@@ -83,24 +76,6 @@ public class BassbookFilter implements Predicate<Song> {
         this.technique = technique;
     }
 
-    @Nullable
-    public Integer getPageNumber() {
-        return pageNumber;
-    }
-
-    public void setPageNumber(@Nullable Integer pageNumber) {
-        this.pageNumber = pageNumber;
-    }
-
-    @Nullable
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(@Nullable Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
     @Override
     public String toString() {
         return "BassbookFilter{" +
@@ -110,8 +85,6 @@ public class BassbookFilter implements Predicate<Song> {
                 ", tuning=" + tuning +
                 ", channel=" + channel +
                 ", technique=" + technique +
-                ", pageNumber=" + pageNumber +
-                ", pageSize=" + pageSize +
                 '}';
     }
 
