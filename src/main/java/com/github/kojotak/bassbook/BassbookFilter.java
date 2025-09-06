@@ -26,6 +26,12 @@ public class BassbookFilter implements Predicate<Song> {
     Meter meter;
 
     @Nullable
+    Integer skipPages;
+
+    @Nullable
+    Integer limitPage;
+
+    @Nullable
     public Meter getMeter() {
         return meter;
     }
@@ -76,6 +82,22 @@ public class BassbookFilter implements Predicate<Song> {
         this.technique = technique;
     }
 
+    public Integer getSkipPages() {
+        return skipPages;
+    }
+
+    public void setSkipPages(Integer skipPages) {
+        this.skipPages = skipPages;
+    }
+
+    public Integer getLimitPage() {
+        return limitPage;
+    }
+
+    public void setLimitPage(Integer limitPage) {
+        this.limitPage = limitPage;
+    }
+
     @Override
     public String toString() {
         return "BassbookFilter{" +
@@ -85,6 +107,8 @@ public class BassbookFilter implements Predicate<Song> {
                 ", tuning=" + tuning +
                 ", channel=" + channel +
                 ", technique=" + technique +
+                ", skipPages=" + skipPages +
+                ", limitPage=" + limitPage +
                 '}';
     }
 
