@@ -40,6 +40,7 @@ public enum Author implements Named  {
     PHARELL_WILLIAMS("Pharell Williams"),
     PHIL_COLLINS("Phil Collins"),
     PINK_FLOYD("Pink Floyd"),
+    POLICE("Police"),
     QUEEN("Queen"),
     RADIOHEAD("Radiohead"),
     RAY_CHARLES("Ray Charles"),

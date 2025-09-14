@@ -599,4 +599,18 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private List<Song> police(){
+        return Song.from(Author.POLICE)
+                .name("King Of Pain").youtube(BRAND73, "iL1yt_gWOEU")
+                .next().name("Synchronicity II").youtube(BRAND73, "Dsrfn-K11hY", of(PICK, OCTAVES))
+                .next().name("Message in the Bottle")
+                    .youtube(NOCCO_CAT, "WsQaRMrbwQM")
+                    .youtube(BRAND73, "6VG5e8dQzwM", of(SLIDE))
+                .next().name("Invisible Sun").youtube(BRAND73, "Wp3026sDfao")
+                .next().name("Walking on the Moon").youtube(BRAND73, "TOQaI_0j47g")
+                .next().name("Spirits of the Material World").youtube(BRAND73, "AUi8jIkuU60")
+                .buildAll();
+    }
+
 }
