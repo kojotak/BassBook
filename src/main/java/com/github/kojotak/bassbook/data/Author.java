@@ -41,6 +41,7 @@ public enum Author implements Named  {
     PHIL_COLLINS("Phil Collins"),
     PINK_FLOYD("Pink Floyd"),
     QUEEN("Queen"),
+    RADIOHEAD("Radiohead"),
     RAY_CHARLES("Ray Charles"),
     RAMMSTEIN("Rammstein"),
     RATM("Rage against the machine"),

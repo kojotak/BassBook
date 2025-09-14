@@ -583,4 +583,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song radiohead(){
+        return Song.from(Author.RADIOHEAD)
+                .name("Creep")
+                .youtube(NOCCO_CAT, "0hBtVjbOdc4")
+                .build();
+    }
+
 }
