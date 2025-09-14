@@ -59,6 +59,7 @@ public enum Author implements Named  {
     THE_CRANBERRIES("The Cranberries"),
     THE_PRODIGY("The Prodigy"),
     THE_WHITE_STRIPES("The White stripes"),
+    TRACY_CHAPMAN("Tracy Chapman"),
     U2("U2")
     ;
 

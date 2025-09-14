@@ -591,4 +591,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song tracyChapman(){
+        return Song.from(Author.TRACY_CHAPMAN)
+                .name("Give Me One Reason")
+                .youtube(NOCCO_CAT, "YOWLZ4bZ8sQ")
+                .build();
+    }
+
 }
