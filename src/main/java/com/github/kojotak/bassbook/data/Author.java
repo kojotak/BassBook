@@ -39,6 +39,7 @@ public enum Author implements Named  {
     PEARL_JAM("Pearl Jam"),
     PHARELL_WILLIAMS("Pharell Williams"),
     PHIL_COLLINS("Phil Collins"),
+    PINK("P!nk"),
     PINK_FLOYD("Pink Floyd"),
     POLICE("Police"),
     QUEEN("Queen"),

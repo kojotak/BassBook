@@ -613,4 +613,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .buildAll();
     }
 
+    @Bean
+    private Song pink(){
+        return Song.from(Author.PINK)
+                .name("So What")
+                .youtube(ANDRE_CARVALHO, "U13zbgFK4yA")
+                .build();
+    }
+
 }
