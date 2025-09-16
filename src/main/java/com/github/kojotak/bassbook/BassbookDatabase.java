@@ -235,7 +235,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private List<Song> beatles(){
         return Song.from(Author.THE_BEATLES)
                     .name("Lady Madonna").youtube(BRAND73, "YxVCt81YNOE").next()
-                    .name("Something").youtube(NOCCO_CAT, "8YniwKLqZEc")
+                    .name("Something").youtube(NOCCO_CAT, "8YniwKLqZEc").next()
+                    .name("Norwegian Wood").youtube(TOM_BORNEMANN, "ra9qUqa2UWI")
                 .buildAll();
     }
 
@@ -257,12 +258,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song adele(){
+    private List<Song> adele(){
         return Song.from(Author.ADELE)
-                .name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg")
-                .name("Set fire to the rain").youtube(NOCCO_CAT, "_V5kJGfsTvg")
+                .name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg").next()
+                .name("Set fire to the rain").youtube(NOCCO_CAT, "_V5kJGfsTvg").next()
                 .name("Skyfall").youtube(NOCCO_CAT, "7JMdaKXArxY")
-                .build();
+                .buildAll();
     }
 
     @Bean
