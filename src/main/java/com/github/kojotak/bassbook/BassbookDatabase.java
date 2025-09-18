@@ -351,8 +351,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song acdc(){
-        return Song.from(Author.ACDC).name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68").build();
+    private List<Song> acdc(){
+        return Song.from(Author.ACDC)
+                .name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68").next()
+                .name("Hell's Bells").youtube(BRAND73, "-kbXnGwUSt0")
+                .buildAll();
     }
 
     @Bean
