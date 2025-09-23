@@ -625,4 +625,13 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song puscifer(){
+        return Song.from(Author.PUSCIFER)
+                .name("The Remedy")
+                .meter(5, 4)
+                .youtube(COVERSOLUTIONS, "ccVFYsxo4C0", of(PICK))
+                .build();
+    }
+
 }
