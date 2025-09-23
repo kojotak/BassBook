@@ -235,7 +235,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private List<Song> beatles(){
         return Song.from(Author.THE_BEATLES)
                     .name("Lady Madonna").youtube(BRAND73, "YxVCt81YNOE").next()
-                    .name("Something").youtube(NOCCO_CAT, "8YniwKLqZEc")
+                    .name("Something").youtube(NOCCO_CAT, "8YniwKLqZEc").next()
+                    .name("Norwegian Wood").meter(6,8).youtube(TOM_BORNEMANN, "ra9qUqa2UWI")
                 .buildAll();
     }
 
@@ -257,12 +258,12 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song adele(){
+    private List<Song> adele(){
         return Song.from(Author.ADELE)
-                .name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg")
-                .name("Set fire to the rain").youtube(NOCCO_CAT, "_V5kJGfsTvg")
+                .name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg").next()
+                .name("Set fire to the rain").youtube(NOCCO_CAT, "_V5kJGfsTvg").next()
                 .name("Skyfall").youtube(NOCCO_CAT, "7JMdaKXArxY")
-                .build();
+                .buildAll();
     }
 
     @Bean
@@ -350,8 +351,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song acdc(){
-        return Song.from(Author.ACDC).name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68").build();
+    private List<Song> acdc(){
+        return Song.from(Author.ACDC)
+                .name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68").next()
+                .name("Hell's Bells").youtube(BRAND73, "-kbXnGwUSt0")
+                .buildAll();
     }
 
     @Bean
@@ -580,6 +584,44 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.SURVIVOR)
                 .name("Eye of the tiger")
                 .youtube(NOCCO_CAT, "ZOr9oMqKn7c")
+                .build();
+    }
+
+    @Bean
+    private Song radiohead(){
+        return Song.from(Author.RADIOHEAD)
+                .name("Creep")
+                .youtube(NOCCO_CAT, "0hBtVjbOdc4")
+                .build();
+    }
+
+    @Bean
+    private Song tracyChapman(){
+        return Song.from(Author.TRACY_CHAPMAN)
+                .name("Give Me One Reason")
+                .youtube(NOCCO_CAT, "YOWLZ4bZ8sQ")
+                .build();
+    }
+
+    @Bean
+    private List<Song> police(){
+        return Song.from(Author.POLICE)
+                .name("King Of Pain").youtube(BRAND73, "iL1yt_gWOEU")
+                .next().name("Synchronicity II").youtube(BRAND73, "Dsrfn-K11hY", of(PICK, OCTAVES))
+                .next().name("Message in the Bottle")
+                    .youtube(NOCCO_CAT, "WsQaRMrbwQM")
+                    .youtube(BRAND73, "6VG5e8dQzwM", of(SLIDE))
+                .next().name("Invisible Sun").youtube(BRAND73, "Wp3026sDfao")
+                .next().name("Walking on the Moon").youtube(BRAND73, "TOQaI_0j47g")
+                .next().name("Spirits of the Material World").youtube(BRAND73, "AUi8jIkuU60")
+                .buildAll();
+    }
+
+    @Bean
+    private Song pink(){
+        return Song.from(Author.PINK)
+                .name("So What")
+                .youtube(ANDRE_CARVALHO, "U13zbgFK4yA")
                 .build();
     }
 

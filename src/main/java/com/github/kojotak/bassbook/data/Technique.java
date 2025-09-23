@@ -6,6 +6,7 @@ public enum Technique {
     GHOST_NOTE,
     HAMMER_ON,
     OCTAVES,
+    PICK,
     PULL_OFF,
     SLAP,
     SLIDE,

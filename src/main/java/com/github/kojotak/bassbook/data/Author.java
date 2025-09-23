@@ -39,8 +39,12 @@ public enum Author implements Named  {
     PEARL_JAM("Pearl Jam"),
     PHARELL_WILLIAMS("Pharell Williams"),
     PHIL_COLLINS("Phil Collins"),
+    PINK("P!nk"),
     PINK_FLOYD("Pink Floyd"),
+    POLICE("Police"),
+    PUSCIFER("Puscifer"),
     QUEEN("Queen"),
+    RADIOHEAD("Radiohead"),
     RAY_CHARLES("Ray Charles"),
     RAMMSTEIN("Rammstein"),
     RATM("Rage against the machine"),
@@ -58,6 +62,7 @@ public enum Author implements Named  {
     THE_CRANBERRIES("The Cranberries"),
     THE_PRODIGY("The Prodigy"),
     THE_WHITE_STRIPES("The White stripes"),
+    TRACY_CHAPMAN("Tracy Chapman"),
     U2("U2")
     ;
 
