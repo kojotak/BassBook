@@ -10,7 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.ModelAndViewAssert.*;
@@ -30,6 +30,27 @@ class BassbookControllerTest {
 
         assertModelAttributeAvailable(mv, "songs");
         verify(database).getSongs();
+    }
+
+    @Test
+    public void homeContainssOMESongs() {
+        var song = new Song("song", Author.MUSE, Meter.COMMON, Feel.STRAIGHT, List.of());
+        when(database.getSongs()).thenReturn(List.of(song));
+
+        var mv = controller.home();
+
+        assertModelAttributeAvailable(mv, "songs");
+        verify(database).getSongs();
+        var songs = mv.getModel().get("songs");
+        if(songs instanceof List<?> songList){
+            if(songList.getFirst() instanceof Song firstSong){
+                assertEquals(song.name(), firstSong.name());
+            } else {
+                fail("No song");
+            }
+        } else {
+            fail("No song list");
+        }
     }
 
     @Test
@@ -77,7 +98,7 @@ class BassbookControllerTest {
         filter.setAuthor(author);
         filter.setChannel(Channel.COVERSOLUTIONS);
 
-        var mv = controller.filter(filter);
+        var mv = controller.filter(filter, new BassbookPaginator());
 
         assertModelAttributeValue(mv, "songs", List.of(firstSong));
         assertModelAttributeAvailable(mv, "filter");
