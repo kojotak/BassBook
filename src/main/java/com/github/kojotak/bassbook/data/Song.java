@@ -1,7 +1,7 @@
 package com.github.kojotak.bassbook.data;
 
 import org.springframework.util.Assert;
-
+import org.springframework.lang.Nullable;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -11,7 +11,7 @@ public record Song (
         Author author,
         Meter meter,
         Feel feel,
-        Integer bpm,
+        @Nullable Integer bpm,
         Collection<Youtube> plays
 
 ) implements Named {
@@ -56,7 +56,7 @@ public record Song (
         private String name;
         private Meter meter = Meter.COMMON;
         private Feel feel = Feel.STRAIGHT;
-        private Integer bpm = null;
+        private @Nullable Integer bpm = null;
         private final List<Youtube> plays = new ArrayList<>();
 
         public SongBuilder name(String name){
