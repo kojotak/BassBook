@@ -11,6 +11,7 @@
         <tr>
             <th>Song Title</th>
             <th>Author</th>
+            <th>BPM</th>
             <th>Meter</th>
             <th>Tuning</th>
             <th>Youtube channel</th>
@@ -26,6 +27,9 @@
                         <option th:value="${null}" th:text="all"></option>
                         <option th:each="a : ${authors}" th:value="${a}" th:text="${a.name}"></option>
                     </select>
+                </td>
+                <td>
+                    &nbsp;
                 </td>
                 <td><select onchange='this.form.submit()' th:field="*{meter}">
                     <option th:value="${null}" th:text="all"></option>
@@ -50,6 +54,7 @@
                        th:href="@{/author/{authorName}/song/{songName}(authorName=${song.author.name}, songName=${song.name})}"></a>
                 </td>
                 <td th:text="${song.author.name}"></td>
+                <td th:text="${song.bpm}"></td>
                 <td><sup th:text="${song.meter.count}"></sup>&frasl;<sub th:text="${song.meter.perBeat}"></sub></td>
                 <td th:text="${song.getAllTuningNames()}"></td>
                 <td th:text="${song.getAllChannels()}"></td>
@@ -67,6 +72,10 @@
             <tr th:if="${selectedSong != null}">
                 <td>Song</td>
                 <td th:text="${selectedSong.name}" colspan="3"></td>
+            </tr>
+            <tr th:if="${selectedSong.bpm != null}">
+                <td>BPM</td>
+                <td th:text="${selectedSong.bpm}" colspan="3"></td>
             </tr>
             <tr th:each="play,stats:${selectedSong.plays}" th:if="${selectedSong.plays != null}">
                 <td th:if="${stats.first}">YouTube</td>

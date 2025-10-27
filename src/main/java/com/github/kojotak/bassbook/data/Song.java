@@ -11,9 +11,19 @@ public record Song (
         Author author,
         Meter meter,
         Feel feel,
+        Integer bpm,
         Collection<Youtube> plays
 
 ) implements Named {
+
+    //constructor with mandatory fields only
+    public Song(String name,
+                Author author,
+                Meter meter,
+                Feel feel,
+                Collection<Youtube> plays){
+        this(name, author, meter, feel, null, plays);
+    }
 
     @Override
     public String getName(){
@@ -46,6 +56,7 @@ public record Song (
         private String name;
         private Meter meter = Meter.COMMON;
         private Feel feel = Feel.STRAIGHT;
+        private Integer bpm = null;
         private final List<Youtube> plays = new ArrayList<>();
 
         public SongBuilder name(String name){
@@ -65,6 +76,11 @@ public record Song (
 
         public SongBuilder meter(int count, int perBeat){
             return meter(new Meter(count, perBeat));
+        }
+
+        public SongBuilder bpm(Integer bpm){
+            this.bpm = bpm;
+            return this;
         }
 
         public SongBuilder feel(Feel feel){
@@ -93,7 +109,7 @@ public record Song (
         }
 
         public Song build(){
-            return buildValid(name, author, meter, feel, plays);
+            return buildValid(name, author, meter, feel, bpm, plays);
         }
 
         public SongsBuilder next(){
@@ -102,6 +118,7 @@ public record Song (
                     .name(name)
                     .feel(feel)
                     .meter(meter)
+                    .bpm(bpm)
                     .youtube(plays)
                     .next();
         }
@@ -114,6 +131,7 @@ public record Song (
         private final List<String> names = new ArrayList<>();
         private final List<Meter> meters = new ArrayList<>();
         private final List<Feel> feels = new ArrayList<>();
+        private final List<Integer> bpms = new ArrayList<>();
         private final List<List<Youtube>> playList = new ArrayList<>();
 
         public SongsBuilder name(String name){
@@ -134,6 +152,11 @@ public record Song (
 
         public SongsBuilder meter(int count, int perBeat){
             return meter(new Meter(count, perBeat));
+        }
+
+        public SongsBuilder bpm(Integer bpm){
+            bpms.add(index, bpm);
+            return this;
         }
 
         public SongsBuilder feel(Feel feel){
@@ -173,6 +196,7 @@ public record Song (
                             author,
                             meters.get(i),
                             feels.get(i),
+                            bpms.get(i),
                             playList.get(i)
                     )
             ).toList();
@@ -185,11 +209,11 @@ public record Song (
 
         private SongsBuilder withDefaults(){
             this.playList.add(index, new ArrayList<>());
-            return meter(Meter.COMMON).feel(Feel.STRAIGHT);
+            return meter(Meter.COMMON).feel(Feel.STRAIGHT).bpm(null);
         }
     }
 
-    private static Song buildValid(String name, Author author, Meter meter, Feel feel, Collection<Youtube> plays) {
+    private static Song buildValid(String name, Author author, Meter meter, Feel feel, Integer bpm, Collection<Youtube> plays) {
         Assert.notEmpty(plays, "plays can not be empty");
         Objects.requireNonNull(name, "name is required");
         Objects.requireNonNull(author, "author is required");
@@ -198,7 +222,7 @@ public record Song (
         var sortedPlays = plays.stream()
                 .sorted(Comparator.comparing(p -> p.channel().label))
                 .toList();
-        return new Song(name, author, meter, feel, sortedPlays);
+        return new Song(name, author, meter, feel, bpm, sortedPlays);
     }
 
 }

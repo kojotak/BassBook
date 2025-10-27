@@ -112,7 +112,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(TOM_BORNEMANN, "BGji9IygCCw", of(SLIDE))
                     .youtube(ANDRE_CARVALHO, "2CpQkmNe0Vg", of(SLIDE))
                 .next().
-                name("Hysteria")
+                name("Hysteria").bpm(93)
                     .youtube(NATE_NAVARRO, "2-BidwjmCgc")
                     .youtube(COVERSOLUTIONS, "QW0qlOSdkrM")
                 .buildAll();
@@ -629,6 +629,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private Song puscifer(){
         return Song.from(Author.PUSCIFER)
                 .name("The Remedy")
+                .bpm(180)
                 .meter(5, 4)
                 .youtube(COVERSOLUTIONS, "ccVFYsxo4C0", of(PICK))
                 .build();
