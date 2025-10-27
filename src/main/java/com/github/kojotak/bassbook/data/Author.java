@@ -42,6 +42,7 @@ public enum Author implements Named  {
     PINK("P!nk"),
     PINK_FLOYD("Pink Floyd"),
     POLICE("Police"),
+    PORCUPINE_TREE("Porcupine Tree"),
     PUSCIFER("Puscifer"),
     QUEEN("Queen"),
     RADIOHEAD("Radiohead"),

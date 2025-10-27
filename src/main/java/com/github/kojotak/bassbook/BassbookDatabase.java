@@ -634,4 +634,13 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private List<Song> porcupineTree(){
+        return Song.from(Author.PORCUPINE_TREE)
+                .name(".3").youtube(LEO, "ZFLcc5XgamA", DADG)
+                .next()
+                .name("Strip The Soul").youtube(LEO, "tj_5-UZWEQM", DADG)
+                .buildAll();
+    }
+
 }
