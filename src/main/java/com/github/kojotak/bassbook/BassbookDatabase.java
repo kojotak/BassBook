@@ -364,12 +364,16 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song fleetwoodMac() {
-        return Song.from(Author.FLEETWOOD_MAC).name("The Chain")
-                .youtube(HARRY, "B_MjFaEpzPU")
-                .youtube(NOCCO_CAT, "u3G3LJZAI30")
-                .youtube(TOM_BORNEMANN, "GTj3taqE1VU")
-                .build();
+    private List<Song> fleetwoodMac() {
+        return Song.from(Author.FLEETWOOD_MAC)
+                .name("The Chain")
+                    .youtube(HARRY, "B_MjFaEpzPU")
+                    .youtube(NOCCO_CAT, "u3G3LJZAI30")
+                    .youtube(TOM_BORNEMANN, "GTj3taqE1VU")
+                .next().name("Dreams")
+                    .youtube(NOCCO_CAT, "rgj5Vox5kkQ")
+                    .youtube(COVERSOLUTIONS, "rgj5Vox5kkQ")
+                .buildAll();
     }
 
     @Bean
@@ -646,4 +650,19 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .buildAll();
     }
 
+    @Bean
+    private Song boneyM(){
+        return Song.from(Author.BONEY_M)
+                .name("Rasputin")
+                .youtube(COVERSOLUTIONS, "XdGQoq7PzVk")
+                .build();
+    }
+
+    @Bean
+    private Song sade(){
+        return Song.from(Author.SADE)
+                .name("Smooth operator")
+                .youtube(BRAND73, "7Ikvll2zMxI")
+                .build();
+    }
 }
