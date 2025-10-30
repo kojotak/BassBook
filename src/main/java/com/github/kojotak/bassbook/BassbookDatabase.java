@@ -526,6 +526,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .youtube(NOCCO_CAT, "gFe0hriVZNs")
                 .next().name("Seven days")
                 .youtube(NOCCO_CAT, "Ut-48LPSblE")
+                .next().name("Englishman in New York")
+                .youtube(NOCCO_CAT, "S6iMjqiExDU")
                 .buildAll();
     }
 
