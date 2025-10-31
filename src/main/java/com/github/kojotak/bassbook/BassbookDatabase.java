@@ -60,6 +60,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Man on the Moon")
                     .youtube(BRAND73, "yJSJjzp8y7g")
                     .youtube(LOVE_PEACE_BASS, "Ib1gKQi7riw")
+                    .youtube(GEORDIE_BASSIST, "H_fPqhRbdDc")
                 .next().
                 name("What's the frequency, Kenneth?").youtube(BRAND73, "rHRnfD6nhw0").next().
                 name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg", of(DOUBLE_STOP)).next().
