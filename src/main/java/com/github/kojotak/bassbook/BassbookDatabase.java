@@ -193,7 +193,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
 
     @Bean
     private Song rayCharles() {
-        return Song.from(Author.RAY_CHARLES).name("Hit the road, Jack").youtube(HARRY, "M9NNOtMgAhk").build();
+        return Song.from(Author.RAY_CHARLES).name("Hit the road, Jack")
+                .youtube(HARRY, "M9NNOtMgAhk")
+                .youtube(GEORDIE_BASSIST, "fDxXvMPc4yQ")
+                .build();
     }
 
     @Bean
@@ -614,7 +617,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private List<Song> police(){
         return Song.from(Author.POLICE)
                 .name("King Of Pain").youtube(BRAND73, "iL1yt_gWOEU")
-                .next().name("Synchronicity II").youtube(BRAND73, "Dsrfn-K11hY", of(PICK, OCTAVES))
+                .next().name("Synchronicity II").bpm(157).youtube(BRAND73, "Dsrfn-K11hY", of(PICK, OCTAVES))
                 .next().name("Message in the Bottle")
                     .youtube(NOCCO_CAT, "WsQaRMrbwQM")
                     .youtube(BRAND73, "6VG5e8dQzwM", of(SLIDE))
