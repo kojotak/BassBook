@@ -669,4 +669,19 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .youtube(BRAND73, "7Ikvll2zMxI")
                 .build();
     }
+
+    @Bean
+    private Song chrisIsaak(){
+        return Song.from(Author.CHRIS_ISAAK).name("Wicked game").youtube(GEORDIE_BASSIST, "a7s3F9VBuww").build();
+    }
+
+    @Bean
+    private Song benEKing(){
+        return Song.from(Author.BEN_E_KING).name("Stand By Me").youtube(HARRY, "W-w-wmXWt3k").build();
+    }
+
+    @Bean
+    private Song mcHammer(){
+        return Song.from(Author.MC_HAMMER).name("You Can't Touch This").youtube(HARRY, "81kPwiF9_t0").build();
+    }
 }
