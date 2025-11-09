@@ -241,7 +241,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.THE_BEATLES)
                     .name("Lady Madonna").youtube(BRAND73, "YxVCt81YNOE").next()
                     .name("Something").youtube(NOCCO_CAT, "8YniwKLqZEc").next()
-                    .name("Norwegian Wood").meter(6,8).youtube(TOM_BORNEMANN, "ra9qUqa2UWI")
+                    .name("Norwegian Wood").meter(6,8).youtube(TOM_BORNEMANN, "ra9qUqa2UWI").next()
+                    .name("Hey Jude").youtube(NOCCO_CAT, "89ElXR60JR0")
                 .buildAll();
     }
 
