@@ -499,12 +499,15 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song nightwish(){
+    private List<Song> nightwish(){
         return Song.from(Author.NIGHTWISH)
                 .name("Nemo")
-                .youtube(BASSCOVERS88, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
-                .youtube(FOTIS_TOUMANIDES, "VKttyeO2FvE", DGCF)
-                .build();
+                    .youtube(BASSCOVERS88, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
+                    .youtube(FOTIS_TOUMANIDES, "VKttyeO2FvE", DGCF)
+                .next()
+                .name("Amaranth")
+                    .youtube(FOTIS_TOUMANIDES, "1ueJpaQIqKQ", DGCF, of(BEND))
+                .buildAll();
     }
 
     @Bean
