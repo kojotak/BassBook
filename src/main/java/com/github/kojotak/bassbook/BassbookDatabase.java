@@ -204,6 +204,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.BILLY_IDOL).name("White wedding")
                 .youtube(HARRY, "TqA_IWPuGcU")
                 .youtube(BRAND73, "wMPEaVGX_7w")
+                .youtube(TOM_BORNEMANN, "bQ6aCLqVkrw")
                 .build();
     }
 
