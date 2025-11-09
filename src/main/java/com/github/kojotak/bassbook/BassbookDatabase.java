@@ -317,6 +317,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(FOTIS_TOUMANIDES, "TbVpme7Z0qA")
                 .next()
                 .name("Another Brick in the Wall").youtube(YELLOW_TABS, "Rm6Qm45Q-OI")
+                .next()
+                .name("Wish You Were Here").youtube(BRAND73, "tIwORLgt7Yw")
                 .buildAll();
     }
 
