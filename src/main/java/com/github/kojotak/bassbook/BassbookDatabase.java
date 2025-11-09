@@ -315,10 +315,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(BRAND73, "L8xus4cWjyw")
                     .youtube(NATE_NAVARRO, "19FgY3o09Ng")
                     .youtube(FOTIS_TOUMANIDES, "TbVpme7Z0qA")
-                .next()
-                .name("Another Brick in the Wall").youtube(YELLOW_TABS, "Rm6Qm45Q-OI")
-                .next()
-                .name("Wish You Were Here").youtube(BRAND73, "tIwORLgt7Yw")
+                .next().name("Another Brick in the Wall")
+                    .youtube(YELLOW_TABS, "Rm6Qm45Q-OI", DADG)
+                    .youtube(BRAND73, "bW2MasJ9cX4", DADG)
+                .next().name("Wish You Were Here").youtube(BRAND73, "tIwORLgt7Yw")
+                .next().name("Comfortably Numb").youtube(BRAND73, "a-G87UTs2BA")
                 .buildAll();
     }
 
