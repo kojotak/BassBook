@@ -21,6 +21,7 @@ public enum Author implements Named  {
     DOORS("Doors"),
     DUA_LIPA("Dua Lipa"),
     EARTH_WIND_FIRE("Earth, Wind & Fire"),
+    FALL_OUT_BOY("Fall Out Boy"),
     FLEETWOOD_MAC("Fleetwood Mac"),
     FOO_FIGHTERS("Foo Fighters"),
     GORILLAZ("Gorillaz"),
@@ -69,7 +70,8 @@ public enum Author implements Named  {
     THE_PRODIGY("The Prodigy"),
     THE_WHITE_STRIPES("The White stripes"),
     TRACY_CHAPMAN("Tracy Chapman"),
-    U2("U2")
+    U2("U2"),
+    WITHIN_TEMPTATION("Within Temptation")
     ;
 
     Author(String name){

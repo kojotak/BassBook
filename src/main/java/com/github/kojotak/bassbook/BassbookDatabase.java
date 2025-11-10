@@ -173,7 +173,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(NOCCO_CAT, "r1z9_Pnorr4")
                     .next().
                 name("Don't Lose My Number").youtube(NOCCO_CAT, "FTQFPF2TbXc").next().
-                name("In the air tonight").youtube(NICKZ911, "PZfLhQM_KIY").
+                name("In the air tonight").youtube(NICKZ911, "PZfLhQM_KIY").next().
+                name("You Can't Hurry Love").youtube(BASS_MONKEY, "lnxWMAIC3FA").
                 buildAll();
     }
 
@@ -259,7 +260,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE)).next()
                 .name("Sonne").youtube(BASSCOVERS88, "ARJRPZfKTvM", DADG).next()
                 .name("Deutschland").youtube(ROBERTO_YANGUS, "skjjiZZyQVg", CGCF).next()
-                .name("Radio").youtube(ROBERTO_YANGUS, "EERNqdacpQo", CGCF)
+                .name("Radio").youtube(ROBERTO_YANGUS, "EERNqdacpQo", CGCF).next()
+                .name("Spieluhr").youtube(BASS_MONKEY, "1JNJt_w7GWA", DADG)
                 .buildAll();
     }
 
@@ -487,11 +489,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song metallica(){
+    private List<Song> metallica(){
         return Song.from(Author.METALLICA)
-                .name("For whom the bell tolls")
-                .youtube(LOVE_PEACE_BASS, "SlG55fpmEck")
-                .build();
+                .name("For whom the bell tolls").youtube(LOVE_PEACE_BASS, "SlG55fpmEck").next()
+                .name("Until It Sleeps").youtube(BASS_MONKEY, "2N0DvTmRP-M", EbAbDbGb)
+                .buildAll();
     }
 
     @Bean
@@ -508,9 +510,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .name("Nemo")
                     .youtube(BASSCOVERS88, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
                     .youtube(FOTIS_TOUMANIDES, "VKttyeO2FvE", DGCF)
+                    .youtube(ROBERTO_YANGUS, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
+                    .youtube(BASS_MONKEY, "6qVR-HVf55Y", CGCF, of(DOUBLE_STOP))
                 .next()
                 .name("Amaranth")
                     .youtube(FOTIS_TOUMANIDES, "1ueJpaQIqKQ", DGCF, of(BEND))
+                    .youtube(BASS_MONKEY, "C_j1MDCOAS4", DGCF, of(BEND))
+                .name("Wish I Had an Angel").youtube(BASS_MONKEY, "_dJIRuoYnjQ", DADG)
+                .name("Bye Bye Beautiful").youtube(BASS_MONKEY, "lLDj9jwSF3U", DGCF)
                 .buildAll();
     }
 
@@ -692,4 +699,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private Song mcHammer(){
         return Song.from(Author.MC_HAMMER).name("You Can't Touch This").youtube(HARRY, "81kPwiF9_t0").build();
     }
+
+    @Bean
+    private Song withinTempatation(){
+        return Song.from(Author.WITHIN_TEMPTATION).name("Running Up That Hill").youtube(BASS_MONKEY, "1WV8EWL0vUs").build();
+    }
+
 }
