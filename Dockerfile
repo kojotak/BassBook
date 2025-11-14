@@ -1,5 +1,5 @@
 # Importing JDK and copying required files
-FROM openjdk:25-jdk AS build
+FROM eclipse-temurin:25-jre-ubi10-minimal AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src src
@@ -12,11 +12,11 @@ COPY .mvn .mvn
 RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Create the final Docker image using OpenJDK 25
-FROM openjdk:25-jdk
+# Stage 2: Create the final Docker image
+FROM eclipse-temurin:25-jre-ubi10-minimal
 VOLUME /tmp
 
 # Copy the JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-XX:MaxRAMPercentage=75.0","-jar","/app.jar"]
 EXPOSE 8080
