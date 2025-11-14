@@ -1,5 +1,5 @@
 # Importing JDK and copying required files
-FROM eclipse-temurin:25-jre-ubi10-minimal AS build
+FROM eclipse-temurin:25-jdk-ubi10-minimal AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src src
@@ -13,7 +13,7 @@ RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Create the final Docker image
-FROM eclipse-temurin:25-jre-ubi10-minimal
+FROM eclipse-temurin:25-jdk-ubi10-minimal
 VOLUME /tmp
 
 # Copy the JAR from the build stage
