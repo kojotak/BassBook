@@ -83,7 +83,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(COVERSOLUTIONS, "vVSn1xindPM", DADG, of(HAMMER_ON, PULL_OFF))
                     .youtube(YELLOW_TABS, "U0w51dkGZlY", DADG, of(HAMMER_ON, PULL_OFF))
                 .next().
-                name("Under the bridge").youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP, GHOST_NOTE)).next().
+                name("Under the bridge")
+                    .youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP, GHOST_NOTE))
+                    .youtube(FUSILLI_JERRY, "ti40g3t-mF4", of(SLIDE, DOUBLE_STOP, GHOST_NOTE))
+                .next().
                 name("Venice queen").youtube(LEO, "nOoaEqwQ6_8").next().
                 name("Otherside").youtube(COVERSOLUTIONS, "XUTCU3v22GI").next().
                 name("Dani California").youtube(COVERSOLUTIONS, "0HuEUVNU-Co").next().
@@ -96,9 +99,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Dosed").youtube(ANDREA_BERTIX, "RgFgw6kUJpk").next().
                 name("Black summer").
                     youtube(NOCCO_CAT, "w0PqTcMCATo").
-                    youtube(HARRY, "BgCIimrL3Go").
-                name("Not the one").
-                    youtube(NOCCO_CAT, "bXey_3plyNA").
+                    youtube(HARRY, "BgCIimrL3Go").next().
+                name("Not the one").youtube(NOCCO_CAT, "bXey_3plyNA").next().
+                name("Breaking the Girl").youtube(FUSILLI_JERRY, "nDqXtPpukWw").next().
+                name("Easily").youtube(FUSILLI_JERRY, "nr8BvdmIGEM").
                 buildAll();
     }
 
@@ -116,6 +120,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Hysteria").bpm(93)
                     .youtube(NATE_NAVARRO, "2-BidwjmCgc")
                     .youtube(COVERSOLUTIONS, "QW0qlOSdkrM")
+                    .youtube(FUSILLI_JERRY, "QTGkyIxF24w")
                 .buildAll();
     }
 
@@ -182,7 +187,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private List<Song> queen() {
         return Song.from(Author.QUEEN).
                 name("Under pressure").youtube(COVERSOLUTIONS, "GdleLmsfFVg").next().
-                name("Bohemian rhapsody").youtube(COVERSOLUTIONS, "qJVyHsJ2uEs").next().
+                name("Bohemian rhapsody")
+                    .youtube(COVERSOLUTIONS, "qJVyHsJ2uEs")
+                    .youtube(FUSILLI_JERRY, "zPfyI4ASn-c", EbAbDbGb).next().
                 name("The show must go on").youtube(PIANOPRINTER, "Pv_GFppKkbs").
                 buildAll();
     }
@@ -201,12 +208,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song billyIdol() {
+    private List<Song> billyIdol() {
         return Song.from(Author.BILLY_IDOL).name("White wedding")
                 .youtube(HARRY, "TqA_IWPuGcU")
                 .youtube(BRAND73, "wMPEaVGX_7w")
                 .youtube(TOM_BORNEMANN, "bQ6aCLqVkrw")
-                .build();
+                .next()
+            .name("Rebel Yell").youtube(FUSILLI_JERRY, "u3nrN2-A_6g")
+                .buildAll();
     }
 
     @Bean
@@ -381,9 +390,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(HARRY, "B_MjFaEpzPU")
                     .youtube(NOCCO_CAT, "u3G3LJZAI30")
                     .youtube(TOM_BORNEMANN, "GTj3taqE1VU")
+                    .youtube(FUSILLI_JERRY, "tYxdrqcg2_o")
                 .next().name("Dreams")
                     .youtube(NOCCO_CAT, "rgj5Vox5kkQ")
                     .youtube(COVERSOLUTIONS, "rgj5Vox5kkQ")
+                    .youtube(FUSILLI_JERRY, "0KEIhvHzp0M")
                 .buildAll();
     }
 
@@ -481,11 +492,11 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song ledZeppelin(){
+    private List<Song> ledZeppelin(){
         return Song.from(Author.LED_ZEPPELIN)
-                .name("Kashmir")
-                .youtube(LOVE_PEACE_BASS, "oxNfFgtvoao")
-                .build();
+                .name("Kashmir").youtube(LOVE_PEACE_BASS, "oxNfFgtvoao").next()
+                .name("Immigrant Song").youtube(FUSILLI_JERRY, "26f9Rn0PzVk")
+                .buildAll();
     }
 
     @Bean
@@ -537,6 +548,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                     .youtube(FOTIS_TOUMANIDES, "n4-oUp6wNb0")
                 .next().name("Black night")
                     .youtube(FOTIS_TOUMANIDES, "FStaDA88VYg")
+                .next().name("Highway Star")
+                    .youtube(FUSILLI_JERRY, "5S3XKs7Hn2k")
                 .buildAll();
     }
 
@@ -682,6 +695,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.SADE)
                 .name("Smooth operator")
                 .youtube(BRAND73, "7Ikvll2zMxI")
+                .youtube(FUSILLI_JERRY, "kZYxsM6PwBI")
                 .build();
     }
 
@@ -701,8 +715,17 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song withinTempatation(){
+    private Song withinTemptation(){
         return Song.from(Author.WITHIN_TEMPTATION).name("Running Up That Hill").youtube(BASS_MONKEY, "1WV8EWL0vUs").build();
+    }
+
+    @Bean
+    private Song bilWithers(){
+        return Song.from(Author.BIL_WITHERS)
+                .name("Ain't no Sunshine")
+                .youtube(FUSILLI_JERRY, "38Pbv9tDj3A")
+                .youtube(HARRY, "b1H6wW5RzEA")
+                .build();
     }
 
 }

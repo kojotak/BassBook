@@ -9,6 +9,7 @@ public enum Author implements Named  {
     ARCTIC_MONKEYS("Arctic Monkeys"),
     ARETHA_FRANKLIN("Aretha Franklin"),
     BILLY_IDOL("Billy Idol"),
+    BIL_WITHERS("Bil Withers"),
     BEN_E_KING("Ben E. King"),
     BONEY_M("Boney M"),
     BON_JOVI("Bon Jovi"),

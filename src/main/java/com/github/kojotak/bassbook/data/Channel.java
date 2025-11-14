@@ -13,6 +13,7 @@ public enum Channel {
     EUBASS("EuBasss", "eubasss"),
     FOTIS_TOUMANIDES("Fotis Toumanides Bass", "fotistoumanidesbass"),
     FLORIAN_BASSO("Florian Basso", "florianbasso"),
+    FUSILLI_JERRY("Fusilli Jerry", "FusilliJerryBass"),
     GEORDIE_BASSIST("The Geordie Bassist", "TheGeordieBassist"),
     HARRY("Harry - Music & Stuff", "HarryMusicStuff"),
     LEO("LeoBassCovers", "LeoBassCovers2"),
