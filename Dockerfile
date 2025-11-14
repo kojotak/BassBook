@@ -1,5 +1,5 @@
 # Importing JDK and copying required files
-FROM openjdk:24-jdk AS build
+FROM openjdk:25-jdk AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src src
@@ -12,8 +12,8 @@ COPY .mvn .mvn
 RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Create the final Docker image using OpenJDK 19
-FROM openjdk:24-jdk
+# Stage 2: Create the final Docker image using OpenJDK 25
+FROM openjdk:25-jdk
 VOLUME /tmp
 
 # Copy the JAR from the build stage
