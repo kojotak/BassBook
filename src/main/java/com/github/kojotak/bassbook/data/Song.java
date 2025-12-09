@@ -12,6 +12,7 @@ public record Song (
         Meter meter,
         Feel feel,
         @Nullable Integer bpm,
+        int aFrequency,
         Collection<Youtube> plays
 
 ) implements Named {
@@ -22,8 +23,11 @@ public record Song (
                 Meter meter,
                 Feel feel,
                 Collection<Youtube> plays){
-        this(name, author, meter, feel, null, plays);
+        this(name, author, meter, feel, DEFAULT_BPM, DEFAULT_TUNING_FREQUENCY, plays);
     }
+
+    public static final int DEFAULT_TUNING_FREQUENCY = 440;
+    public static final Integer DEFAULT_BPM = null;
 
     @Override
     public String getName(){
@@ -56,7 +60,8 @@ public record Song (
         private String name;
         private Meter meter = Meter.COMMON;
         private Feel feel = Feel.STRAIGHT;
-        private @Nullable Integer bpm = null;
+        private @Nullable Integer bpm = DEFAULT_BPM;
+        private int aFrequency = DEFAULT_TUNING_FREQUENCY;
         private final List<Youtube> plays = new ArrayList<>();
 
         public SongBuilder name(String name){
@@ -76,6 +81,11 @@ public record Song (
 
         public SongBuilder meter(int count, int perBeat){
             return meter(new Meter(count, perBeat));
+        }
+
+        public SongBuilder frequency(int aFrequency){
+            this.aFrequency = aFrequency;
+            return this;
         }
 
         public SongBuilder bpm(Integer bpm){
@@ -109,7 +119,7 @@ public record Song (
         }
 
         public Song build(){
-            return buildValid(name, author, meter, feel, bpm, plays);
+            return buildValid(name, author, meter, feel, bpm, aFrequency, plays);
         }
 
         public SongsBuilder next(){
@@ -118,7 +128,8 @@ public record Song (
                     .name(name)
                     .feel(feel)
                     .meter(meter)
-                    .bpm(bpm)
+                    .bpm(DEFAULT_BPM)
+                    .frequency(DEFAULT_TUNING_FREQUENCY)
                     .youtube(plays)
                     .next();
         }
@@ -132,6 +143,7 @@ public record Song (
         private final List<Meter> meters = new ArrayList<>();
         private final List<Feel> feels = new ArrayList<>();
         private final List<Integer> bpms = new ArrayList<>();
+        private final List<Integer> freqs = new ArrayList<>();
         private final List<List<Youtube>> playList = new ArrayList<>();
 
         public SongsBuilder name(String name){
@@ -156,6 +168,11 @@ public record Song (
 
         public SongsBuilder bpm(Integer bpm){
             bpms.add(index, bpm);
+            return this;
+        }
+
+        public SongsBuilder frequency(int aFrequency){
+            freqs.add(index, aFrequency);
             return this;
         }
 
@@ -197,6 +214,7 @@ public record Song (
                             meters.get(i),
                             feels.get(i),
                             bpms.get(i),
+                            freqs.get(i),
                             playList.get(i)
                     )
             ).toList();
@@ -209,11 +227,11 @@ public record Song (
 
         private SongsBuilder withDefaults(){
             this.playList.add(index, new ArrayList<>());
-            return meter(Meter.COMMON).feel(Feel.STRAIGHT).bpm(null);
+            return meter(Meter.COMMON).feel(Feel.STRAIGHT).bpm(DEFAULT_BPM).frequency(DEFAULT_TUNING_FREQUENCY);
         }
     }
 
-    private static Song buildValid(String name, Author author, Meter meter, Feel feel, Integer bpm, Collection<Youtube> plays) {
+    private static Song buildValid(String name, Author author, Meter meter, Feel feel, Integer bpm, int freq, Collection<Youtube> plays) {
         Assert.notEmpty(plays, "plays can not be empty");
         Objects.requireNonNull(name, "name is required");
         Objects.requireNonNull(author, "author is required");
@@ -222,7 +240,7 @@ public record Song (
         var sortedPlays = plays.stream()
                 .sorted(Comparator.comparing(p -> p.channel().label))
                 .toList();
-        return new Song(name, author, meter, feel, bpm, sortedPlays);
+        return new Song(name, author, meter, feel, bpm, freq, sortedPlays);
     }
 
 }

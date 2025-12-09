@@ -728,4 +728,10 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .build();
     }
 
+    @Bean
+    private Song wham(){
+        return Song.from(Author.WHAM)
+                .name("Last Christmas").frequency(425).youtube(COVERSOLUTIONS, "5E0QHO22ls8", of(HAMMER_ON, STACCATO))
+                .build();
+    }
 }

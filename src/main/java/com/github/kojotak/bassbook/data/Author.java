@@ -72,6 +72,7 @@ public enum Author implements Named  {
     THE_WHITE_STRIPES("The White stripes"),
     TRACY_CHAPMAN("Tracy Chapman"),
     U2("U2"),
+    WHAM("Wham!"),
     WITHIN_TEMPTATION("Within Temptation")
     ;
 
