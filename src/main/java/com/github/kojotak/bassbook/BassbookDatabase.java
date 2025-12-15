@@ -176,6 +176,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("Easy lover")
                     .youtube(FLORIAN_BASSO, "bqtjyr1Khsc")
                     .youtube(NOCCO_CAT, "r1z9_Pnorr4")
+                    .youtube(HOW_TO_PLAY_BASSLINES, "7cnjN1BIv3A")
                     .next().
                 name("Don't Lose My Number").youtube(NOCCO_CAT, "FTQFPF2TbXc").next().
                 name("In the air tonight").youtube(NICKZ911, "PZfLhQM_KIY").next().
@@ -604,11 +605,15 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     }
 
     @Bean
-    private Song brunoMars(){
+    private List<Song> brunoMars(){
         return Song.from(Author.BRUNO_MARS)
                 .name("Treasure")
-                .youtube(NOCCO_CAT, "WFuQaAZh-xo", of(SLAP, HAMMER_ON))
-                .build();
+                    .youtube(NOCCO_CAT, "WFuQaAZh-xo", of(SLAP, HAMMER_ON))
+                    .youtube(HOW_TO_PLAY_BASSLINES, "CwNk7ujk2FY", of(SLIDE))
+                .next()
+                .name("Locked out of heaven")
+                    .youtube(HOW_TO_PLAY_BASSLINES, "1cN35xg0TYk")
+                .buildAll();
     }
 
     @Bean
@@ -735,5 +740,26 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.WHAM)
                 .name("Last Christmas").frequency(425).youtube(COVERSOLUTIONS, "5E0QHO22ls8", of(HAMMER_ON, STACCATO))
                 .build();
+    }
+
+    @Bean
+    private List<Song> nirvana(){
+        return Song.from(Author.NIRVANA)
+                .name("In Bloom")
+                    .youtube(HOW_TO_PLAY_BASSLINES, "4mb_6mhK_5M")
+                    .youtube(COVERSOLUTIONS, "E6iXRdTKtV4")
+                .next().name("Smells Like Teen Spirit")
+                    .youtube(COVERSOLUTIONS, "pmtvOOI-pyU")
+                .next().name("Come As You Are")
+                    .youtube(COVERSOLUTIONS, "rWHkrYRhOzw", DGCF)
+                .next().name("Heart Shaped Box")
+                    .youtube(BRAND73, "ng3-YZs-7x4", DbAbDbGb)
+                .next().name("Polly")
+                    .youtube(BRAND73, "YHAm0U7CRiA")
+                .next().name("The Man Who Sold The World")
+                    .youtube(BRAND73, "wRrEK0Tu3vg", EbAbDbGb)
+                .next().name("Lithium")
+                    .youtube(EUBASS, "3giBt4c55hU")
+                .buildAll();
     }
 }

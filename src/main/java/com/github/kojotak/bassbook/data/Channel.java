@@ -16,6 +16,7 @@ public enum Channel {
     FUSILLI_JERRY("Fusilli Jerry", "FusilliJerryBass"),
     GEORDIE_BASSIST("The Geordie Bassist", "TheGeordieBassist"),
     HARRY("Harry - Music & Stuff", "HarryMusicStuff"),
+    HOW_TO_PLAY_BASSLINES("How to play Basslines", "HowtoplayBasslines"),
     LEO("LeoBassCovers", "LeoBassCovers2"),
     LOVE_PEACE_BASS("Love, Peace, Bass", "LovePeaceBass"),
     NATE_NAVARRO("Nate Navarro", "NateNavarro"),

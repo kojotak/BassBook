@@ -17,6 +17,8 @@ public enum Tuning implements Named {
      */
     DADG,
 
+    DbAbDbGb,
+
     CGCF,
 
     /**

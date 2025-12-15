@@ -41,6 +41,7 @@ public enum Author implements Named  {
     MUSE("Muse"),
     NIGHTWISH("Nightwish"),
     NINA_SIMONE("Nina Simone"),
+    NIRVANA("Nirvana"),
     ONE_REPUBLIC("One Republic"),
     PEARL_JAM("Pearl Jam"),
     PHARELL_WILLIAMS("Pharell Williams"),
