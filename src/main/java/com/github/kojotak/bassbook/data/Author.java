@@ -31,6 +31,7 @@ public enum Author implements Named  {
     JAMIROQUAI("Jamiroquai"),
     JEFFERSON_AIRPLANE("Jefferson Airplane"),
     JOURNEY("Journey"),
+    KATE_BUSH("Kate Bush"),
     LABELLE("LaBelle"),
     LED_ZEPPELIN("Led Zeppelin"),
     LENNY_KRAVITZ("Lenny Kravitz"),

@@ -6,6 +6,7 @@ public enum Channel {
     ANDREA_BERTIX("Andrea Bertix", "AndreaBertix"),
     BASS_MONKEY("BassMonkey","ytbassmonkey"),
     BASSCOVERS88("Basscovers88","basscovers88"),
+    BASSCOVER_PETE("BasscoverPete","basscoverpete"),
     BASS_GUITAR_IQ("BassGuitarIQ","BassGuitarIQ"),
     BRAND73("Brand73","Brand73"),
     CARLOS_CARLESI("Carlos Carlesi", "carlucho1012"),
