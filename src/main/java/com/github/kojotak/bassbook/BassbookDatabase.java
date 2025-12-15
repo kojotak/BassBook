@@ -527,7 +527,9 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 .name("Amaranth")
                     .youtube(FOTIS_TOUMANIDES, "1ueJpaQIqKQ", DGCF, of(BEND))
                     .youtube(BASS_MONKEY, "C_j1MDCOAS4", DGCF, of(BEND))
+                .next()
                 .name("Wish I Had an Angel").youtube(BASS_MONKEY, "_dJIRuoYnjQ", DADG)
+                .next()
                 .name("Bye Bye Beautiful").youtube(BASS_MONKEY, "lLDj9jwSF3U", DGCF)
                 .buildAll();
     }
