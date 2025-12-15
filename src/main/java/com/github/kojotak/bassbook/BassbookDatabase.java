@@ -168,7 +168,7 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
                 name("I threw a brick through a window").youtube(LOVE_PEACE_BASS, "fcLQceOpjWw").next().
                 name("Heartland").youtube(LOVE_PEACE_BASS, "SKCfKedrMcI").next().
                 name("Wire").youtube(LEO, "Csr5dtiSbeo", of(SLAP)).next().
-                name("Until the end of the the world").youtube(BASSCOVERS88, "basscovers88").
+                name("Until the end of the the world").youtube(BASSCOVERS88, "ffhsInl8gBE").
                 buildAll();
     }
 
@@ -384,7 +384,8 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
     private List<Song> acdc(){
         return Song.from(Author.ACDC)
                 .name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68").next()
-                .name("Hell's Bells").youtube(BRAND73, "-kbXnGwUSt0")
+                .name("Hell's Bells").youtube(BRAND73, "-kbXnGwUSt0").next()
+                .name("Highway to Hell").youtube(BRAND73, "v8wN90m8FBg")
                 .buildAll();
     }
 
