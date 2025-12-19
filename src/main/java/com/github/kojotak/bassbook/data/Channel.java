@@ -24,6 +24,7 @@ public enum Channel {
     PIANOPRINTER("PianoPrinter","pianoprinterstudio"),
     NICKZ911("NickZ911", "NickZ911"),
     NOCCO_CAT("nocco cat", "noccobass"),
+    SAMBOAT_MUSIC("SamboatMusic - Bass Covers", "SamboatMusicBassCovers"),
     SIMON_SKIPPER("Simon Skipper", "SimonSkipper"),
     TOM_BORNEMANN("Tom Bornemann", "basscination"),
     ROBERTO_YANGUS("Roberto Yanguas", "robertoyanguas8990"),

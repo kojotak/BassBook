@@ -385,6 +385,14 @@ public class BassbookDatabase implements ApplicationListener<ContextRefreshedEve
         return Song.from(Author.ACDC)
                 .name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68").next()
                 .name("Hell's Bells").youtube(BRAND73, "-kbXnGwUSt0").next()
+                .name("Back in Black")
+                    .youtube(TOM_BORNEMANN, "FDr2BNNGJ4g")
+                    .youtube(BRAND73, "G4EwnokMswU").next()
+                .name("Shot Down In Flames").youtube(BRAND73, "PL-xiym0UMU").next()
+                .name("Touch Too Much").youtube(TOM_BORNEMANN, "Nj-oHGzU0Bc").next()
+                .name("For Those About To Rock").youtube(BRAND73, "ihTX8QAwru0").next()
+                .name("Shoot To Thrill").youtube(SAMBOAT_MUSIC, "zbXe2c4gdjQ").next()
+                .name("Thunderstruck").youtube(SAMBOAT_MUSIC, "vNGpLFnX_Xc").next()
                 .name("Highway to Hell").youtube(BRAND73, "v8wN90m8FBg")
                 .buildAll();
     }
