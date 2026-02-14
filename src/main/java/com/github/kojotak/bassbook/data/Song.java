@@ -1,5 +1,6 @@
 package com.github.kojotak.bassbook.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.util.Assert;
 import org.springframework.lang.Nullable;
 import java.util.*;
@@ -8,7 +9,6 @@ import java.util.stream.IntStream;
 public record Song (
 
         String name,
-        Author author,
         Meter meter,
         Feel feel,
         @Nullable Integer bpm,
@@ -19,11 +19,10 @@ public record Song (
 
     //constructor with mandatory fields only
     public Song(String name,
-                Author author,
                 Meter meter,
                 Feel feel,
                 Collection<Youtube> plays){
-        this(name, author, meter, feel, DEFAULT_BPM, DEFAULT_TUNING_FREQUENCY, plays);
+        this(name, meter, feel, DEFAULT_BPM, DEFAULT_TUNING_FREQUENCY, plays);
     }
 
     public static final int DEFAULT_TUNING_FREQUENCY = 440;
@@ -34,29 +33,32 @@ public record Song (
         return name();
     }
 
+    @JsonIgnore
     public List<Tuning> getAllTunings(){
         return plays.stream().map(Youtube::tuning).distinct().sorted().toList();
     }
 
+    @JsonIgnore
     public List<String> getAllTuningNames(){
         return getAllTunings().stream().map(Tuning::getName).toList();
     }
 
+    @JsonIgnore
     public List<Technique> getAllTechnique(){
         return plays.stream().map(Youtube::technique).flatMap(EnumSet::stream).distinct().sorted().toList();
     }
 
+    @JsonIgnore
     public List<Channel> getAllChannels(){
         return plays.stream().map(Youtube::channel).distinct().sorted().toList();
     }
 
-    public static SongBuilder from(Author author){
-        return new SongBuilder().author(author);
+    public static SongBuilder name(String name){
+        return new SongBuilder().name(name);
     }
 
     public static class SongBuilder {
 
-        private Author author;
         private String name;
         private Meter meter = Meter.COMMON;
         private Feel feel = Feel.STRAIGHT;
@@ -66,11 +68,6 @@ public record Song (
 
         public SongBuilder name(String name){
             this.name = name;
-            return this;
-        }
-
-        public SongBuilder author(Author author){
-            this.author = author;
             return this;
         }
 
@@ -98,33 +95,52 @@ public record Song (
             return this;
         }
 
-        public SongBuilder youtube(Channel channel, String id){
+        public SongBuilder youtubeAnd(Channel channel, String id){
             plays.add(new Youtube(channel, id));
             return this;
         }
 
-        public SongBuilder youtube(Channel channel, String id, EnumSet<Technique> technique){
+        public Song youtube(Channel channel, String id){
+            plays.add(new Youtube(channel, id));
+            return build();
+        }
+
+        public SongBuilder youtubeAnd(Channel channel, String id, EnumSet<Technique> technique){
             plays.add(new Youtube(channel, id, technique));
             return this;
         }
 
-        public SongBuilder youtube(Channel channel, String id, Tuning tuning){
+        public Song youtube(Channel channel, String id, EnumSet<Technique> technique){
+            plays.add(new Youtube(channel, id, technique));
+            return build();
+        }
+
+        public SongBuilder youtubeAnd(Channel channel, String id, Tuning tuning){
             plays.add(new Youtube(channel, id, tuning, EnumSet.noneOf(Technique.class)));
             return this;
         }
 
-        public SongBuilder youtube(Channel channel, String id, Tuning tuning, EnumSet<Technique> technique){
+        public Song youtube(Channel channel, String id, Tuning tuning){
+            plays.add(new Youtube(channel, id, tuning, EnumSet.noneOf(Technique.class)));
+            return build();
+        }
+
+        public SongBuilder youtubeAnd(Channel channel, String id, Tuning tuning, EnumSet<Technique> technique){
             plays.add(new Youtube(channel, id, tuning, technique));
             return this;
         }
 
+        public Song youtube(Channel channel, String id, Tuning tuning, EnumSet<Technique> technique){
+            plays.add(new Youtube(channel, id, tuning, technique));
+            return build();
+        }
+
         public Song build(){
-            return buildValid(name, author, meter, feel, bpm, aFrequency, plays);
+            return buildValid(name, meter, feel, bpm, aFrequency, plays);
         }
 
         public SongsBuilder next(){
             return new SongsBuilder()
-                    .author(author)
                     .name(name)
                     .feel(feel)
                     .meter(meter)
@@ -137,7 +153,6 @@ public record Song (
 
     public static class SongsBuilder {
 
-        private Author author;
         private int index = 0;
         private final List<String> names = new ArrayList<>();
         private final List<Meter> meters = new ArrayList<>();
@@ -148,12 +163,6 @@ public record Song (
 
         public SongsBuilder name(String name){
             names.add(index, name);
-            return this;
-        }
-
-        public SongsBuilder author(Author author){
-            Assert.isNull(this.author, "author can not be reset");
-            this.author = author;
             return this;
         }
 
@@ -210,7 +219,6 @@ public record Song (
             return IntStream.range(0, index + 1).mapToObj(
                     i -> buildValid(
                             names.get(i),
-                            author,
                             meters.get(i),
                             feels.get(i),
                             bpms.get(i),
@@ -231,16 +239,15 @@ public record Song (
         }
     }
 
-    private static Song buildValid(String name, Author author, Meter meter, Feel feel, Integer bpm, int freq, Collection<Youtube> plays) {
+    private static Song buildValid(String name, Meter meter, Feel feel, Integer bpm, int freq, Collection<Youtube> plays) {
         Assert.notEmpty(plays, "plays can not be empty");
         Objects.requireNonNull(name, "name is required");
-        Objects.requireNonNull(author, "author is required");
         Objects.requireNonNull(feel, "feel can not be null");
         Objects.requireNonNull(meter, "meter can not be null");
         var sortedPlays = plays.stream()
                 .sorted(Comparator.comparing(p -> p.channel().label))
                 .toList();
-        return new Song(name, author, meter, feel, bpm, freq, sortedPlays);
+        return new Song(name, meter, feel, bpm, freq, sortedPlays);
     }
 
 }

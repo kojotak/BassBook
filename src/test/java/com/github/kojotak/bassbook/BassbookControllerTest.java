@@ -28,75 +28,65 @@ class BassbookControllerTest {
     public void homeContainsSongs() {
         var mv = controller.home();
 
-        assertModelAttributeAvailable(mv, "songs");
-        verify(database).getSongs();
+        assertModelAttributeAvailable(mv, "rows");
+        verify(database).getAuthors();
     }
 
     @Test
     public void songDetailContainsSelectedAuthor() {
-        var song = new Song("song", Author.MUSE, Meter.COMMON, Feel.STRAIGHT, List.of());
-        when(database.getSongs()).thenReturn(List.of(song));
+        var author = new Author("Muse", List.of(new Song("song", Meter.COMMON, Feel.STRAIGHT, List.of())));
+        when(database.getAuthors()).thenReturn(List.of(author));
 
-        var mv = controller.songDetail(Author.MUSE.getName(), "song");
-        assertModelAttributeValue(mv, "selectedAuthor", Author.MUSE);
+        var mv = controller.songDetail(AuthorEnum.MUSE.getName(), "song");
+        assertModelAttributeValue(mv, "selectedAuthor", AuthorEnum.MUSE.getName());
     }
 
     @Test
     public void songDetailContainsSelectedPlayIfItIsTheOnlyOne() {
         var play = new Youtube(Channel.BRAND73, "id");
-        var author = Author.NINA_SIMONE;
-        var song = new Song("song", author, Meter.COMMON, Feel.STRAIGHT, List.of(play));
-        when(database.getSongs()).thenReturn(List.of(song));
+        var song = new Song("song", Meter.COMMON, Feel.STRAIGHT, List.of(play));
+        var author = new Author("Nina Simone", List.of(song));
+        when(database.getAuthors()).thenReturn(List.of(author));
 
-        var mv = controller.songDetail(author.getName(), "song");
-        assertModelAttributeValue(mv, "selectedAuthor", author);
+        var mv = controller.songDetail(author.name(), "song");
+        assertModelAttributeValue(mv, "selectedAuthor", author.name());
         assertModelAttributeValue(mv, "selectedPlay", play);
     }
 
     @Test
     public void playDetailContainsSelectedPlay() {
         var play = new Youtube(Channel.BRAND73, "id");
-        var author = Author.NINA_SIMONE;
-        var song = new Song("song", author, Meter.COMMON, Feel.STRAIGHT, List.of(play));
+        var song = new Song("song", Meter.COMMON, Feel.STRAIGHT, List.of(play));
+        var author = new Author("Nina Simone", List.of(song));
 
-        when(database.getSongs()).thenReturn(List.of(song));
+        when(database.getAuthors()).thenReturn(List.of(author));
 
-        var mv = controller.playDetail(author.getName(), "song", play.channel().id, play.id());
-        assertModelAttributeValue(mv, "selectedAuthor", author);
+        var mv = controller.playDetail(author.name(), "song", play.channel().id, play.id());
+        assertModelAttributeValue(mv, "selectedAuthor", author.name());
         assertModelAttributeValue(mv, "selectedPlay", play);
     }
 
     @Test
     public void filterSongs() {
-        var author = Author.SOAD;
-        var firstSong = new Song("first", author, Meter.COMMON, Feel.STRAIGHT, List.of(new Youtube(Channel.COVERSOLUTIONS, "id_1")));
-        var secondSong = new Song("second", author, Meter.COMMON, Feel.STRAIGHT, List.of(new Youtube(Channel.BRAND73, "id_2")));
-        when(database.getSongs()).thenReturn(List.of(firstSong, secondSong));
+        var firstSong = new Song("first", Meter.COMMON, Feel.STRAIGHT, List.of(new Youtube(Channel.COVERSOLUTIONS, "id_1")));
+        var secondSong = new Song("second", Meter.COMMON, Feel.STRAIGHT, List.of(new Youtube(Channel.BRAND73, "id_2")));
+        var author = new Author("System of the Dawn", List.of(firstSong, secondSong));
+        when(database.getAuthors()).thenReturn(List.of(author));
 
         var filter = new BassbookFilter();
-        filter.setAuthor(author);
+        filter.setAuthorName(author.name());
         filter.setChannel(Channel.COVERSOLUTIONS);
 
         var mv = controller.filter(filter);
 
-        assertModelAttributeValue(mv, "songs", List.of(firstSong));
+        assertModelAttributeValue(mv, "rows", List.of(new Row(author, firstSong, null)));
         assertModelAttributeAvailable(mv, "filter");
-        verify(database).getSongs();
-    }
-
-    @Test
-    public void filterContainsAllAuthors() {
-        when(database.getSongs()).thenReturn(List.of());
-
-        var mv = controller.home();
-
-        var authors = assertAndReturnModelAttributeOfType(mv, "authors", List.class);
-        Stream.of(Author.values()).forEach(author -> assertTrue(authors.contains(author)));
+        verify(database).getAuthors();
     }
 
     @Test
     public void filterContainsAllTunings() {
-        when(database.getSongs()).thenReturn(List.of());
+        when(database.getAuthors()).thenReturn(List.of());
 
         var mv = controller.home();
 
@@ -106,7 +96,7 @@ class BassbookControllerTest {
 
     @Test
     public void filterContainsAllChannels() {
-        when(database.getSongs()).thenReturn(List.of());
+        when(database.getAuthors()).thenReturn(List.of());
 
         var mv = controller.home();
 
@@ -116,7 +106,7 @@ class BassbookControllerTest {
 
     @Test
     public void filterContainsAllTechnique() {
-        when(database.getSongs()).thenReturn(List.of());
+        when(database.getAuthors()).thenReturn(List.of());
 
         var mv = controller.home();
 

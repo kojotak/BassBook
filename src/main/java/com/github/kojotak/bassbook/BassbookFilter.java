@@ -5,13 +5,13 @@ import org.springframework.lang.Nullable;
 
 import java.util.function.Predicate;
 
-public class BassbookFilter implements Predicate<Song> {
+public class BassbookFilter implements Predicate<Row> {
 
     @Nullable
     String songName;
 
     @Nullable
-    Author author;
+    String authorName;
 
     @Nullable
     Tuning tuning;
@@ -44,12 +44,12 @@ public class BassbookFilter implements Predicate<Song> {
     }
 
 
-    public Author getAuthor() {
-        return author;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthorName(String author) {
+        this.authorName = author;
     }
 
     public Tuning getTuning() {
@@ -80,7 +80,7 @@ public class BassbookFilter implements Predicate<Song> {
     public String toString() {
         return "BassbookFilter{" +
                 "songName=" + songName +
-                ", author=" + author +
+                ", authorName=" + authorName +
                 ", meter=" + meter +
                 ", tuning=" + tuning +
                 ", channel=" + channel +
@@ -89,14 +89,14 @@ public class BassbookFilter implements Predicate<Song> {
     }
 
     @Override
-    public boolean test(Song song) {
+    public boolean test(Row row) {
         var result = true;
-        result &= songName == null || song.getName().toLowerCase().contains(songName.toLowerCase().trim());
-        result &= author == null || author.equals(song.author());
-        result &= tuning == null || song.getAllTunings().contains(tuning);
-        result &= channel == null || song.getAllChannels().contains(channel);
-        result &= technique == null || song.getAllTechnique().contains(technique);
-        result &= meter == null || song.meter().equals(meter);
+        result &= songName == null || row.song().getName().toLowerCase().contains(songName.toLowerCase().trim());
+        result &= authorName == null || authorName.equals(row.author().name());
+        result &= tuning == null || row.song().getAllTunings().contains(tuning);
+        result &= channel == null || row.song().getAllChannels().contains(channel);
+        result &= technique == null || row.song().getAllTechnique().contains(technique);
+        result &= meter == null || row.song().meter().equals(meter);
         return result;
     }
 }

@@ -7,12 +7,13 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection  ;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
 import static com.github.kojotak.bassbook.data.Channel.*;
 import static com.github.kojotak.bassbook.data.Feel.SWING;
+import static com.github.kojotak.bassbook.data.Song.name;
 import static com.github.kojotak.bassbook.data.Technique.*;
 import static com.github.kojotak.bassbook.data.Tuning.*;
 import static java.util.EnumSet.of;
@@ -20,775 +21,569 @@ import static java.util.EnumSet.of;
 @Service
 public class BassbookDatabase implements ApplicationListener<ContextRefreshedEvent> {
 
-    private final List<Song> songs = new ArrayList<>();
+    private final List<Author> authors = new ArrayList<>();
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         var context = event.getApplicationContext();
 
-        songs.addAll(context.getBeansOfType(Song.class).values());
+        authors.addAll(context.getBeansOfType(Author.class).values());
 
-        for(var list : context.getBeansOfType(List.class).values()){
-            var filtered = list.stream().filter(Song.class::isInstance).toList();
-            songs.addAll(filtered);
+        for (var list : context.getBeansOfType(List.class).values()) {
+            var filtered = list.stream().filter(Author.class::isInstance).toList();
+            authors.addAll(filtered);
         }
 
-        songs.sort(Comparator.comparing(Song::name));
-    }
-
-    public Collection<Song> getSongs() {
-        return songs;
-    }
-
-    @Bean
-    private List<Song> cranberries() {
-        return Song.from(Author.THE_CRANBERRIES).
-                name("Zombie")
-                    .youtube(COVERSOLUTIONS, "u9Zuoepny2Y")
-                    .youtube(BRAND73, "oqe6rWKOvXk")
-                .next().
-                name("Promises").youtube(ROBERTO_YANGUS, "a0VlH1DhdIY").next().
-                name("Linger").youtube(COVERSOLUTIONS, "T1JCwqngEl0").next().
-                name("Animal instinct").youtube(BASSCOVERS88, "x1Ifi28ac4E").next().
-                name("Just my imagination").youtube(BASSCOVERS88, "ZQRerIJ6Jkw").
-                buildAll();
-    }
-
-    @Bean
-    private List<Song> rem() {
-        return Song.from(Author.REM).
-                name("Man on the Moon")
-                    .youtube(BRAND73, "yJSJjzp8y7g")
-                    .youtube(LOVE_PEACE_BASS, "Ib1gKQi7riw")
-                    .youtube(GEORDIE_BASSIST, "H_fPqhRbdDc")
-                .next().
-                name("What's the frequency, Kenneth?").youtube(BRAND73, "rHRnfD6nhw0").next().
-                name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg", of(DOUBLE_STOP)).next().
-                name("The sidewinder sleeps tonite").youtube(GEORDIE_BASSIST, "i-9aMVXPNvc").next().
-                name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc", of(SLIDE, HAMMER_ON)).next().
-                name("Daysleeper").meter(6,8).youtube(BRAND73, "PGZwLdEj5fg", of(SLIDE)).next().
-                name("Loosing my religion").youtube(EUBASS, "E9oj-pLkmtk").next().
-                name("The one I love").youtube(BRAND73, "QO2zCg3Yj2o", of(DOUBLE_STOP)).next().
-                name("Electrolite").youtube(GEORDIE_BASSIST, "CTepfHmwkCg").next().
-                name("Imitation of Life").youtube(EUBASS, "vN2feWmPC9Y").
-                buildAll();
-    }
-
-    @Bean
-    private List<Song> rhcp() {
-        return Song.from(Author.RHCP).
-                name("Californication")
-                    .youtube(COVERSOLUTIONS, "vVSn1xindPM", of(HAMMER_ON, PULL_OFF))
-                    .youtube(NOCCO_CAT, "r_tKXpqi7UU", of(HAMMER_ON, PULL_OFF))
-                    .youtube(BASSCOVER_PETE, "Ml5Z0LMVUMg", of(HAMMER_ON, PULL_OFF))
-                    .next().
-                name("By the way")
-                    .youtube(COVERSOLUTIONS, "vVSn1xindPM", DADG, of(HAMMER_ON, PULL_OFF))
-                    .youtube(YELLOW_TABS, "U0w51dkGZlY", DADG, of(HAMMER_ON, PULL_OFF))
-                .next().
-                name("Under the bridge")
-                    .youtube(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP, GHOST_NOTE))
-                    .youtube(FUSILLI_JERRY, "ti40g3t-mF4", of(SLIDE, DOUBLE_STOP, GHOST_NOTE))
-                .next().
-                name("Venice queen").youtube(LEO, "nOoaEqwQ6_8").next().
-                name("Otherside")
-                    .youtube(COVERSOLUTIONS, "XUTCU3v22GI")
-                    .youtube(BASSCOVER_PETE, "4KWtEFOJjxM")
-                .next().
-                name("Dani California").youtube(COVERSOLUTIONS, "0HuEUVNU-Co").next().
-                name("Can't stop")
-                    .youtube(COVERSOLUTIONS, "nNszif3eDTs", of(SLAP, GHOST_NOTE))
-                    .youtube(NATE_NAVARRO, "fA2XKuQAhnE", of(SLAP, GHOST_NOTE, SLIDE))
-                .next().
-                name("Dark necessities").youtube(COVERSOLUTIONS, "FHohYlcdQkc", of(SLAP)).next().
-                name("Universally speaking").youtube(ANDREA_BERTIX, "aSHyHY4QmlM").next().
-                name("Dosed").youtube(ANDREA_BERTIX, "RgFgw6kUJpk").next().
-                name("Black summer").
-                    youtube(NOCCO_CAT, "w0PqTcMCATo").
-                    youtube(HARRY, "BgCIimrL3Go").next().
-                name("Not the one").youtube(NOCCO_CAT, "bXey_3plyNA").next().
-                name("Breaking the Girl").youtube(FUSILLI_JERRY, "nDqXtPpukWw").next().
-                name("Easily").youtube(FUSILLI_JERRY, "nr8BvdmIGEM").
-                buildAll();
-    }
-
-
-    @Bean
-    private List<Song> muse(){
-        return Song.from(Author.MUSE).
-                name("Psycho").youtube(COVERSOLUTIONS, "4CEzv6vZSiw", DADG, of(BEND)).next().
-                name("Uprising").feel(SWING).youtube(TOM_BORNEMANN, "SRK76vhoIAA", of(OCTAVES)).next().
-                name("Reapers").youtube(TOM_BORNEMANN, "CGnx6vnGA8o", DADG, of(HAMMER_ON)).next().
-                name("Time is running out")
-                    .youtube(TOM_BORNEMANN, "BGji9IygCCw", of(SLIDE))
-                    .youtube(ANDRE_CARVALHO, "2CpQkmNe0Vg", of(SLIDE))
-                .next().
-                name("Hysteria").bpm(93)
-                    .youtube(NATE_NAVARRO, "2-BidwjmCgc")
-                    .youtube(COVERSOLUTIONS, "QW0qlOSdkrM")
-                    .youtube(FUSILLI_JERRY, "QTGkyIxF24w")
-                .buildAll();
-    }
-
-    @Bean
-    private List<Song> u2() {
-        return Song.from(Author.U2).
-                name("Vertigo")
-                    .youtube(BRAND73, "OULMZ3DC1WU")
-                    .youtube(NOCCO_CAT, "F_evK5Ymt-c").next().
-                name("Sweetest thing")
-                    .youtube(BRAND73, "fvUBvZRh7LM")
-                    .youtube(COVERSOLUTIONS, "6jP9me9oHzY")
-                .next().
-                name("In God's country")
-                    .youtube(BRAND73, "ExFYtgshjUc")
-                    .youtube(LOVE_PEACE_BASS, "WmsJXmzRH90")
-                .next().
-                name("I will follow")
-                    .youtube(BRAND73, "Ko-O_rLgIVo", EbAbDbGb)
-                    .youtube(LOVE_PEACE_BASS, "VuS_tDq98Uc", EbAbDbGb)
-                .next().
-                name("New Year's day")
-                    .youtube(BRAND73, "lWV_wZK6_T8", EbAbDbGb)
-                    .youtube(LOVE_PEACE_BASS, "l68dHHtB_a4", EADG)
-                .next().
-                name("Desire").youtube(BRAND73, "SrF5Sxrsamw", EbAbDbGb).next().
-                name("I still haven't found what I'm looking for").youtube(BRAND73, "5mwVzBe5G68", EbAbDbGb).next().
-                name("Sunday Bloody Sunday").youtube(COVERSOLUTIONS, "QDka2OB06LE", EbAbDbGb).next().
-                name("Beautiful Day")
-                    .youtube(TOM_BORNEMANN, "XIjW_Gh0WiE")
-                    .youtube(EUBASS, "O7GY3mchjtM", of(SLIDE))
-                .next().
-                name("Bullet the blue sky").youtube(BRAND73, "1a8Un-qeLKQ", EbAbDbGb).next().
-                name("Zoo station").youtube(BRAND73, "X9F9MjY4Q5E").next().
-                name("Even better than the real thing").youtube(BRAND73, "7U9SUlAl2Cw").next().
-                name("City of blinding lights").youtube(EUBASS, "5LnvjrXIZq4", EbAbDbGb).next().
-                name("One tree hill").youtube(LOVE_PEACE_BASS, "w2EBY3ic7Ro").next().
-                name("Red Hill mining town").youtube(LOVE_PEACE_BASS, "SS6075vGYjU").next().
-                name("I threw a brick through a window").youtube(LOVE_PEACE_BASS, "fcLQceOpjWw").next().
-                name("Heartland").youtube(LOVE_PEACE_BASS, "SKCfKedrMcI").next().
-                name("Wire").youtube(LEO, "Csr5dtiSbeo", of(SLAP)).next().
-                name("Until the end of the the world").youtube(BASSCOVERS88, "ffhsInl8gBE").
-                buildAll();
+        authors.sort(Comparator.comparing(Author::name));
+    }
+
+    public Collection<Author> getAuthors() {
+        return authors;
     }
 
     @Bean
-    private List<Song> philCollins(){
-        return Song.from(Author.PHIL_COLLINS).
-                name("Another day in paradise").
-                        youtube(NOCCO_CAT, "bZ3CSRQ6e4U", of(SLIDE)).
-                        youtube(TOM_BORNEMANN, "BdpPpmMnjAo", of(SLIDE)).
-                next().
-                name("Easy lover")
-                    .youtube(FLORIAN_BASSO, "bqtjyr1Khsc")
-                    .youtube(NOCCO_CAT, "r1z9_Pnorr4")
-                    .youtube(HOW_TO_PLAY_BASSLINES, "7cnjN1BIv3A")
-                    .youtube(BASSCOVER_PETE, "3CulOurL6mk")
-                    .next().
-                name("Don't Lose My Number").youtube(NOCCO_CAT, "FTQFPF2TbXc").next().
-                name("In the air tonight").youtube(NICKZ911, "PZfLhQM_KIY").next().
-                name("You Can't Hurry Love").youtube(BASS_MONKEY, "lnxWMAIC3FA").
-                buildAll();
+    private Author cranberries() {
+        return new Author(AuthorEnum.THE_CRANBERRIES, List.of(
+                name("Zombie").youtubeAnd(COVERSOLUTIONS, "u9Zuoepny2Y").youtube(BRAND73, "oqe6rWKOvXk"),
+                name("Promises").youtube(ROBERTO_YANGUS, "a0VlH1DhdIY"),
+                name("Linger").youtube(COVERSOLUTIONS, "T1JCwqngEl0"),
+                name("Animal instinct").youtube(BASSCOVERS88, "x1Ifi28ac4E"),
+                name("Just my imagination").youtube(BASSCOVERS88, "ZQRerIJ6Jkw")));
     }
 
     @Bean
-    private List<Song> queen() {
-        return Song.from(Author.QUEEN).
-                name("Under pressure").youtube(COVERSOLUTIONS, "GdleLmsfFVg").next().
-                name("Bohemian rhapsody")
-                    .youtube(COVERSOLUTIONS, "qJVyHsJ2uEs")
-                    .youtube(FUSILLI_JERRY, "zPfyI4ASn-c", EbAbDbGb).next().
-                name("The show must go on").youtube(PIANOPRINTER, "Pv_GFppKkbs").
-                buildAll();
+    private Author rem() {
+        return new Author(AuthorEnum.REM, List.of(
+                name("Man on the Moon").youtubeAnd(BRAND73, "yJSJjzp8y7g").youtubeAnd(LOVE_PEACE_BASS, "Ib1gKQi7riw").youtube(GEORDIE_BASSIST, "H_fPqhRbdDc"),
+                name("What's the frequency, Kenneth?").youtube(BRAND73, "rHRnfD6nhw0"),
+                name("Drive").youtube(CARLOS_CARLESI, "iIoUexEa5xg", of(DOUBLE_STOP)),
+                name("The sidewinder sleeps tonite").youtube(GEORDIE_BASSIST, "i-9aMVXPNvc"),
+                name("Orange crush").youtube(BRAND73, "gs2Wu1VSWWc", of(SLIDE, HAMMER_ON)),
+                name("Daysleeper").meter(6, 8).youtube(BRAND73, "PGZwLdEj5fg", of(SLIDE)),
+                name("Loosing my religion").youtube(EUBASS, "E9oj-pLkmtk"),
+                name("The one I love").youtube(BRAND73, "QO2zCg3Yj2o", of(DOUBLE_STOP)),
+                name("Electrolite").youtube(GEORDIE_BASSIST, "CTepfHmwkCg"),
+                name("Imitation of Life").youtube(EUBASS, "vN2feWmPC9Y")));
     }
 
     @Bean
-    private Song ninaSimone() {
-        return Song.from(Author.NINA_SIMONE).name("Feeling good").youtube(HARRY, "qs9KVyJnKIU").build();
+    private Author rhcp() {
+        return new Author(AuthorEnum.RHCP, List.of(
+                name("Californication").youtubeAnd(COVERSOLUTIONS, "vVSn1xindPM", of(HAMMER_ON, PULL_OFF)).youtubeAnd(NOCCO_CAT, "r_tKXpqi7UU", of(HAMMER_ON, PULL_OFF)).youtube(BASSCOVER_PETE, "Ml5Z0LMVUMg", of(HAMMER_ON, PULL_OFF)),
+                name("By the way").youtubeAnd(COVERSOLUTIONS, "vVSn1xindPM", DADG, of(HAMMER_ON, PULL_OFF)).youtube(YELLOW_TABS, "U0w51dkGZlY", DADG, of(HAMMER_ON, PULL_OFF)),
+                name("Under the bridge").youtubeAnd(COVERSOLUTIONS, "Tg-uUgEaovc", of(SLIDE, DOUBLE_STOP, GHOST_NOTE)).youtube(FUSILLI_JERRY, "ti40g3t-mF4", of(SLIDE, DOUBLE_STOP, GHOST_NOTE)),
+                name("Venice queen").youtube(LEO, "nOoaEqwQ6_8"),
+                name("Otherside").youtubeAnd(COVERSOLUTIONS, "XUTCU3v22GI").youtube(BASSCOVER_PETE, "4KWtEFOJjxM"),
+                name("Dani California").youtube(COVERSOLUTIONS, "0HuEUVNU-Co"),
+                name("Can't stop").youtubeAnd(COVERSOLUTIONS, "nNszif3eDTs", of(SLAP, GHOST_NOTE)).youtube(NATE_NAVARRO, "fA2XKuQAhnE", of(SLAP, GHOST_NOTE, SLIDE)),
+                name("Dark necessities").youtube(COVERSOLUTIONS, "FHohYlcdQkc", of(SLAP)),
+                name("Universally speaking").youtube(ANDREA_BERTIX, "aSHyHY4QmlM"),
+                name("Dosed").youtube(ANDREA_BERTIX, "RgFgw6kUJpk"),
+                name("Black summer").youtubeAnd(NOCCO_CAT, "w0PqTcMCATo").youtube(HARRY, "BgCIimrL3Go"),
+                name("Not the one").youtube(NOCCO_CAT, "bXey_3plyNA"),
+                name("Breaking the Girl").youtube(FUSILLI_JERRY, "nDqXtPpukWw"),
+                name("Easily").youtube(FUSILLI_JERRY, "nr8BvdmIGEM")));
     }
 
+
+    @Bean
+    private Author muse() {
+        return new Author(AuthorEnum.MUSE, List.of(
+                name("Psycho").youtube(COVERSOLUTIONS, "4CEzv6vZSiw", DADG, of(BEND)),
+                name("Uprising").feel(SWING).youtube(TOM_BORNEMANN, "SRK76vhoIAA", of(OCTAVES)),
+                name("Reapers").youtube(TOM_BORNEMANN, "CGnx6vnGA8o", DADG, of(HAMMER_ON)),
+                name("Time is running out").youtubeAnd(TOM_BORNEMANN, "BGji9IygCCw", of(SLIDE)).youtube(ANDRE_CARVALHO, "2CpQkmNe0Vg", of(SLIDE)),
+                name("Hysteria").bpm(93).youtubeAnd(NATE_NAVARRO, "2-BidwjmCgc").youtubeAnd(COVERSOLUTIONS, "QW0qlOSdkrM").youtube(FUSILLI_JERRY, "QTGkyIxF24w")));
+    }
+
+    @Bean
+    private Author u2() {
+        return new Author(AuthorEnum.U2, List.of(
+                name("Vertigo").youtubeAnd(BRAND73, "OULMZ3DC1WU").youtube(NOCCO_CAT, "F_evK5Ymt-c"),
+                name("Sweetest thing").youtubeAnd(BRAND73, "fvUBvZRh7LM").youtube(COVERSOLUTIONS, "6jP9me9oHzY"),
+                name("In God's country").youtubeAnd(BRAND73, "ExFYtgshjUc").youtube(LOVE_PEACE_BASS, "WmsJXmzRH90"),
+                name("I will follow").youtubeAnd(BRAND73, "Ko-O_rLgIVo", EbAbDbGb).youtube(LOVE_PEACE_BASS, "VuS_tDq98Uc", EbAbDbGb),
+                name("New Year's day").youtubeAnd(BRAND73, "lWV_wZK6_T8", EbAbDbGb).youtube(LOVE_PEACE_BASS, "l68dHHtB_a4", EADG),
+                name("Desire").youtube(BRAND73, "SrF5Sxrsamw", EbAbDbGb),
+                name("I still haven't found what I'm looking for").youtube(BRAND73, "5mwVzBe5G68", EbAbDbGb),
+                name("Sunday Bloody Sunday").youtube(COVERSOLUTIONS, "QDka2OB06LE", EbAbDbGb),
+                name("Beautiful Day").youtubeAnd(TOM_BORNEMANN, "XIjW_Gh0WiE").youtube(EUBASS, "O7GY3mchjtM", of(SLIDE)),
+                name("Bullet the blue sky").youtube(BRAND73, "1a8Un-qeLKQ", EbAbDbGb),
+                name("Zoo station").youtube(BRAND73, "X9F9MjY4Q5E"),
+                name("Even better than the real thing").youtube(BRAND73, "7U9SUlAl2Cw"),
+                name("City of blinding lights").youtube(EUBASS, "5LnvjrXIZq4", EbAbDbGb),
+                name("One tree hill").youtube(LOVE_PEACE_BASS, "w2EBY3ic7Ro"),
+                name("Red Hill mining town").youtube(LOVE_PEACE_BASS, "SS6075vGYjU"),
+                name("I threw a brick through a window").youtube(LOVE_PEACE_BASS, "fcLQceOpjWw"),
+                name("Heartland").youtube(LOVE_PEACE_BASS, "SKCfKedrMcI"),
+                name("Wire").youtube(LEO, "Csr5dtiSbeo", of(SLAP)),
+                name("Until the end of the the world").youtube(BASSCOVERS88, "ffhsInl8gBE")));
+    }
+
+    @Bean
+    private Author philCollins() {
+        return new Author(AuthorEnum.PHIL_COLLINS, List.of(
+                name("Another day in paradise").youtubeAnd(NOCCO_CAT, "bZ3CSRQ6e4U", of(SLIDE)).youtube(TOM_BORNEMANN, "BdpPpmMnjAo", of(SLIDE)),
+                name("Easy lover").youtubeAnd(FLORIAN_BASSO, "bqtjyr1Khsc").youtubeAnd(NOCCO_CAT, "r1z9_Pnorr4").youtubeAnd(HOW_TO_PLAY_BASSLINES, "7cnjN1BIv3A").youtube(BASSCOVER_PETE, "3CulOurL6mk"),
+                name("Don't Lose My Number").youtube(NOCCO_CAT, "FTQFPF2TbXc"),
+                name("In the air tonight").youtube(NICKZ911, "PZfLhQM_KIY"),
+                name("You Can't Hurry Love").youtube(BASS_MONKEY, "lnxWMAIC3FA")));
+    }
+
+    @Bean
+    private Author queen() {
+        return new Author(AuthorEnum.QUEEN, List.of(
+                name("Under pressure").youtube(COVERSOLUTIONS, "GdleLmsfFVg"),
+                name("Bohemian rhapsody").youtubeAnd(COVERSOLUTIONS, "qJVyHsJ2uEs").youtube(FUSILLI_JERRY, "zPfyI4ASn-c", EbAbDbGb),
+                name("The show must go on").youtube(PIANOPRINTER, "Pv_GFppKkbs")));
+    }
+
+    @Bean
+    private Author ninaSimone() {
+        return new Author(AuthorEnum.NINA_SIMONE, List.of(
+                name("Feeling good").youtube(HARRY, "qs9KVyJnKIU")));
+    }
+
     @Bean
-    private Song rayCharles() {
-        return Song.from(Author.RAY_CHARLES).name("Hit the road, Jack")
-                .youtube(HARRY, "M9NNOtMgAhk")
-                .youtube(GEORDIE_BASSIST, "fDxXvMPc4yQ")
-                .build();
+    private Author rayCharles() {
+        return new Author(AuthorEnum.RAY_CHARLES, List.of(
+                name("Hit the road, Jack").youtubeAnd(HARRY, "M9NNOtMgAhk").youtube(GEORDIE_BASSIST, "fDxXvMPc4yQ")));
     }
 
     @Bean
-    private List<Song> billyIdol() {
-        return Song.from(Author.BILLY_IDOL).name("White wedding")
-                .youtube(HARRY, "TqA_IWPuGcU")
-                .youtube(BRAND73, "wMPEaVGX_7w")
-                .youtube(TOM_BORNEMANN, "bQ6aCLqVkrw")
-                .next()
-            .name("Rebel Yell").youtube(FUSILLI_JERRY, "u3nrN2-A_6g")
-                .buildAll();
+    private Author billyIdol() {
+        return new Author(AuthorEnum.BILLY_IDOL, List.of(
+                name("White wedding").youtubeAnd(HARRY, "TqA_IWPuGcU").youtubeAnd(BRAND73, "wMPEaVGX_7w").youtube(TOM_BORNEMANN, "bQ6aCLqVkrw"),
+                name("Rebel Yell").youtube(FUSILLI_JERRY, "u3nrN2-A_6g")));
     }
 
     @Bean
-    private Song talkingHeads() {
-        return Song.from(Author.TALKING_HEADS).name("Psycho killer")
-                .youtube(HARRY, "SNZHCz4rzKA")
-                .youtube(NOCCO_CAT, "m32-etMoOMY", of(STACCATO))
-                .youtube(COVERSOLUTIONS, "6NpufkkmNmo")
-                .build();
+    private Author talkingHeads() {
+        return new Author(AuthorEnum.TALKING_HEADS, List.of(
+                name("Psycho killer").youtubeAnd(HARRY, "SNZHCz4rzKA").youtubeAnd(NOCCO_CAT, "m32-etMoOMY", of(STACCATO)).youtube(COVERSOLUTIONS, "6NpufkkmNmo")));
     }
 
     @Bean
-    private Song whiteStripes() {
-        return Song.from(Author.THE_WHITE_STRIPES)
-                .name("Seven nation army")
-                    .youtube(HARRY, "6_7VrkrUuKc")
-                    .youtube(ANDRE_CARVALHO, "adrcarvalho93")
-                .build();
+    private Author whiteStripes() {
+        return new Author(AuthorEnum.THE_WHITE_STRIPES, List.of(
+                name("Seven nation army").youtubeAnd(HARRY, "6_7VrkrUuKc").youtube(ANDRE_CARVALHO, "adrcarvalho93")));
     }
 
     @Bean
-    private Song blackEyedPeas() {
-        return Song.from(Author.THE_BLACK_EYED_PEAS).name("Let's get it started").youtube(HARRY, "iz89AiRQhE0").build();
+    private Author blackEyedPeas() {
+        return new Author(AuthorEnum.THE_BLACK_EYED_PEAS, List.of(
+                name("Let's get it started").youtube(HARRY, "iz89AiRQhE0")));
     }
 
     @Bean
-    private Song sia() {
-        return Song.from(Author.SIA).name("Snowman").meter(6,8).youtube(NOCCO_CAT, "KSye_cosGI4").build();
+    private Author sia() {
+        return new Author(AuthorEnum.SIA, List.of(
+                name("Snowman").meter(6, 8).youtube(NOCCO_CAT, "KSye_cosGI4")));
     }
 
     @Bean
-    private List<Song> beatles(){
-        return Song.from(Author.THE_BEATLES)
-                    .name("Lady Madonna").youtube(BRAND73, "YxVCt81YNOE").next()
-                    .name("Something").youtube(NOCCO_CAT, "8YniwKLqZEc").next()
-                    .name("Norwegian Wood").meter(6,8).youtube(TOM_BORNEMANN, "ra9qUqa2UWI").next()
-                    .name("Hey Jude").youtube(NOCCO_CAT, "89ElXR60JR0")
-                .buildAll();
+    private Author beatles() {
+        return new Author(AuthorEnum.THE_BEATLES, List.of(
+                name("Lady Madonna").youtube(BRAND73, "YxVCt81YNOE"),
+                name("Something").youtube(NOCCO_CAT, "8YniwKLqZEc"),
+                name("Norwegian Wood").meter(6, 8).youtube(TOM_BORNEMANN, "ra9qUqa2UWI"),
+                name("Hey Jude").youtube(NOCCO_CAT, "89ElXR60JR0")));
     }
 
     @Bean
-    private Song prodigy(){
-        return Song.from(Author.THE_PRODIGY).name("Climbatize").youtube(CARLOS_CARLESI, "dqR-t46ZtdA").build();
+    private Author prodigy() {
+        return new Author(AuthorEnum.THE_PRODIGY, List.of(
+                name("Climbatize").youtube(CARLOS_CARLESI, "dqR-t46ZtdA")));
     }
 
     @Bean
-    private List<Song> rammstein(){
-        return Song.from(Author.RAMMSTEIN)
-                .name("Du hast")
-                    .youtube(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE))
-                    .youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE)).next()
-                .name("Sonne").youtube(BASSCOVERS88, "ARJRPZfKTvM", DADG).next()
-                .name("Deutschland").youtube(ROBERTO_YANGUS, "skjjiZZyQVg", CGCF).next()
-                .name("Radio").youtube(ROBERTO_YANGUS, "EERNqdacpQo", CGCF).next()
-                .name("Spieluhr").youtube(BASS_MONKEY, "1JNJt_w7GWA", DADG)
-                .buildAll();
+    private Author rammstein() {
+        return new Author(AuthorEnum.RAMMSTEIN, List.of(
+                name("Du hast").youtubeAnd(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE)).youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE)),
+                name("Sonne").youtube(BASSCOVERS88, "ARJRPZfKTvM", DADG),
+                name("Deutschland").youtube(ROBERTO_YANGUS, "skjjiZZyQVg", CGCF),
+                name("Radio").youtube(ROBERTO_YANGUS, "EERNqdacpQo", CGCF),
+                name("Spieluhr").youtube(BASS_MONKEY, "1JNJt_w7GWA", DADG)));
     }
 
     @Bean
-    private List<Song> adele(){
-        return Song.from(Author.ADELE)
-                .name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg").next()
-                .name("Set fire to the rain").youtube(NOCCO_CAT, "_V5kJGfsTvg").next()
-                .name("Skyfall").youtube(NOCCO_CAT, "7JMdaKXArxY")
-                .buildAll();
+    private Author adele() {
+        return new Author(AuthorEnum.ADELE, List.of(
+                name("Rolling in the deep").youtube(NOCCO_CAT, "IukN_9-d9mg"),
+                name("Set fire to the rain").youtube(NOCCO_CAT, "_V5kJGfsTvg"),
+                name("Skyfall").youtube(NOCCO_CAT, "7JMdaKXArxY")));
     }
 
     @Bean
-    private Song coldplay(){
-        return Song.from(Author.COLDPLAY).name("Yellow").youtube(EUBASS, "hTnGMOT76lk", of(SLIDE)).build();
+    private Author coldplay() {
+        return new Author(AuthorEnum.COLDPLAY, List.of(
+                name("Yellow").youtube(EUBASS, "hTnGMOT76lk", of(SLIDE))));
     }
 
     @Bean
-    private Song systemOfADown(){
-        return Song.from(Author.SOAD).name("Toxicity").meter(6, 8)
-                .youtube(EUBASS, "fORp9OK7wys", CGCF)
-                .youtube(COVERSOLUTIONS, "G_3Aze81cf0", CGCF)
-                .build();
+    private Author systemOfADown() {
+        return new Author(AuthorEnum.SOAD, List.of(
+                name("Toxicity").meter(6, 8).youtubeAnd(EUBASS, "fORp9OK7wys", CGCF).youtube(COVERSOLUTIONS, "G_3Aze81cf0", CGCF)));
     }
 
     @Bean
-    private Song gorillaz(){
-        return Song.from(Author.GORILLAZ)
-                .name("Feel Good Inc.").youtube(NOCCO_CAT, "g4pCrlkUUn4", EbAbDbGb)
-                .build();
+    private Author gorillaz() {
+        return new Author(AuthorEnum.GORILLAZ, List.of(
+                name("Feel Good Inc.").youtube(NOCCO_CAT, "g4pCrlkUUn4", EbAbDbGb)));
     }
 
     @Bean
-    private Song lennyKravitz(){
-        return Song.from(Author.LENNY_KRAVITZ).name("Honey").youtube(NOCCO_CAT, "P-aXqEShNwA").build();
+    private Author lennyKravitz() {
+        return new Author(AuthorEnum.LENNY_KRAVITZ, List.of(
+                name("Honey").youtube(NOCCO_CAT, "P-aXqEShNwA")));
     }
 
     @Bean
-    private Song alGreen(){
-        return Song.from(Author.AL_GREEN).name("Let's Stay Together").youtube(NOCCO_CAT, "75Me-AY6Ia8").build();
+    private Author alGreen() {
+        return new Author(AuthorEnum.AL_GREEN, List.of(name("Let's Stay Together").youtube(NOCCO_CAT, "75Me-AY6Ia8")));
     }
 
     @Bean
-    private Song sherylCrow(){
-        return Song.from(Author.SHERYL_CROW).name("Tomorrow never dies").meter(12, 8)
-                .youtube(NOCCO_CAT, "ffECgN2Mtjk").build();
+    private Author sherylCrow() {
+        return new Author(AuthorEnum.SHERYL_CROW, List.of(
+                name("Tomorrow never dies").meter(12, 8).youtube(NOCCO_CAT, "ffECgN2Mtjk")));
     }
 
     @Bean
-    private List<Song> pinkFloyd(){
-        return Song.from(Author.PINK_FLOYD)
-                .name("Money").meter(7, 4)
-                    .youtube(BRAND73, "L8xus4cWjyw")
-                    .youtube(NATE_NAVARRO, "19FgY3o09Ng")
-                    .youtube(FOTIS_TOUMANIDES, "TbVpme7Z0qA")
-                .next().name("Another Brick in the Wall")
-                    .youtube(YELLOW_TABS, "Rm6Qm45Q-OI", DADG)
-                    .youtube(BRAND73, "bW2MasJ9cX4", DADG)
-                .next().name("Wish You Were Here").youtube(BRAND73, "tIwORLgt7Yw")
-                .next().name("Comfortably Numb")
-                    .youtube(BRAND73, "a-G87UTs2BA")
-                    .youtube(BASSCOVER_PETE, "ksUbAqkuCtk")
-                .buildAll();
+    private Author pinkFloyd() {
+        return new Author(AuthorEnum.PINK_FLOYD, List.of(
+                name("Money").meter(7, 4).youtubeAnd(BRAND73, "L8xus4cWjyw").youtubeAnd(NATE_NAVARRO, "19FgY3o09Ng").youtube(FOTIS_TOUMANIDES, "TbVpme7Z0qA"),
+                name("Another Brick in the Wall").youtubeAnd(YELLOW_TABS, "Rm6Qm45Q-OI", DADG).youtube(BRAND73, "bW2MasJ9cX4", DADG),
+                name("Wish You Were Here").youtube(BRAND73, "tIwORLgt7Yw"),
+                name("Comfortably Numb").youtubeAnd(BRAND73, "a-G87UTs2BA").youtube(BASSCOVER_PETE, "ksUbAqkuCtk")));
     }
 
     @Bean
-    private List<Song> toto(){
-        return Song.from(Author.TOTO)
-                .name("Africa").feel(Feel.SWING).youtube(COVERSOLUTIONS, "G_gSS7QTCM8", of(STACCATO)).next()
-                .name("Rosanna").feel(SWING).youtube(NOCCO_CAT, "5FNmHvtiFVU")
-                .buildAll();
+    private Author toto() {
+        return new Author(AuthorEnum.TOTO, List.of(
+                name("Africa").feel(Feel.SWING).youtube(COVERSOLUTIONS, "G_gSS7QTCM8", of(STACCATO)),
+                name("Rosanna").feel(SWING).youtube(NOCCO_CAT, "5FNmHvtiFVU")));
     }
 
     @Bean
-    private Song earthWindFire(){
-        return Song.from(Author.EARTH_WIND_FIRE).name("Let's Groove")
-                .youtube(COVERSOLUTIONS, "qs1j9Uhm2JI", of(STACCATO)).build();
+    private Author earthWindFire() {
+        return new Author(AuthorEnum.EARTH_WIND_FIRE, List.of(
+                name("Let's Groove").youtube(COVERSOLUTIONS, "qs1j9Uhm2JI", of(STACCATO))));
     }
 
     @Bean
-    private Song doors(){
-        return Song.from(Author.DOORS).name("Riders on the Storm")
-                .youtube(HARRY, "KFgfApQwF5Y").build();
+    private Author doors() {
+        return new Author(AuthorEnum.DOORS, List.of(
+                name("Riders on the Storm").youtube(HARRY, "KFgfApQwF5Y")));
     }
 
     @Bean
-    private List<Song> fooFighers(){
-        return Song.from(Author.FOO_FIGHTERS)
-                .name("Learn To Fly")
-                    .youtube(BRAND73, "ZUXH7cA-dLc")
-                    .youtube(COVERSOLUTIONS, "L8HDRJzA0fo")
-                .next()
-                .name("Everlong").youtube(COVERSOLUTIONS, "IB8ZOQZK3dA", DADG)
-                .buildAll();
+    private Author fooFighers() {
+        return new Author(AuthorEnum.FOO_FIGHTERS, List.of(
+                name("Learn To Fly").youtubeAnd(BRAND73, "ZUXH7cA-dLc").youtube(COVERSOLUTIONS, "L8HDRJzA0fo"),
+                name("Everlong").youtube(COVERSOLUTIONS, "IB8ZOQZK3dA", DADG)));
     }
 
     @Bean
-    private Song linkinPark(){
-        return Song.from(Author.LINKIN_PARK).name("Heavy Is The Crown").youtube(COVERSOLUTIONS, "IhIiZl7ZOk4").build();
+    private Author linkinPark() {
+        return new Author(AuthorEnum.LINKIN_PARK, List.of(
+                name("Heavy Is The Crown").youtube(COVERSOLUTIONS, "IhIiZl7ZOk4")));
     }
 
     @Bean
-    private List<Song> acdc(){
-        return Song.from(Author.ACDC)
-                .name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68").next()
-                .name("Hell's Bells").youtube(BRAND73, "-kbXnGwUSt0").next()
-                .name("Back in Black")
-                    .youtube(TOM_BORNEMANN, "FDr2BNNGJ4g")
-                    .youtube(BRAND73, "G4EwnokMswU").next()
-                .name("Shot Down In Flames").youtube(BRAND73, "PL-xiym0UMU").next()
-                .name("Touch Too Much").youtube(TOM_BORNEMANN, "Nj-oHGzU0Bc").next()
-                .name("For Those About To Rock").youtube(BRAND73, "ihTX8QAwru0").next()
-                .name("Shoot To Thrill").youtube(SAMBOAT_MUSIC, "zbXe2c4gdjQ").next()
-                .name("Thunderstruck").youtube(SAMBOAT_MUSIC, "vNGpLFnX_Xc").next()
-                .name("Highway to Hell").youtube(BRAND73, "v8wN90m8FBg")
-                .buildAll();
+    private Author acdc() {
+        return new Author(AuthorEnum.ACDC, List.of(
+                name("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68"),
+                name("Hell's Bells").youtube(BRAND73, "-kbXnGwUSt0"),
+                name("Back in Black").youtubeAnd(TOM_BORNEMANN, "FDr2BNNGJ4g").youtube(BRAND73, "G4EwnokMswU"),
+                name("Shot Down In Flames").youtube(BRAND73, "PL-xiym0UMU"),
+                name("Touch Too Much").youtube(TOM_BORNEMANN, "Nj-oHGzU0Bc"),
+                name("For Those About To Rock").youtube(BRAND73, "ihTX8QAwru0"),
+                name("Shoot To Thrill").youtube(SAMBOAT_MUSIC, "zbXe2c4gdjQ"),
+                name("Thunderstruck").youtube(SAMBOAT_MUSIC, "vNGpLFnX_Xc"),
+                name("Highway to Hell").youtube(BRAND73, "v8wN90m8FBg")));
     }
 
     @Bean
-    private Song oneRepublic(){
-        return Song.from(Author.ONE_REPUBLIC).name("Counting Stars").youtube(BRAND73, "kHbfIXcO9Bs").build();
+    private Author oneRepublic() {
+        return new Author(AuthorEnum.ONE_REPUBLIC, List.of(
+                name("Counting Stars").youtube(BRAND73, "kHbfIXcO9Bs")));
     }
 
     @Bean
-    private List<Song> fleetwoodMac() {
-        return Song.from(Author.FLEETWOOD_MAC)
-                .name("The Chain")
-                    .youtube(HARRY, "B_MjFaEpzPU")
-                    .youtube(NOCCO_CAT, "u3G3LJZAI30")
-                    .youtube(TOM_BORNEMANN, "GTj3taqE1VU")
-                    .youtube(FUSILLI_JERRY, "tYxdrqcg2_o")
-                .next().name("Dreams")
-                    .youtube(NOCCO_CAT, "rgj5Vox5kkQ")
-                    .youtube(COVERSOLUTIONS, "rgj5Vox5kkQ")
-                    .youtube(FUSILLI_JERRY, "0KEIhvHzp0M")
-                    .youtube(BASSCOVER_PETE, "tndBbFSuBtc")
-                .buildAll();
+    private Author fleetwoodMac() {
+        return new Author(AuthorEnum.FLEETWOOD_MAC, List.of(
+                name("The Chain").youtubeAnd(HARRY, "B_MjFaEpzPU").youtubeAnd(NOCCO_CAT, "u3G3LJZAI30").youtubeAnd(TOM_BORNEMANN, "GTj3taqE1VU").youtube(FUSILLI_JERRY, "tYxdrqcg2_o"),
+                name("Dreams").youtubeAnd(NOCCO_CAT, "rgj5Vox5kkQ").youtubeAnd(COVERSOLUTIONS, "rgj5Vox5kkQ").youtubeAnd(FUSILLI_JERRY, "0KEIhvHzp0M").youtube(BASSCOVER_PETE, "tndBbFSuBtc")));
     }
 
     @Bean
-    private Song jeffersonAirplane(){
-        return Song.from(Author.JEFFERSON_AIRPLANE).name("White rabbit")
-                .youtube(COVERSOLUTIONS, "2m2hOkD7t8g", of(TRIPLET, SLIDE, DOUBLE_STOP))
-                .build();
+    private Author jeffersonAirplane() {
+        return new Author(AuthorEnum.JEFFERSON_AIRPLANE, List.of(
+                name("White rabbit").youtube(COVERSOLUTIONS, "2m2hOkD7t8g", of(TRIPLET, SLIDE, DOUBLE_STOP))));
     }
 
     @Bean
-    private List<Song> michaelJackson(){
-        return Song.from(Author.MICHAEL_JACKSON)
-                .name("Billy Jean")
-                    .youtube(HARRY, "aeFT46ahI_o")
-                .next().name("Beat it")
-                    .youtube(HARRY, "o5GkMoetGnw", DADG, of(HAMMER_ON))
-                .next().name("Bad")
-                    .youtube(YELLOW_TABS, "Y65oltkZ5NA", of(SLIDE))
-                .buildAll();
+    private Author michaelJackson() {
+        return new Author(AuthorEnum.MICHAEL_JACKSON, List.of(
+                name("Billy Jean").youtube(HARRY, "aeFT46ahI_o"),
+                name("Beat it").youtube(HARRY, "o5GkMoetGnw", DADG, of(HAMMER_ON)),
+                name("Bad").youtube(YELLOW_TABS, "Y65oltkZ5NA", of(SLIDE))));
     }
 
     @Bean
-    private List<Song> ratm(){
-        return Song.from(Author.RATM)
-                .name("Killing in the name")
-                    .youtube(TOM_BORNEMANN, "vZVDrlZbtO0", DADG, of(HAMMER_ON))
-                    .youtube(COVERSOLUTIONS, "oFicPQh0NtQ", DADG, of(HAMMER_ON))
-                .next().name("Guerrilla Radio")
-                    .youtube(NOCCO_CAT, "ZfMS_gF1_HM")
-                .buildAll();
+    private Author ratm() {
+        return new Author(AuthorEnum.RATM, List.of(
+                name("Killing in the name").youtubeAnd(TOM_BORNEMANN, "vZVDrlZbtO0", DADG, of(HAMMER_ON)).youtube(COVERSOLUTIONS, "oFicPQh0NtQ", DADG, of(HAMMER_ON)),
+                name("Guerrilla Radio").youtube(NOCCO_CAT, "ZfMS_gF1_HM")));
     }
 
     @Bean
-    private Song duaLipa(){
-        return Song.from(Author.DUA_LIPA)
-                .name("Break my heart")
-                    .youtube(YELLOW_TABS, "6s5vAsHiZdo", of(SLIDE, OCTAVES))
-                .build();
+    private Author duaLipa() {
+        return new Author(AuthorEnum.DUA_LIPA, List.of(
+                name("Break my heart").youtube(YELLOW_TABS, "6s5vAsHiZdo", of(SLIDE, OCTAVES))));
     }
 
     @Bean
-    private Song bonJovi() {
-        return Song.from(Author.BON_JOVI)
-                .name("It's my life")
-                .youtube(YELLOW_TABS, "pRtzYkTQEMI", EADG)
-                .youtube(YELLOW_TABS, "JxoynLubXzM", HEADG)
-                .build();
+    private Author bonJovi() {
+        return new Author(AuthorEnum.BON_JOVI, List.of(
+                name("It's my life").youtubeAnd(YELLOW_TABS, "pRtzYkTQEMI", EADG).youtube(YELLOW_TABS, "JxoynLubXzM", HEADG)));
     }
 
     @Bean
-    private Song guanoApes(){
-        return Song.from(Author.GUANO_APES)
-                .name("Open your eyes")
-                .youtube(VX_MATTHEW, "Oimv05FB87c", of(SLAP, HAMMER_ON, GHOST_NOTE))
-                .build();
+    private Author guanoApes() {
+        return new Author(AuthorEnum.GUANO_APES, List.of(
+                name("Open your eyes").youtube(VX_MATTHEW, "Oimv05FB87c", of(SLAP, HAMMER_ON, GHOST_NOTE))));
     }
 
     @Bean
-    private List<Song> greenDay(){
-        return Song.from(Author.GREEN_DAY)
-                    .name("Troubled times")
-                    .youtube(TOM_BORNEMANN, "1UA9jy8RnSY")
-                .next()
-                    .name("Warning")
-                    .youtube(BRAND73, "1zPXl-GSKu0")
-                .next()
-                    .name("Boulevard of broken dreams")
-                    .youtube(BRAND73, "JKMrv55Lqw0")
-                .buildAll();
+    private Author greenDay() {
+        return new Author(AuthorEnum.GREEN_DAY, List.of(
+                name("Troubled times").youtube(TOM_BORNEMANN, "1UA9jy8RnSY"),
+                name("Warning").youtube(BRAND73, "1zPXl-GSKu0"),
+                name("Boulevard of broken dreams").youtube(BRAND73, "JKMrv55Lqw0")));
     }
 
     @Bean
-    private Song laBelle(){
-        return Song.from(Author.LABELLE)
-                .name("Lady Marmellade")
-                .youtube(NOCCO_CAT, "0yRf2JGSvFM")
-                .build();
+    private Author laBelle() {
+        return new Author(AuthorEnum.LABELLE, List.of(
+                name("Lady Marmellade").youtube(NOCCO_CAT, "0yRf2JGSvFM")));
     }
 
     @Bean
-    private Song pharellWilliams(){
-        return Song.from(Author.PHARELL_WILLIAMS)
-                .name("Happy")
-                .youtube(NOCCO_CAT, "swunHs4Ys5s")
-                .build();
+    private Author pharellWilliams() {
+        return new Author(AuthorEnum.PHARELL_WILLIAMS, List.of(
+                name("Happy").youtube(NOCCO_CAT, "swunHs4Ys5s")));
     }
 
     @Bean
-    private Song pearlJam(){
-        return Song.from(Author.PEARL_JAM)
-                .name("Do the evolution")
-                .youtube(BRAND73, "lnEY7hHDzfQ")
-                .build();
+    private Author pearlJam() {
+        return new Author(AuthorEnum.PEARL_JAM, List.of(
+                name("Do the evolution").youtube(BRAND73, "lnEY7hHDzfQ")));
     }
 
     @Bean
-    private List<Song> ledZeppelin(){
-        return Song.from(Author.LED_ZEPPELIN)
-                .name("Kashmir").youtube(LOVE_PEACE_BASS, "oxNfFgtvoao").next()
-                .name("Immigrant Song").youtube(FUSILLI_JERRY, "26f9Rn0PzVk")
-                .buildAll();
+    private Author ledZeppelin() {
+        return new Author(AuthorEnum.LED_ZEPPELIN, List.of(
+                name("Kashmir").youtube(LOVE_PEACE_BASS, "oxNfFgtvoao"),
+                name("Immigrant Song").youtube(FUSILLI_JERRY, "26f9Rn0PzVk")));
     }
 
     @Bean
-    private List<Song> metallica(){
-        return Song.from(Author.METALLICA)
-                .name("For whom the bell tolls").youtube(LOVE_PEACE_BASS, "SlG55fpmEck").next()
-                .name("Until It Sleeps").youtube(BASS_MONKEY, "2N0DvTmRP-M", EbAbDbGb)
-                .buildAll();
+    private Author metallica() {
+        return new Author(AuthorEnum.METALLICA, List.of(
+                name("For whom the bell tolls").youtube(LOVE_PEACE_BASS, "SlG55fpmEck"),
+                name("Until It Sleeps").youtube(BASS_MONKEY, "2N0DvTmRP-M", EbAbDbGb)));
     }
 
     @Bean
-    private Song journey(){
-        return Song.from(Author.JOURNEY)
-                .name("Separate Ways (Worlds Apart)")
-                .youtube(NOCCO_CAT, "Yo6ZR77sJbs")
-                .build();
+    private Author journey() {
+        return new Author(AuthorEnum.JOURNEY, List.of(
+                name("Separate Ways (Worlds Apart)").youtube(NOCCO_CAT, "Yo6ZR77sJbs")));
     }
 
     @Bean
-    private List<Song> nightwish(){
-        return Song.from(Author.NIGHTWISH)
-                .name("Nemo")
-                    .youtube(BASSCOVERS88, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
-                    .youtube(FOTIS_TOUMANIDES, "VKttyeO2FvE", DGCF)
-                    .youtube(ROBERTO_YANGUS, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP))
-                    .youtube(BASS_MONKEY, "6qVR-HVf55Y", CGCF, of(DOUBLE_STOP))
-                .next()
-                .name("Amaranth")
-                    .youtube(FOTIS_TOUMANIDES, "1ueJpaQIqKQ", DGCF, of(BEND))
-                    .youtube(BASS_MONKEY, "C_j1MDCOAS4", DGCF, of(BEND))
-                .next()
-                .name("Wish I Had an Angel").youtube(BASS_MONKEY, "_dJIRuoYnjQ", DADG)
-                .next()
-                .name("Bye Bye Beautiful").youtube(BASS_MONKEY, "lLDj9jwSF3U", DGCF)
-                .buildAll();
+    private Author nightwish() {
+        return new Author(AuthorEnum.NIGHTWISH, List.of(
+                name("Nemo").youtubeAnd(BASSCOVERS88, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP)).youtubeAnd(FOTIS_TOUMANIDES, "VKttyeO2FvE", DGCF).youtubeAnd(ROBERTO_YANGUS, "dElm3ayXSGU", DGCF, of(DOUBLE_STOP)).youtube(BASS_MONKEY, "6qVR-HVf55Y", CGCF, of(DOUBLE_STOP)),
+                name("Amaranth").youtubeAnd(FOTIS_TOUMANIDES, "1ueJpaQIqKQ", DGCF, of(BEND)).youtube(BASS_MONKEY, "C_j1MDCOAS4", DGCF, of(BEND)),
+                name("Wish I Had an Angel").youtube(BASS_MONKEY, "_dJIRuoYnjQ", DADG),
+                name("Bye Bye Beautiful").youtube(BASS_MONKEY, "lLDj9jwSF3U", DGCF)));
     }
 
     @Bean
-    private Song aerosmith(){
-        return Song.from(Author.AEROSMITH)
-                .name("Livin' on the edge")
-                .youtube(BRAND73, "0535hOPcFGE", DADG, of(SLIDE))
-                .build();
+    private Author aerosmith() {
+        return new Author(AuthorEnum.AEROSMITH, List.of(
+                name("Livin' on the edge").youtube(BRAND73, "0535hOPcFGE", DADG, of(SLIDE))));
     }
 
     @Bean
-    private List<Song> deepPurple(){
-        return Song.from(Author.DEEP_PURPLE)
-                .name("Perfect strangers")
-                    .youtube(TOM_BORNEMANN, "cKm9082w0Cc")
-                    .youtube(FOTIS_TOUMANIDES, "n4-oUp6wNb0")
-                .next().name("Black night")
-                    .youtube(FOTIS_TOUMANIDES, "FStaDA88VYg")
-                .next().name("Highway Star")
-                    .youtube(FUSILLI_JERRY, "5S3XKs7Hn2k")
-                .next().name("Smoke On The Watter")
-                    .youtube(BASSCOVER_PETE, "AXdUIfTEEvw")
-                .buildAll();
+    private Author deepPurple() {
+        return new Author(AuthorEnum.DEEP_PURPLE, List.of(
+                name("Perfect strangers").youtubeAnd(TOM_BORNEMANN, "cKm9082w0Cc").youtube(FOTIS_TOUMANIDES, "n4-oUp6wNb0"),
+                name("Black night").youtube(FOTIS_TOUMANIDES, "FStaDA88VYg"),
+                name("Highway Star").youtube(FUSILLI_JERRY, "5S3XKs7Hn2k"),
+                name("Smoke On The Watter").youtube(BASSCOVER_PETE, "AXdUIfTEEvw")));
     }
 
     @Bean
-    private List<Song> sting(){
-        return Song.from(Author.STING)
-                .name("Message in a bottle")
-                .youtube(NOCCO_CAT, "WsQaRMrbwQM")
-                .next().name("Fields of gold")
-                .youtube(NOCCO_CAT, "gFe0hriVZNs")
-                .next().name("Seven days")
-                .youtube(NOCCO_CAT, "Ut-48LPSblE")
-                .next().name("Englishman in New York")
-                .youtube(NOCCO_CAT, "S6iMjqiExDU")
-                .buildAll();
+    private Author sting() {
+        return new Author(AuthorEnum.STING, List.of(
+                name("Message in a bottle").youtube(NOCCO_CAT, "WsQaRMrbwQM"),
+                name("Fields of gold").youtube(NOCCO_CAT, "gFe0hriVZNs"),
+                name("Seven days").youtube(NOCCO_CAT, "Ut-48LPSblE"),
+                name("Englishman in New York").youtube(NOCCO_CAT, "S6iMjqiExDU")));
     }
 
     @Bean
-    private List<Song> deftones(){
-        return Song.from(Author.DEFTONES)
-                .name("Be quiet and drive")
-                    .youtube(SIMON_SKIPPER, "onntnYKCufw", CsGsCsFs)
-                .next().name("My Own Summer")
-                    .youtube(BASS_GUITAR_IQ, "4e88DLfAtvA", CsGsCsFs)
-                .buildAll();
+    private Author deftones() {
+        return new Author(AuthorEnum.DEFTONES, List.of(
+                name("Be quiet and drive").youtube(SIMON_SKIPPER, "onntnYKCufw", CsGsCsFs),
+                name("My Own Summer").youtube(BASS_GUITAR_IQ, "4e88DLfAtvA", CsGsCsFs)));
     }
 
     @Bean
-    private Song arcticMonkeys(){
-        return Song.from(Author.ARCTIC_MONKEYS)
-                .name("Do I Wanna Know")
-                .youtube(NOCCO_CAT, "Y9_sItWDKIM", of(SLIDE))
-                .build();
+    private Author arcticMonkeys() {
+        return new Author(AuthorEnum.ARCTIC_MONKEYS, List.of(
+                name("Do I Wanna Know").youtube(NOCCO_CAT, "Y9_sItWDKIM", of(SLIDE))));
     }
 
     @Bean
-    private Song arethaFranklin(){
-        return Song.from(Author.ARETHA_FRANKLIN)
-                .name("I Say A Little Prayer")
-                .youtube(NOCCO_CAT, "woJUs2Wcths")
-                .build();
+    private Author arethaFranklin() {
+        return new Author(AuthorEnum.ARETHA_FRANKLIN, List.of(
+                name("I Say A Little Prayer").youtube(NOCCO_CAT, "woJUs2Wcths")));
     }
 
     @Bean
-    private Song britneySpears(){
-        return Song.from(Author.BRITNEY_SPEARS)
-                .name("Toxic")
-                .youtube(NOCCO_CAT, "-ZpfCtsNY6g")
-                .build();
+    private Author britneySpears() {
+        return new Author(AuthorEnum.BRITNEY_SPEARS, List.of(
+                name("Toxic").youtube(NOCCO_CAT, "-ZpfCtsNY6g")));
     }
 
     @Bean
-    private List<Song> brunoMars(){
-        return Song.from(Author.BRUNO_MARS)
-                .name("Treasure")
-                    .youtube(NOCCO_CAT, "WFuQaAZh-xo", of(SLAP, HAMMER_ON))
-                    .youtube(HOW_TO_PLAY_BASSLINES, "CwNk7ujk2FY", of(SLIDE))
-                .next()
-                .name("Locked out of heaven")
-                    .youtube(HOW_TO_PLAY_BASSLINES, "1cN35xg0TYk")
-                .buildAll();
+    private Author brunoMars() {
+        return new Author(AuthorEnum.BRUNO_MARS, List.of(
+                name("Treasure").youtubeAnd(NOCCO_CAT, "WFuQaAZh-xo", of(SLAP, HAMMER_ON)).youtube(HOW_TO_PLAY_BASSLINES, "CwNk7ujk2FY", of(SLIDE)),
+                name("Locked out of heaven").youtube(HOW_TO_PLAY_BASSLINES, "1cN35xg0TYk")));
     }
 
     @Bean
-    private Song jamiroquai(){
-        return Song.from(Author.JAMIROQUAI)
-                .name("Time Won't Wait")
-                .youtube(NOCCO_CAT, "5XXuPHD17kM")
-                .build();
+    private Author jamiroquai() {
+        return new Author(AuthorEnum.JAMIROQUAI, List.of(
+                name("Time Won't Wait").youtube(NOCCO_CAT, "5XXuPHD17kM")));
     }
 
     @Bean
-    private Song survivor(){
-        return Song.from(Author.SURVIVOR)
-                .name("Eye of the tiger")
-                .youtube(NOCCO_CAT, "ZOr9oMqKn7c")
-                .build();
+    private Author survivor() {
+        return new Author(AuthorEnum.SURVIVOR, List.of(
+                name("Eye of the tiger").youtube(NOCCO_CAT, "ZOr9oMqKn7c")));
     }
 
     @Bean
-    private Song radiohead(){
-        return Song.from(Author.RADIOHEAD)
-                .name("Creep")
-                .youtube(NOCCO_CAT, "0hBtVjbOdc4")
-                .build();
+    private Author radiohead() {
+        return new Author(AuthorEnum.RADIOHEAD, List.of(
+                name("Creep").youtube(NOCCO_CAT, "0hBtVjbOdc4")));
     }
 
     @Bean
-    private Song tracyChapman(){
-        return Song.from(Author.TRACY_CHAPMAN)
-                .name("Give Me One Reason")
-                .youtube(NOCCO_CAT, "YOWLZ4bZ8sQ")
-                .build();
+    private Author tracyChapman() {
+        return new Author(AuthorEnum.TRACY_CHAPMAN, List.of(
+                name("Give Me One Reason").youtube(NOCCO_CAT, "YOWLZ4bZ8sQ")));
     }
 
     @Bean
-    private List<Song> police(){
-        return Song.from(Author.POLICE)
-                .name("King Of Pain").youtube(BRAND73, "iL1yt_gWOEU")
-                .next().name("Synchronicity II").bpm(157).youtube(BRAND73, "Dsrfn-K11hY", of(PICK, OCTAVES))
-                .next().name("Message in the Bottle")
-                    .youtube(NOCCO_CAT, "WsQaRMrbwQM")
-                    .youtube(BRAND73, "6VG5e8dQzwM", of(SLIDE))
-                .next().name("Invisible Sun").youtube(BRAND73, "Wp3026sDfao")
-                .next().name("Walking on the Moon").youtube(BRAND73, "TOQaI_0j47g")
-                .next().name("Spirits of the Material World").youtube(BRAND73, "AUi8jIkuU60")
-                .buildAll();
+    private Author police() {
+        return new Author(AuthorEnum.POLICE, List.of(
+                name("King Of Pain").youtube(BRAND73, "iL1yt_gWOEU"),
+                name("Synchronicity II").bpm(157).youtube(BRAND73, "Dsrfn-K11hY", of(PICK, OCTAVES)),
+                name("Message in the Bottle").youtubeAnd(NOCCO_CAT, "WsQaRMrbwQM").youtube(BRAND73, "6VG5e8dQzwM", of(SLIDE)),
+                name("Invisible Sun").youtube(BRAND73, "Wp3026sDfao"),
+                name("Walking on the Moon").youtube(BRAND73, "TOQaI_0j47g"),
+                name("Spirits of the Material World").youtube(BRAND73, "AUi8jIkuU60")));
     }
 
     @Bean
-    private Song pink(){
-        return Song.from(Author.PINK)
-                .name("So What")
-                .youtube(ANDRE_CARVALHO, "U13zbgFK4yA")
-                .build();
+    private Author pink() {
+        return new Author(AuthorEnum.PINK, List.of(
+                name("So What").youtube(ANDRE_CARVALHO, "U13zbgFK4yA")));
     }
 
     @Bean
-    private Song puscifer(){
-        return Song.from(Author.PUSCIFER)
-                .name("The Remedy")
-                .bpm(180)
-                .meter(5, 4)
-                .youtube(COVERSOLUTIONS, "ccVFYsxo4C0", of(PICK))
-                .build();
+    private Author puscifer() {
+        return new Author(AuthorEnum.PUSCIFER, List.of(
+                name("The Remedy").bpm(180).meter(5, 4).youtube(COVERSOLUTIONS, "ccVFYsxo4C0", of(PICK))));
     }
 
     @Bean
-    private List<Song> porcupineTree(){
-        return Song.from(Author.PORCUPINE_TREE)
-                .name(".3").youtube(LEO, "ZFLcc5XgamA", DADG)
-                .next()
-                .name("Strip The Soul").youtube(LEO, "tj_5-UZWEQM", DADG)
-                .buildAll();
+    private Author porcupineTree() {
+        return new Author(AuthorEnum.PORCUPINE_TREE, List.of(
+                name(".3").youtube(LEO, "ZFLcc5XgamA", DADG),
+                name("Strip The Soul").youtube(LEO, "tj_5-UZWEQM", DADG)));
     }
 
     @Bean
-    private Song boneyM(){
-        return Song.from(Author.BONEY_M)
-                .name("Rasputin")
-                .youtube(COVERSOLUTIONS, "XdGQoq7PzVk")
-                .build();
+    private Author boneyM() {
+        return new Author(AuthorEnum.BONEY_M, List.of(
+                name("Rasputin").youtube(COVERSOLUTIONS, "XdGQoq7PzVk")));
     }
 
     @Bean
-    private Song sade(){
-        return Song.from(Author.SADE)
-                .name("Smooth operator")
-                .youtube(BRAND73, "7Ikvll2zMxI")
-                .youtube(FUSILLI_JERRY, "kZYxsM6PwBI")
-                .youtube(BASSCOVER_PETE, "vwsIIbxW73k")
-                .build();
+    private Author sade() {
+        return new Author(AuthorEnum.SADE, List.of(
+                name("Smooth operator").youtubeAnd(BRAND73, "7Ikvll2zMxI").youtubeAnd(FUSILLI_JERRY, "kZYxsM6PwBI").youtube(BASSCOVER_PETE, "vwsIIbxW73k")));
     }
 
     @Bean
-    private Song chrisIsaak(){
-        return Song.from(Author.CHRIS_ISAAK).name("Wicked game").youtube(GEORDIE_BASSIST, "a7s3F9VBuww").build();
+    private Author chrisIsaak() {
+        return new Author(AuthorEnum.CHRIS_ISAAK, List.of(
+                name("Wicked game").youtube(GEORDIE_BASSIST, "a7s3F9VBuww")));
     }
 
     @Bean
-    private Song benEKing(){
-        return Song.from(Author.BEN_E_KING).name("Stand By Me").youtube(HARRY, "W-w-wmXWt3k").build();
+    private Author benEKing() {
+        return new Author(AuthorEnum.BEN_E_KING, List.of(
+                name("Stand By Me").youtube(HARRY, "W-w-wmXWt3k")));
     }
 
     @Bean
-    private Song mcHammer(){
-        return Song.from(Author.MC_HAMMER).name("You Can't Touch This").youtube(HARRY, "81kPwiF9_t0").build();
+    private Author mcHammer() {
+        return new Author(AuthorEnum.MC_HAMMER, List.of(
+                name("You Can't Touch This").youtube(HARRY, "81kPwiF9_t0")));
     }
 
     @Bean
-    private Song withinTemptation(){
-        return Song.from(Author.WITHIN_TEMPTATION).name("Running Up That Hill").youtube(BASS_MONKEY, "1WV8EWL0vUs").build();
+    private Author withinTemptation() {
+        return new Author(AuthorEnum.WITHIN_TEMPTATION, List.of(
+                name("Running Up That Hill").youtube(BASS_MONKEY, "1WV8EWL0vUs")));
     }
 
     @Bean
-    private Song bilWithers(){
-        return Song.from(Author.BIL_WITHERS)
-                .name("Ain't no Sunshine")
-                .youtube(FUSILLI_JERRY, "38Pbv9tDj3A")
-                .youtube(HARRY, "b1H6wW5RzEA")
-                .build();
+    private Author bilWithers() {
+        return new Author(AuthorEnum.BIL_WITHERS, List.of(
+                name("Ain't no Sunshine").youtubeAnd(FUSILLI_JERRY, "38Pbv9tDj3A").youtube(HARRY, "b1H6wW5RzEA")));
     }
 
     @Bean
-    private Song wham(){
-        return Song.from(Author.WHAM)
-                .name("Last Christmas").frequency(425).youtube(COVERSOLUTIONS, "5E0QHO22ls8", of(HAMMER_ON, STACCATO))
-                .build();
+    private Author wham() {
+        return new Author(AuthorEnum.WHAM, List.of(
+                name("Last Christmas").frequency(425).youtube(COVERSOLUTIONS, "5E0QHO22ls8", of(HAMMER_ON, STACCATO))));
     }
 
     @Bean
-    private List<Song> nirvana(){
-        return Song.from(Author.NIRVANA)
-                .name("In Bloom")
-                    .youtube(HOW_TO_PLAY_BASSLINES, "4mb_6mhK_5M")
-                    .youtube(COVERSOLUTIONS, "E6iXRdTKtV4")
-                .next().name("Smells Like Teen Spirit")
-                    .youtube(COVERSOLUTIONS, "pmtvOOI-pyU")
-                .next().name("Come As You Are")
-                    .youtube(COVERSOLUTIONS, "rWHkrYRhOzw", DGCF)
-                .next().name("Heart Shaped Box")
-                    .youtube(BRAND73, "ng3-YZs-7x4", DbAbDbGb)
-                .next().name("Polly")
-                    .youtube(BRAND73, "YHAm0U7CRiA")
-                .next().name("The Man Who Sold The World")
-                    .youtube(BRAND73, "wRrEK0Tu3vg", EbAbDbGb)
-                .next().name("Lithium")
-                    .youtube(EUBASS, "3giBt4c55hU")
-                .buildAll();
+    private Author nirvana() {
+        return new Author(AuthorEnum.NIRVANA, List.of(
+                name("In Bloom").youtubeAnd(HOW_TO_PLAY_BASSLINES, "4mb_6mhK_5M").youtube(COVERSOLUTIONS, "E6iXRdTKtV4"),
+                name("Smells Like Teen Spirit").youtube(COVERSOLUTIONS, "pmtvOOI-pyU"),
+                name("Come As You Are").youtube(COVERSOLUTIONS, "rWHkrYRhOzw", DGCF),
+                name("Heart Shaped Box").youtube(BRAND73, "ng3-YZs-7x4", DbAbDbGb),
+                name("Polly").youtube(BRAND73, "YHAm0U7CRiA"),
+                name("The Man Who Sold The World").youtube(BRAND73, "wRrEK0Tu3vg", EbAbDbGb),
+                name("Lithium").youtube(EUBASS, "3giBt4c55hU")));
     }
 
     @Bean
-    private Song kateBush(){
-        return Song.from(Author.KATE_BUSH)
-                .name("Running Up That Hill").youtube(BASSCOVER_PETE, "SjbYAELECqQ")
-                .build();
+    private Author kateBush() {
+        return new Author(AuthorEnum.KATE_BUSH, List.of(
+                name("Running Up That Hill").youtube(BASSCOVER_PETE, "SjbYAELECqQ")));
     }
 }

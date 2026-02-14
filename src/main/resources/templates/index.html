@@ -6,7 +6,7 @@
 <body>
     <h1><a th:href="@{/}">Kojotak bass guitar song book</a></h1>
 
-    <table border="1" th:if="${songs != null}">
+    <table border="1" th:if="${rows != null}">
         <thead>
         <tr>
             <th>Song Title</th>
@@ -23,9 +23,9 @@
                 <form th:action="@{/}" method="post" th:object="${filter}">
                 <td><input type="text" th:field="*{songName}" /></td>
                 <td>
-                    <select onchange='this.form.submit()' th:field="*{author}">
+                    <select onchange='this.form.submit()' th:field="*{authorName}">
                         <option th:value="${null}" th:text="all"></option>
-                        <option th:each="a : ${authors}" th:value="${a}" th:text="${a.name}"></option>
+                        <option th:each="a : ${authors}" th:value="${a}" th:text="${a}"></option>
                     </select>
                 </td>
                 <td>
@@ -49,16 +49,16 @@
                 </select></td>
                 </form>
             </tr>
-            <tr th:each="song:${songs}">
-                <td><a th:text="${song.name}"
-                       th:href="@{/author/{authorName}/song/{songName}(authorName=${song.author.name}, songName=${song.name})}"></a>
+            <tr th:each="row:${rows}">
+                <td><a th:text="${row.song.name}"
+                       th:href="@{/author/{authorName}/song/{songName}(authorName=${row.author.name}, songName=${row.song.name})}"></a>
                 </td>
-                <td th:text="${song.author.name}"></td>
-                <td th:text="${song.bpm}"></td>
-                <td><sup th:text="${song.meter.count}"></sup>&frasl;<sub th:text="${song.meter.perBeat}"></sub></td>
-                <td th:text="${song.getAllTuningNames()}"></td>
-                <td th:text="${song.getAllChannels()}"></td>
-                <td th:text="${song.getAllTechnique()}"></td>
+                <td th:text="${row.author.name}"></td>
+                <td th:text="${row.song.bpm}"></td>
+                <td><sup th:text="${row.song.meter.count}"></sup>&frasl;<sub th:text="${row.song.meter.perBeat}"></sub></td>
+                <td th:text="${row.song.getAllTuningNames()}"></td>
+                <td th:text="${row.song.getAllChannels()}"></td>
+                <td th:text="${row.song.getAllTechnique()}"></td>
             </tr>
         </tbody>
     </table>
@@ -67,7 +67,7 @@
         <tbody>
             <tr>
                 <td>Author</td>
-                <td th:text="${selectedAuthor.name}" colspan="3"></td>
+                <td th:text="${selectedAuthor}" colspan="3"></td>
             </tr>
             <tr th:if="${selectedSong != null}">
                 <td>Song</td>
@@ -81,7 +81,7 @@
                 <td th:if="${stats.first}">YouTube</td>
                 <td th:if="${!stats.first}"></td>
                 <td><a th:text="${play.channel.label}"
-                       th:href="@{/author/{authorName}/song/{songName}/play/{channelId}/id/{youtubeId}(authorName=${selectedAuthor.name}, songName=${selectedSong.name}, channelId=${play.channel.id}, youtubeId=${play.id})}"></a>
+                       th:href="@{/author/{authorName}/song/{songName}/play/{channelId}/id/{youtubeId}(authorName=${selectedAuthor}, songName=${selectedSong.name}, channelId=${play.channel.id}, youtubeId=${play.id})}"></a>
                 <td th:text="${play.tuning.getName()}" ></td>
                 <td th:text="${play.technique}" ></td>
             </tr>
