@@ -37,8 +37,8 @@ class BassbookControllerTest {
         var author = new Author("Muse", List.of(new Song("song", Meter.COMMON, Feel.STRAIGHT, List.of())));
         when(database.getAuthors()).thenReturn(List.of(author));
 
-        var mv = controller.songDetail(AuthorEnum.MUSE.getName(), "song");
-        assertModelAttributeValue(mv, "selectedAuthor", AuthorEnum.MUSE.getName());
+        var mv = controller.songDetail("Muse", "song");
+        assertModelAttributeValue(mv, "selectedAuthor", "Muse");
     }
 
     @Test

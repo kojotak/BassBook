@@ -48,14 +48,14 @@ class BassbookFilterTest {
     @Test
     public void filterByOtherAuthor(){
         var filter = new BassbookFilter();
-        filter.setAuthorName(AuthorEnum.MUSE.getName());
+        filter.setAuthorName("Muse");
         assertFalse(filter.test(row));
     }
 
     @Test
     public void filterByAuthor(){
         var filter = new BassbookFilter();
-        filter.setAuthorName(AuthorEnum.SOAD.getName());
+        filter.setAuthorName("System of a Down");
         assertTrue(filter.test(row));
     }
 
@@ -94,7 +94,7 @@ class BassbookFilterTest {
         filter.setMeter(new Meter(6,8));
         filter.setChannel(Channel.COVERSOLUTIONS);
         filter.setTuning(Tuning.CGCF);
-        filter.setAuthorName(AuthorEnum.SOAD.getName());
+        filter.setAuthorName("System of a Down");
         assertTrue(filter.test(row));
     }
 }

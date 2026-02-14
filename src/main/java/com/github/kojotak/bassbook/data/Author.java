@@ -9,8 +9,4 @@ public record Author (
 
 ) {
 
-    public Author(AuthorEnum name, List<Song> songs) {
-        this(name.getName(), songs);
-    }
-
 }
