@@ -9,23 +9,19 @@ import java.util.stream.IntStream;
 public record Song (
 
         String name,
-        Meter meter,
-        Feel feel,
+        @Nullable Meter meter,
+        @Nullable Feel feel,
         @Nullable Integer bpm,
-        int aFrequency,
+        @Nullable Integer aFrequency,
         Collection<Youtube> plays
 
 ) implements Named {
 
     //constructor with mandatory fields only
-    public Song(String name,
-                Meter meter,
-                Feel feel,
-                Collection<Youtube> plays){
-        this(name, meter, feel, DEFAULT_BPM, DEFAULT_TUNING_FREQUENCY, plays);
+    public Song(String name, Collection<Youtube> plays){
+        this(name, null, null, null, null, plays);
     }
 
-    public static final int DEFAULT_TUNING_FREQUENCY = 440;
     public static final Integer DEFAULT_BPM = null;
 
     @Override
@@ -34,8 +30,23 @@ public record Song (
     }
 
     @JsonIgnore
+    public Meter meterOrDefault() {
+        return Optional.ofNullable(meter).orElse(Meter.COMMON);
+    }
+
+    @JsonIgnore
+    public Feel feelOrDefault() {
+        return Optional.ofNullable(feel).orElse(Feel.STRAIGHT);
+    }
+
+    @JsonIgnore
+    public Integer aFrequencyOrDefault() {
+        return Optional.ofNullable(aFrequency).orElse(440);
+    }
+
+    @JsonIgnore
     public List<Tuning> getAllTunings(){
-        return plays.stream().map(Youtube::tuning).distinct().sorted().toList();
+        return plays.stream().map(Youtube::tuningOrDefault).distinct().sorted().toList();
     }
 
     @JsonIgnore
@@ -60,10 +71,10 @@ public record Song (
     public static class SongBuilder {
 
         private String name;
-        private Meter meter = Meter.COMMON;
-        private Feel feel = Feel.STRAIGHT;
-        private @Nullable Integer bpm = DEFAULT_BPM;
-        private int aFrequency = DEFAULT_TUNING_FREQUENCY;
+        private @Nullable Meter meter = null;
+        private @Nullable Feel feel = null;
+        private @Nullable Integer bpm = null;
+        private @Nullable Integer aFrequency = null;
         private final List<Youtube> plays = new ArrayList<>();
 
         public SongBuilder name(String name){
@@ -144,8 +155,8 @@ public record Song (
                     .name(name)
                     .feel(feel)
                     .meter(meter)
-                    .bpm(DEFAULT_BPM)
-                    .frequency(DEFAULT_TUNING_FREQUENCY)
+                    .bpm(bpm)
+                    .frequency(aFrequency)
                     .youtube(plays)
                     .next();
         }
@@ -235,15 +246,13 @@ public record Song (
 
         private SongsBuilder withDefaults(){
             this.playList.add(index, new ArrayList<>());
-            return meter(Meter.COMMON).feel(Feel.STRAIGHT).bpm(DEFAULT_BPM).frequency(DEFAULT_TUNING_FREQUENCY);
+            return this;
         }
     }
 
-    private static Song buildValid(String name, Meter meter, Feel feel, Integer bpm, int freq, Collection<Youtube> plays) {
+    private static Song buildValid(String name, @Nullable Meter meter, @Nullable Feel feel, @Nullable Integer bpm, @Nullable Integer freq, Collection<Youtube> plays) {
         Assert.notEmpty(plays, "plays can not be empty");
         Objects.requireNonNull(name, "name is required");
-        Objects.requireNonNull(feel, "feel can not be null");
-        Objects.requireNonNull(meter, "meter can not be null");
         var sortedPlays = plays.stream()
                 .sorted(Comparator.comparing(p -> p.channel().label))
                 .toList();

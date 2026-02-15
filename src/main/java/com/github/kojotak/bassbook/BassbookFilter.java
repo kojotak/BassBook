@@ -96,7 +96,7 @@ public class BassbookFilter implements Predicate<Row> {
         result &= tuning == null || row.song().getAllTunings().contains(tuning);
         result &= channel == null || row.song().getAllChannels().contains(channel);
         result &= technique == null || row.song().getAllTechnique().contains(technique);
-        result &= meter == null || row.song().meter().equals(meter);
+        result &= meter == null || row.song().meterOrDefault().equals(meter);
         return result;
     }
 }

@@ -34,7 +34,7 @@ class BassbookControllerTest {
 
     @Test
     public void songDetailContainsSelectedAuthor() {
-        var author = new Author("Muse", List.of(new Song("song", Meter.COMMON, Feel.STRAIGHT, List.of())));
+        var author = new Author("Muse", List.of(new Song("song", List.of())));
         when(database.getAuthors()).thenReturn(List.of(author));
 
         var mv = controller.songDetail("Muse", "song");
@@ -44,7 +44,7 @@ class BassbookControllerTest {
     @Test
     public void songDetailContainsSelectedPlayIfItIsTheOnlyOne() {
         var play = new Youtube(Channel.BRAND73, "id");
-        var song = new Song("song", Meter.COMMON, Feel.STRAIGHT, List.of(play));
+        var song = new Song("song", List.of(play));
         var author = new Author("Nina Simone", List.of(song));
         when(database.getAuthors()).thenReturn(List.of(author));
 
@@ -56,7 +56,7 @@ class BassbookControllerTest {
     @Test
     public void playDetailContainsSelectedPlay() {
         var play = new Youtube(Channel.BRAND73, "id");
-        var song = new Song("song", Meter.COMMON, Feel.STRAIGHT, List.of(play));
+        var song = new Song("song", List.of(play));
         var author = new Author("Nina Simone", List.of(song));
 
         when(database.getAuthors()).thenReturn(List.of(author));
@@ -68,8 +68,8 @@ class BassbookControllerTest {
 
     @Test
     public void filterSongs() {
-        var firstSong = new Song("first", Meter.COMMON, Feel.STRAIGHT, List.of(new Youtube(Channel.COVERSOLUTIONS, "id_1")));
-        var secondSong = new Song("second", Meter.COMMON, Feel.STRAIGHT, List.of(new Youtube(Channel.BRAND73, "id_2")));
+        var firstSong = new Song("first", List.of(new Youtube(Channel.COVERSOLUTIONS, "id_1")));
+        var secondSong = new Song("second", List.of(new Youtube(Channel.BRAND73, "id_2")));
         var author = new Author("System of the Dawn", List.of(firstSong, secondSong));
         when(database.getAuthors()).thenReturn(List.of(author));
 

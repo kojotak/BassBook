@@ -7,6 +7,10 @@ public record Author (
     String name,
     List<Song> songs
 
-) {
+) implements Named {
 
+    @Override
+    public String getName() {
+        return name;
+    }
 }

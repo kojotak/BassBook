@@ -1,8 +1,13 @@
 package com.github.kojotak.bassbook;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.github.kojotak.bassbook.data.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +27,50 @@ public class BassbookController {
 
     public BassbookController(BassbookDatabase database) {
         this.database = database;
+    }
+
+    @GetMapping("/export/json")
+    public ResponseEntity<String> exportAsJson() throws Exception {
+        var objectMapper = new ObjectMapper();
+        // Skip null and empty attributes
+        objectMapper.setDefaultPropertyInclusion(
+            com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY
+        );
+        var authors = database.getAuthors();
+
+        // Serialize to pretty-printed JSON
+        var jsonString = objectMapper.writerWithDefaultPrettyPrinter()
+                .writeValueAsString(authors);
+
+        // Set proper headers
+        var headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(jsonString);
+    }
+
+    @GetMapping("/export/yaml")
+    public ResponseEntity<String> exportAsYaml() throws Exception {
+        var objectMapper = new ObjectMapper(new YAMLFactory());
+        // Skip null and empty attributes
+        objectMapper.setDefaultPropertyInclusion(
+            com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY
+        );
+        var authors = database.getAuthors();
+
+        // Serialize to YAML string
+        var yamlString = objectMapper.writeValueAsString(authors);
+
+        // Set proper headers
+        var headers = new HttpHeaders();
+        headers.setContentType(MediaType.TEXT_PLAIN);
+//        headers.setContentDispositionFormData("attachment", "bassbook.yaml");
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(yamlString);
     }
 
     @GetMapping("/")
@@ -84,7 +133,7 @@ public class BassbookController {
         model.addObject("filter", filter);
         model.addObject("rows", filtered);
         model.addObject("authors", authors.stream().map(Author::name).toList());
-        model.addObject("meters", allRows.stream().map(Row::song).map(Song::meter).distinct().sorted().toList() );
+        model.addObject("meters", allRows.stream().map(Row::song).map(Song::meterOrDefault).distinct().sorted().toList() );
         model.addObject("tunings", Stream.of(Tuning.values()).sorted(
                 Comparator.comparing(Tuning::name)
         ).toList() );

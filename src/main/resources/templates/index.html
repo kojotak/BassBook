@@ -55,7 +55,7 @@
                 </td>
                 <td th:text="${row.author.name}"></td>
                 <td th:text="${row.song.bpm}"></td>
-                <td><sup th:text="${row.song.meter.count}"></sup>&frasl;<sub th:text="${row.song.meter.perBeat}"></sub></td>
+                <td><sup th:text="${row.song.meterOrDefault.count}"></sup>&frasl;<sub th:text="${row.song.meterOrDefault.perBeat}"></sub></td>
                 <td th:text="${row.song.getAllTuningNames()}"></td>
                 <td th:text="${row.song.getAllChannels()}"></td>
                 <td th:text="${row.song.getAllTechnique()}"></td>

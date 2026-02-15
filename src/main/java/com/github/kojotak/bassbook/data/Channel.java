@@ -1,5 +1,7 @@
 package com.github.kojotak.bassbook.data;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Channel {
 
     ANDRE_CARVALHO("André Carvalho", "adrcarvalho93"),
@@ -36,6 +38,7 @@ public enum Channel {
     /**
      * Channel id
      */
+    @JsonValue
     public final String id;
 
     Channel(String name, String id) {
