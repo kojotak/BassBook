@@ -1,4 +1,4 @@
-package com.github.kojotak.bassbook;
+package com.github.kojotak.bassbook.claude;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BassbookApplication {
 
-	static void main(String[] args) {
-		SpringApplication.run(BassbookApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(BassbookApplication.class, args);
+    }
 }

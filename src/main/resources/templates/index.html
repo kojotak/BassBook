@@ -1,105 +1,195 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Kojotak Bass Guitar Song Book</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Submission Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        h1, h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="url"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .export-button {
+            background-color: #28a745;
+            margin-top: 10px;
+        }
+        .export-button:hover {
+            background-color: #218838;
+        }
+        .message {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+        th:hover {
+            background-color: #0056b3;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        th::after {
+            content: ' ⇅';
+            opacity: 0.5;
+        }
+        th.sort-asc::after {
+            content: ' ↑';
+            opacity: 1;
+        }
+        th.sort-desc::after {
+            content: ' ↓';
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-    <h1><a th:href="@{/}">Kojotak bass guitar song book</a></h1>
+    <div class="container">
+        <h1>Submit a URL</h1>
 
-    <table border="1" th:if="${rows != null}">
-        <thead>
-        <tr>
-            <th>Song Title</th>
-            <th>Author</th>
-            <th>BPM</th>
-            <th>Meter</th>
-            <th>Tuning</th>
-            <th>Youtube channel</th>
-            <th>Technique</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <form th:action="@{/}" method="post" th:object="${filter}">
-                <td><input type="text" th:field="*{songName}" /></td>
-                <td>
-                    <select onchange='this.form.submit()' th:field="*{authorName}">
-                        <option th:value="${null}" th:text="all"></option>
-                        <option th:each="a : ${authors}" th:value="${a}" th:text="${a}"></option>
-                    </select>
-                </td>
-                <td>
-                    &nbsp;
-                </td>
-                <td><select onchange='this.form.submit()' th:field="*{meter}">
-                    <option th:value="${null}" th:text="all"></option>
-                    <option th:each="m : ${meters}" th:value="${@meterToStringConverter.convert(m)}"><sup th:text="${m.count}"></sup>&frasl;<sub th:text="${m.perBeat}"></sub></option>
-                </select></td>
-                <td><select onchange='this.form.submit()' th:field="*{tuning}">
-                    <option th:value="${null}" th:text="all"></option>
-                    <option th:each="t : ${tunings}" th:value="${t}" th:text="${t.getName()}"></option>
-                </select></td>
-                <td><select onchange='this.form.submit()' th:field="*{channel}">
-                    <option th:value="${null}" th:text="all"></option>
-                    <option th:each="ch : ${channels}" th:value="${ch}" th:text="${ch.label}"></option>
-                </select></td>
-                <td><select onchange='this.form.submit()' th:field="*{technique}">
-                    <option th:value="${null}" th:text="all"></option>
-                    <option th:each="t : ${technique}" th:value="${t}" th:text="${t.name}"></option>
-                </select></td>
-                </form>
-            </tr>
-            <tr th:each="row:${rows}">
-                <td><a th:text="${row.song.name}"
-                       th:href="@{/author/{authorName}/song/{songName}(authorName=${row.author.name}, songName=${row.song.name})}"></a>
-                </td>
-                <td th:text="${row.author.name}"></td>
-                <td th:text="${row.song.bpm}"></td>
-                <td><sup th:text="${row.song.meterOrDefault.count}"></sup>&frasl;<sub th:text="${row.song.meterOrDefault.perBeat}"></sub></td>
-                <td th:text="${row.song.getAllTuningNames()}"></td>
-                <td th:text="${row.song.getAllChannels()}"></td>
-                <td th:text="${row.song.getAllTechnique()}"></td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- Export messages -->
+        <div th:if="${exportSuccess}" class="message success-message" th:text="${exportSuccess}"></div>
+        <div th:if="${exportError}" class="message error-message" th:text="${exportError}"></div>
 
-    <table border="1" th:if="${selectedAuthor != null}">
-        <tbody>
-            <tr>
-                <td>Author</td>
-                <td th:text="${selectedAuthor}" colspan="3"></td>
-            </tr>
-            <tr th:if="${selectedSong != null}">
-                <td>Song</td>
-                <td th:text="${selectedSong.name}" colspan="3"></td>
-            </tr>
-            <tr th:if="${selectedSong.bpm != null}">
-                <td>BPM</td>
-                <td th:text="${selectedSong.bpm}" colspan="3"></td>
-            </tr>
-            <tr th:each="play,stats:${selectedSong.plays}" th:if="${selectedSong.plays != null}">
-                <td th:if="${stats.first}">YouTube</td>
-                <td th:if="${!stats.first}"></td>
-                <td><a th:text="${play.channel.label}"
-                       th:href="@{/author/{authorName}/song/{songName}/play/{channelId}/id/{youtubeId}(authorName=${selectedAuthor}, songName=${selectedSong.name}, channelId=${play.channel.id}, youtubeId=${play.id})}"></a>
-                <td th:text="${play.tuning.getName()}" ></td>
-                <td th:text="${play.technique}" ></td>
-            </tr>
-            <tr th:if="${selectedPlay != null}">
-                <td></td>
-                <td colspan="3">
-                    <iframe
-                            th:src="@{'https://www.youtube.com/embed/' + ${selectedPlay.id}}"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                    </iframe>
+        <form action="/submit" method="post">
+            <label for="url">Enter URL:</label>
+            <input type="url" id="url" name="url" placeholder="https://example.com" required>
+            <button type="submit">Submit</button>
+        </form>
 
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- Export button -->
+        <form action="/export" method="post">
+            <button type="submit" class="export-button">Export Database to data.sql</button>
+        </form>
+    </div>
 
+    <div class="container">
+        <h2>Videos</h2>
+        <table id="videosTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)" class="sort-asc">Song</th>
+                    <th onclick="sortTable(1)">Artist</th>
+                    <th onclick="sortTable(2)">Channel</th>
+                    <th onclick="sortTable(3)">Instrument</th>
+                    <th onclick="sortTable(4)">Tuning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="video : ${videos}">
+                    <td th:text="${video.song.name}"></td>
+                    <td th:text="${video.song.artist.name}"></td>
+                    <td th:text="${video.channel.name}"></td>
+                    <td th:text="${video.instrument.name}"></td>
+                    <td th:text="${video.tuning?.name}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function sortTable(columnIndex) {
+            const table = document.getElementById("videosTable");
+            const tbody = table.querySelector("tbody");
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+            const headers = table.querySelectorAll("th");
+            const currentHeader = headers[columnIndex];
+
+            // Determine sort direction
+            let sortDirection = "asc";
+            if (currentHeader.classList.contains("sort-asc")) {
+                sortDirection = "desc";
+            }
+
+            // Remove sort classes from all headers
+            headers.forEach(header => {
+                header.classList.remove("sort-asc", "sort-desc");
+            });
+
+            // Add sort class to current header
+            currentHeader.classList.add(sortDirection === "asc" ? "sort-asc" : "sort-desc");
+
+            // Sort rows
+            rows.sort((a, b) => {
+                const aValue = a.cells[columnIndex].textContent.trim();
+                const bValue = b.cells[columnIndex].textContent.trim();
+
+                if (sortDirection === "asc") {
+                    return aValue.localeCompare(bValue);
+                } else {
+                    return bValue.localeCompare(aValue);
+                }
+            });
+
+            // Reorder rows in the table
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
 </body>
 </html>
