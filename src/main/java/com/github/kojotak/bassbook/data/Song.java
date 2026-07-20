@@ -64,7 +64,7 @@ public record Song (
         return plays.stream().map(Youtube::channel).distinct().sorted().toList();
     }
 
-    public static SongBuilder name(String name){
+    public static SongBuilder song(String name){
         return new SongBuilder().name(name);
     }
 

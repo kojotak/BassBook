@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BassbookFilterTest {
 
-    private final Song toxicity = Song.name("Toxicity").meter(6, 8)
+    private final Song toxicity = Song.song("Toxicity").meter(6, 8)
             .youtubeAnd(EUBASS, "fORp9OK7wys", CGCF)
             .youtube(COVERSOLUTIONS, "G_3Aze81cf0", CGCF);
     private final Row row = new Row(new Author("System of a Down", List.of(toxicity)), toxicity, Tag.PLAY);
