@@ -96,7 +96,7 @@ public class BassbookDatabase {
                         song("In the air tonight").youtube(NICKZ911, "PZfLhQM_KIY"),
                         song("You Can't Hurry Love").youtube(BASS_MONKEY, "lnxWMAIC3FA"))),
                 new Author("Genesis", orderedList(
-                        song("Jesus He Knows Me").youtube(BASS_MONKEY, "Uk3AHXpd-lQ")
+                        song("Jesus He Knows Me").bpm(95).youtube(BASS_MONKEY, "Uk3AHXpd-lQ")
                 )),
                 new Author("Queen", orderedList(
                         song("Under pressure").youtube(COVERSOLUTIONS, "GdleLmsfFVg"),
