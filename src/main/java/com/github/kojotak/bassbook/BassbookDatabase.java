@@ -87,7 +87,8 @@ public class BassbookDatabase {
                         song("I threw a brick through a window").youtube(LOVE_PEACE_BASS, "fcLQceOpjWw"),
                         song("Heartland").youtube(LOVE_PEACE_BASS, "SKCfKedrMcI"),
                         song("Wire").youtube(LEO, "Csr5dtiSbeo", of(SLAP)),
-                        song("Until the end of the the world").youtube(BASSCOVERS88, "ffhsInl8gBE"))),
+                        song("Until the end of the the world").youtube(BASSCOVERS88, "ffhsInl8gBE"),
+                        song("Staring At The Sun").youtube(BASS_MONKEY, "qvxGSf36VZg"))),
                 new Author("Phil Collins", orderedList(
                         song("Another day in paradise").youtubeAnd(NOCCO_CAT, "bZ3CSRQ6e4U", of(SLIDE)).youtube(TOM_BORNEMANN, "BdpPpmMnjAo", of(SLIDE)),
                         song("Easy lover").youtubeAnd(FLORIAN_BASSO, "bqtjyr1Khsc").youtubeAnd(NOCCO_CAT, "r1z9_Pnorr4").youtubeAnd(HOW_TO_PLAY_BASSLINES, "7cnjN1BIv3A").youtube(BASSCOVER_PETE, "3CulOurL6mk"),
