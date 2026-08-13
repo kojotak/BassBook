@@ -95,6 +95,9 @@ public class BassbookDatabase {
                         song("Don't Lose My Number").youtube(NOCCO_CAT, "FTQFPF2TbXc"),
                         song("In the air tonight").youtube(NICKZ911, "PZfLhQM_KIY"),
                         song("You Can't Hurry Love").youtube(BASS_MONKEY, "lnxWMAIC3FA"))),
+                new Author("Genesis", orderedList(
+                        song("Jesus He Knows Me").youtube(BASS_MONKEY, "Uk3AHXpd-lQ")
+                )),
                 new Author("Queen", orderedList(
                         song("Under pressure").youtube(COVERSOLUTIONS, "GdleLmsfFVg"),
                         song("Bohemian rhapsody").youtubeAnd(COVERSOLUTIONS, "qJVyHsJ2uEs").youtube(FUSILLI_JERRY, "zPfyI4ASn-c", EbAbDbGb),
