@@ -148,7 +148,11 @@ public class BassbookDatabase {
                         song("Learn To Fly").youtubeAnd(BRAND73, "ZUXH7cA-dLc").youtube(COVERSOLUTIONS, "L8HDRJzA0fo"),
                         song("Everlong").youtube(COVERSOLUTIONS, "IB8ZOQZK3dA", DADG))),
                 new Author("Linkin Park", orderedList(
-                        song("Heavy Is The Crown").youtube(COVERSOLUTIONS, "IhIiZl7ZOk4"))),
+                        song("Heavy Is The Crown").youtube(COVERSOLUTIONS, "IhIiZl7ZOk4"),
+                        song("Given Up").bpm(200)
+                                .youtubeAnd(SAITO, "oTfVyifmrlY", DADG)
+                                .youtube(BASS_MONKEY, "OMKcsN7fqpw", DADG),
+                        song("In The End").youtube(COVERSOLUTIONS, "6w_6rYWgC4U", BEAD))),
                 new Author("AC/DC", orderedList(
                         song("You Shook Me All Night Long").youtube(BRAND73, "_Zp-OB65O68"),
                         song("Hell's Bells").youtube(BRAND73, "-kbXnGwUSt0"),
@@ -176,7 +180,7 @@ public class BassbookDatabase {
                 new Author("Dua Lipa", orderedList(
                         song("Break my heart").youtube(YELLOW_TABS, "6s5vAsHiZdo", of(SLIDE, OCTAVES)))),
                 new Author("Bon Jovi", orderedList(
-                        song("It's my life").youtubeAnd(YELLOW_TABS, "pRtzYkTQEMI", EADG).youtube(YELLOW_TABS, "JxoynLubXzM", HEADG))),
+                        song("It's my life").youtubeAnd(YELLOW_TABS, "pRtzYkTQEMI", EADG).youtube(YELLOW_TABS, "JxoynLubXzM", BEADG))),
                 new Author("Guano Apes", orderedList(
                         song("Open your eyes").youtube(VX_MATTHEW, "Oimv05FB87c", of(SLAP, HAMMER_ON, GHOST_NOTE)))),
                 new Author("Green Day", orderedList(

@@ -28,10 +28,12 @@ public enum Tuning implements Named {
 
     DGCF,
 
+    BEAD,
+
     /**
      * Standard tuning for 5 string
      */
-    HEADG;
+    BEADG;
 
     @Override
     public String getName() {
