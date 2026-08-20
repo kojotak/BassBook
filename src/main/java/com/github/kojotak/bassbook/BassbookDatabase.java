@@ -152,6 +152,7 @@ public class BassbookDatabase {
                         song("Everlong").youtube(COVERSOLUTIONS, "IB8ZOQZK3dA", DADG))),
                 new Author("Linkin Park", orderedList(
                         song("Heavy Is The Crown").youtube(COVERSOLUTIONS, "IhIiZl7ZOk4"),
+                        song("Faint").youtube(SAITO, "Q2fJ87JcI34", CsGsCsFs),
                         song("Given Up").bpm(200)
                                 .youtubeAnd(SAITO, "oTfVyifmrlY", DADG)
                                 .youtube(BASS_MONKEY, "OMKcsN7fqpw", DADG),
@@ -280,6 +281,7 @@ public class BassbookDatabase {
                         song("Heart Shaped Box").youtube(BRAND73, "ng3-YZs-7x4", DbAbDbGb),
                         song("Polly").youtube(BRAND73, "YHAm0U7CRiA"),
                         song("The Man Who Sold The World").youtube(BRAND73, "wRrEK0Tu3vg", EbAbDbGb),
+                        song("About a Girl").youtube(BRAND73, "03vk9RoRQ0w"),
                         song("Lithium").youtube(EUBASS, "3giBt4c55hU"))),
                 new Author("Kate Bush", orderedList(
                         song("Running Up That Hill").youtube(BASSCOVER_PETE, "SjbYAELECqQ"))),
