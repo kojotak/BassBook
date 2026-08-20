@@ -231,7 +231,9 @@ public class BassbookDatabase {
                 new Author("Britney Spears", orderedList(
                         song("Toxic").youtube(NOCCO_CAT, "-ZpfCtsNY6g"))),
                 new Author("Bruno Mars", orderedList(
-                        song("Treasure").youtubeAnd(NOCCO_CAT, "WFuQaAZh-xo", of(SLAP, HAMMER_ON)).youtube(HOW_TO_PLAY_BASSLINES, "CwNk7ujk2FY", of(SLIDE)),
+                        song("Treasure")
+                                .youtubeAnd(NOCCO_CAT, "WFuQaAZh-xo", of(SLAP, HAMMER_ON))
+                                .youtube(HOW_TO_PLAY_BASSLINES, "CwNk7ujk2FY", of(SLIDE)),
                         song("Locked out of heaven").youtube(HOW_TO_PLAY_BASSLINES, "1cN35xg0TYk"))),
                 new Author("Jamiroquai", orderedList(
                         song("Time Won't Wait").youtube(NOCCO_CAT, "5XXuPHD17kM"))),
@@ -280,7 +282,10 @@ public class BassbookDatabase {
                         song("The Man Who Sold The World").youtube(BRAND73, "wRrEK0Tu3vg", EbAbDbGb),
                         song("Lithium").youtube(EUBASS, "3giBt4c55hU"))),
                 new Author("Kate Bush", orderedList(
-                        song("Running Up That Hill").youtube(BASSCOVER_PETE, "SjbYAELECqQ")))
+                        song("Running Up That Hill").youtube(BASSCOVER_PETE, "SjbYAELECqQ"))),
+                new Author("The Corrs", orderedList(
+                        song("Only When I Sleep").youtube(KIMME08, "KHnI-pm1sc0")
+                ))
         );
     }
 

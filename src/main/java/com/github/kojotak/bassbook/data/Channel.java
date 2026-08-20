@@ -20,6 +20,7 @@ public enum Channel {
     GEORDIE_BASSIST("The Geordie Bassist", "TheGeordieBassist"),
     HARRY("Harry - Music & Stuff", "HarryMusicStuff"),
     HOW_TO_PLAY_BASSLINES("How to play Basslines", "HowtoplayBasslines"),
+    KIMME08("김미의 기분좋은일", "Kimme08"),
     LEO("LeoBassCovers", "LeoBassCovers2"),
     LOVE_PEACE_BASS("Love, Peace, Bass", "LovePeaceBass"),
     NATE_NAVARRO("Nate Navarro", "NateNavarro"),
