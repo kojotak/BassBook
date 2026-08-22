@@ -69,6 +69,8 @@ public class BassbookDatabase {
                         song("Time is running out").youtubeAnd(TOM_BORNEMANN, "BGji9IygCCw", of(SLIDE)).youtube(ANDRE_CARVALHO, "2CpQkmNe0Vg", of(SLIDE)),
                         song("Hysteria").bpm(93).youtubeAnd(NATE_NAVARRO, "2-BidwjmCgc").youtubeAnd(COVERSOLUTIONS, "QW0qlOSdkrM").youtube(FUSILLI_JERRY, "QTGkyIxF24w"))),
                 new Author("U2", orderedList(
+                        song("Angel of Harmel").youtube(BRAND73, "Nue7i2SP3Dk"),
+                        song("One").youtube(BRAND73, "rCsijpH_XTo"),
                         song("Vertigo").youtubeAnd(BRAND73, "OULMZ3DC1WU").youtube(NOCCO_CAT, "F_evK5Ymt-c"),
                         song("Sweetest thing").youtubeAnd(BRAND73, "fvUBvZRh7LM").youtube(COVERSOLUTIONS, "6jP9me9oHzY"),
                         song("In God's country").youtubeAnd(BRAND73, "ExFYtgshjUc").youtube(LOVE_PEACE_BASS, "WmsJXmzRH90"),
