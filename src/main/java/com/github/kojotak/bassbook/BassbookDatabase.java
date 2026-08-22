@@ -31,7 +31,9 @@ public class BassbookDatabase {
     private List<Author> prepareAuthors(){
         return orderedList(
                 new Author("The Cranberries", orderedList(
-                        song("Zombie").youtubeAnd(COVERSOLUTIONS, "u9Zuoepny2Y").youtube(BRAND73, "oqe6rWKOvXk"),
+                        song("Zombie")
+                                .youtubeAnd(COVERSOLUTIONS, "u9Zuoepny2Y")
+                                .youtube(BRAND73, "oqe6rWKOvXk"),
                         song("Promises").youtube(ROBERTO_YANGUS, "a0VlH1DhdIY"),
                         song("Linger").youtube(COVERSOLUTIONS, "T1JCwqngEl0"),
                         song("Animal instinct").youtube(BASSCOVERS88, "x1Ifi28ac4E"),
@@ -111,7 +113,12 @@ public class BassbookDatabase {
                 new Author("Billy Idol", orderedList(
                         song("White wedding").youtubeAnd(HARRY, "TqA_IWPuGcU").youtubeAnd(BRAND73, "wMPEaVGX_7w").youtube(TOM_BORNEMANN, "bQ6aCLqVkrw"),
                         song("Rebel Yell").youtube(FUSILLI_JERRY, "u3nrN2-A_6g"))),
-                new Author("Talking heads", orderedList(song("Psycho killer").youtubeAnd(HARRY, "SNZHCz4rzKA").youtubeAnd(NOCCO_CAT, "m32-etMoOMY", of(STACCATO)).youtube(COVERSOLUTIONS, "6NpufkkmNmo"))),
+                new Author("Talking heads", orderedList(
+                        song("Psycho killer")
+                                .youtubeAnd(HARRY, "SNZHCz4rzKA")
+                                .youtubeAnd(BRAND73, "6QU4JQm4ZTY")
+                                .youtubeAnd(NOCCO_CAT, "m32-etMoOMY", of(STACCATO))
+                                .youtube(COVERSOLUTIONS, "6NpufkkmNmo"))),
                 new Author("The White stripes", orderedList(song("Seven nation army").youtubeAnd(HARRY, "6_7VrkrUuKc").youtube(ANDRE_CARVALHO, "adrcarvalho93"))),
                 new Author("The Black eyed peas", orderedList(song("Let's get it started").youtube(HARRY, "iz89AiRQhE0"))),
                 new Author("Sia", orderedList(song("Snowman").meter(6, 8).youtube(NOCCO_CAT, "KSye_cosGI4"))),
@@ -289,6 +296,13 @@ public class BassbookDatabase {
                         song("Running Up That Hill").youtube(BASSCOVER_PETE, "SjbYAELECqQ"))),
                 new Author("The Corrs", orderedList(
                         song("Only When I Sleep").youtube(KIMME08, "KHnI-pm1sc0")
+                )),
+                new Author("Alanis Morissete", orderedList(
+                        song("Thank U").youtube(EUBASS, "pCfu6YKykIY", BEADG),
+                        song("You Oughta Know")
+                                .youtubeAnd(COVERSOLUTIONS, "D5YcPXLyn5M", EbAbDbGb, of(GHOST_NOTE))
+                                .youtube(SERGIO_GONCALVS, "Z926-Q-FX1Q", EbAbDbGb),
+                        song("Ironic").youtube(NOCCO_CAT, "I7CcAWIDrc0")
                 ))
         );
     }

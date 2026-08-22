@@ -29,6 +29,7 @@ public enum Channel {
     NOCCO_CAT("nocco cat", "noccobass"),
     SAITO("SAITO【毎日ベースチャンネル】", "saitohironobu3811"),
     SAMBOAT_MUSIC("SamboatMusic - Bass Covers", "SamboatMusicBassCovers"),
+    SERGIO_GONCALVS("Sérgio Gonçâlvs Bass Cover", "sergiogoncalvsbass369"),
     SIMON_SKIPPER("Simon Skipper", "SimonSkipper"),
     TOM_BORNEMANN("Tom Bornemann", "basscination"),
     ROBERTO_YANGUS("Roberto Yanguas", "robertoyanguas8990"),
