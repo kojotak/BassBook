@@ -129,7 +129,10 @@ public class BassbookDatabase {
                         song("Hey Jude").youtube(NOCCO_CAT, "89ElXR60JR0"))),
                 new Author("The Prodigy", orderedList(song("Climbatize").youtube(CARLOS_CARLESI, "dqR-t46ZtdA"))),
                 new Author("Rammstein", orderedList(
-                        song("Du hast").youtubeAnd(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE)).youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE)),
+                        song("Du hast")
+                                .youtubeAnd(COVERSOLUTIONS, "FryMBp0whO0", of(SLIDE))
+                                .youtubeAnd(ANDRE_CARVALHO, "LgRBM23qz5M")
+                                .youtube(YELLOW_TABS, "RCHu29Dp9Kg", of(SLIDE)),
                         song("Sonne").youtube(BASSCOVERS88, "ARJRPZfKTvM", DADG),
                         song("Deutschland").youtube(ROBERTO_YANGUS, "skjjiZZyQVg", CGCF),
                         song("Radio").youtube(ROBERTO_YANGUS, "EERNqdacpQo", CGCF),
