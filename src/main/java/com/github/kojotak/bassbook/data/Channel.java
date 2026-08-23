@@ -23,6 +23,7 @@ public enum Channel {
     KIMME08("김미의 기분좋은일", "Kimme08"),
     LEO("LeoBassCovers", "LeoBassCovers2"),
     LOVE_PEACE_BASS("Love, Peace, Bass", "LovePeaceBass"),
+    MATT_EDJON_VERY_ACCURATE_TABS("Matt Edjon - Very Accurate Tabs", "mattedjon-veryaccuratetabs"),
     NATE_NAVARRO("Nate Navarro", "NateNavarro"),
     PIANOPRINTER("PianoPrinter","pianoprinterstudio"),
     NICKZ911("NickZ911", "NickZ911"),

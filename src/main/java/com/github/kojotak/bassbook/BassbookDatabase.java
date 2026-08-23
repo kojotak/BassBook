@@ -144,7 +144,17 @@ public class BassbookDatabase {
                 new Author("Coldplay", orderedList(song("Yellow").youtube(EUBASS, "hTnGMOT76lk", of(SLIDE)))),
                 new Author("System of a Down", orderedList(song("Toxicity").meter(6, 8).youtubeAnd(EUBASS, "fORp9OK7wys", CGCF).youtube(COVERSOLUTIONS, "G_3Aze81cf0", CGCF))),
                 new Author("Gorillaz", orderedList(song("Feel Good Inc.").youtube(NOCCO_CAT, "g4pCrlkUUn4", EbAbDbGb))),
-                new Author("Lenny Kravitz", orderedList(song("Honey").youtube(NOCCO_CAT, "P-aXqEShNwA"))),
+                new Author("Lenny Kravitz", orderedList(
+                        song("Honey").youtube(NOCCO_CAT, "P-aXqEShNwA"),
+                        song("I Belong To You").youtube(NOCCO_CAT, "GIwn3UVSkTg"),
+                        song("It Ain't Over Till It's Over")
+                                .youtubeAnd(BASSCOVER_PETE, "eeoJgkggVak", of(GHOST_NOTE, STACCATO))
+                                .youtubeAnd(MATT_EDJON_VERY_ACCURATE_TABS, "hQN9yX-nYM8", of(GHOST_NOTE, STACCATO))
+                                .youtube(BRAND73, "Nc_Jc9N1Lz0"),
+                        song("Always On The Run").bpm(85)
+                                .youtubeAnd(BASSCOVER_PETE, "bATa_6DDX_g")
+                                .youtube(BRAND73, "lIkTjPc9W3Y"))
+                ),
                 new Author("Al Green", orderedList(song("Let's Stay Together").youtube(NOCCO_CAT, "75Me-AY6Ia8"))),
                 new Author("Sheryl Crow", orderedList(song("Tomorrow never dies").meter(12, 8).youtube(NOCCO_CAT, "ffECgN2Mtjk"))),
                 new Author("Pink Floyd", orderedList(
