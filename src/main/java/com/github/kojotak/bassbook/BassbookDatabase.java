@@ -60,6 +60,7 @@ public class BassbookDatabase {
                         song("Dark necessities").youtube(COVERSOLUTIONS, "FHohYlcdQkc", of(SLAP)),
                         song("Universally speaking").youtube(ANDREA_BERTIX, "aSHyHY4QmlM"),
                         song("Dosed").youtube(ANDREA_BERTIX, "RgFgw6kUJpk"),
+                        song("Snow (Hey Oh)").youtube(COVERSOLUTIONS, "J7o5X56DQfM", of(STRUMMING)),
                         song("Black summer").youtubeAnd(NOCCO_CAT, "w0PqTcMCATo").youtube(HARRY, "BgCIimrL3Go"),
                         song("Not the one").youtube(NOCCO_CAT, "bXey_3plyNA"),
                         song("Breaking the Girl").youtube(FUSILLI_JERRY, "nDqXtPpukWw"),
@@ -103,7 +104,9 @@ public class BassbookDatabase {
                         song("Jesus He Knows Me").bpm(95).youtube(BASS_MONKEY, "Uk3AHXpd-lQ")
                 )),
                 new Author("Queen", orderedList(
-                        song("Under pressure").youtube(COVERSOLUTIONS, "GdleLmsfFVg"),
+                        song("Under pressure")
+                                .youtubeAnd(BRAND73, "cjwyufkuFlc")
+                                .youtube(COVERSOLUTIONS, "GdleLmsfFVg"),
                         song("Bohemian rhapsody").youtubeAnd(COVERSOLUTIONS, "qJVyHsJ2uEs").youtube(FUSILLI_JERRY, "zPfyI4ASn-c", EbAbDbGb),
                         song("The show must go on").youtube(PIANOPRINTER, "Pv_GFppKkbs"))),
                 new Author("Nina Simone", orderedList(song("Feeling good").youtube(HARRY, "qs9KVyJnKIU"))),
@@ -309,6 +312,9 @@ public class BassbookDatabase {
                         song("Running Up That Hill").youtube(BASSCOVER_PETE, "SjbYAELECqQ"))),
                 new Author("The Corrs", orderedList(
                         song("Only When I Sleep").youtube(KIMME08, "KHnI-pm1sc0")
+                )),
+                new Author("Marrilion", orderedList(
+                        song("No One Can").youtube(TOM_BORNEMANN, "OxUdin7e7Aw")
                 )),
                 new Author("Alanis Morissete", orderedList(
                         song("Thank U").youtube(EUBASS, "pCfu6YKykIY", BEADG),

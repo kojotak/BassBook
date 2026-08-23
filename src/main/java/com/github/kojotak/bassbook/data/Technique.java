@@ -11,6 +11,7 @@ public enum Technique {
     SLAP,
     SLIDE,
     STACCATO,
+    STRUMMING,
     TRIPLET,
     ;
 }
