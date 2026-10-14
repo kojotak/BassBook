@@ -266,6 +266,9 @@ public class BassbookDatabase {
                 new Author("Survivor", orderedList(
                         song("Eye of the tiger").youtube(NOCCO_CAT, "ZOr9oMqKn7c"))),
                 new Author("Radiohead", orderedList(
+                        song("Paranoid Android").youtube(MATT_EDJON_VERY_ACCURATE_TABS, "QwruXKZSS0M", of(SLIDE, HAMMER_ON)),
+                        song("Burn the Witches").youtube(MATT_EDJON_VERY_ACCURATE_TABS, "ZFrQcNSQiaQ", DADG),
+                        song("Everything in the Right Place").youtube(MATT_EDJON_VERY_ACCURATE_TABS, "Cvg5kFT0yOI"),
                         song("Creep").youtube(NOCCO_CAT, "0hBtVjbOdc4"))),
                 new Author("Tracy Chapman", orderedList(
                         song("Give Me One Reason").youtube(NOCCO_CAT, "YOWLZ4bZ8sQ"))),
